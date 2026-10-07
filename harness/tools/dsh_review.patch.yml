@@ -1,0 +1,7 @@
+# DeepSeek Harness 无头盲评用的补丁层:官方 API 路线 + deepseek-flash + 推理强度 high(仓库所有者指定,不换模型)。
+- id: agent-default-model
+  name: "@deepseek-ai/dsh-agent-default-model"
+  config:
+    provider: deepseek-official
+    model: deepseek-flash
+    reasoningEffort: high

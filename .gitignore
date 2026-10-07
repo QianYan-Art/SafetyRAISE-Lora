@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+.venv/
+.venv-*/
+.pytest_cache/
+.scratch/
+harness/runs/
+harness/vendor/
+harness/ledger/
+profiles/assets/*/tokenizer.json
+*.safetensors
+*.gguf
+*.log
+.env

@@ -1,0 +1,1818 @@
+[
+ {
+  "case": "syn_dev_000",
+  "qlen8": 114,
+  "qlenp": 18,
+  "a": [
+   "beijing_summer_travel_safety_2024#0004",
+   "road_traffic_safety_law_2021#rule#0087",
+   "beijing_traffic_sign_marking_guide_2023#0009",
+   "beijing_summer_travel_safety_2024#rule#0003",
+   "beijing_traffic_sign_marking_guide_2023#0011",
+   "manual_special_road_condition_reference_2026#rule#0002"
+  ],
+  "a_plain": [
+   "beijing_summer_travel_safety_2024#0004",
+   "road_traffic_safety_law_2021#rule#0087",
+   "beijing_traffic_sign_marking_guide_2023#0009",
+   "beijing_summer_travel_safety_2024#rule#0003",
+   "beijing_traffic_sign_marking_guide_2023#0011",
+   "manual_special_road_condition_reference_2026#rule#0002"
+  ],
+  "b": [
+   "driver_license_162_pdf#0003",
+   "driver_license_162_pdf#0021",
+   "driver_license_162_pdf#0024",
+   "driver_license_162_pdf#0036",
+   "driver_license_162_pdf#0004",
+   "driver_license_162_pdf#0005"
+  ],
+  "c": [
+   "beijing_summer_travel_safety_2024#0001",
+   "beijing_summer_travel_safety_2024#0002",
+   "driver_license_162_pdf#0003",
+   "driver_license_162_pdf#0004",
+   "driver_license_162_pdf#0005"
+  ]
+ },
+ {
+  "case": "syn_dev_001",
+  "qlen8": 56,
+  "qlenp": 11,
+  "a": [
+   "gb_5768_part3_2025_text_mirror#0026",
+   "driver_license_162_pdf#rule#0064",
+   "beijing_traffic_sign_marking_guide_2023#0005",
+   "driver_license_162_pdf#rule#0133",
+   "gb_5768_part2_2022_ocr_mirror#0033",
+   "road_traffic_safety_law_2021#rule#0165"
+  ],
+  "a_plain": [
+   "gb_5768_part3_2025_text_mirror#0026",
+   "driver_license_162_pdf#rule#0064",
+   "beijing_traffic_sign_marking_guide_2023#0005",
+   "driver_license_162_pdf#rule#0133",
+   "gb_5768_part2_2022_ocr_mirror#0033",
+   "road_traffic_safety_law_2021#rule#0165"
+  ],
+  "b": [
+   "beijing_traffic_sign_marking_guide_2023#0001",
+   "beijing_traffic_sign_marking_guide_2023#0005",
+   "gb_5768_part2_2022_ocr_mirror#0032",
+   "gb_5768_part2_2022_ocr_mirror#0126",
+   "gb_5768_part2_2022_ocr_mirror#0127",
+   "gb_5768_part3_2025_text_mirror#0026"
+  ],
+  "c": [
+   "manual_traffic_sign_visual_reference_2026#0002",
+   "beijing_traffic_sign_marking_guide_2023#0005",
+   "court_case_traffic_insurance_recourse_2014#0002",
+   "gb_5768_part2_2022_ocr_mirror#0127",
+   "gb_5768_part2_2022_ocr_mirror#0129"
+  ]
+ },
+ {
+  "case": "syn_dev_002",
+  "qlen8": 52,
+  "qlenp": 11,
+  "a": [
+   "manual_special_period_traffic_management_reference_2026#0002",
+   "road_traffic_safety_law_2021#rule#0165",
+   "gb_5768_part2_2022_ocr_mirror#0032",
+   "gongbao_auto_8e8afbe5d39de5092516140ce02ef7#rule#0008",
+   "gb_5768_part2_2022_ocr_mirror#0033",
+   "gongbao_auto_79592569ff3e9b348f80f20439e87e#rule#0002"
+  ],
+  "a_plain": [
+   "manual_special_period_traffic_management_reference_2026#0002",
+   "road_traffic_safety_law_2021#rule#0165",
+   "gb_5768_part2_2022_ocr_mirror#0032",
+   "gongbao_auto_8e8afbe5d39de5092516140ce02ef7#rule#0008",
+   "gb_5768_part2_2022_ocr_mirror#0033",
+   "gongbao_auto_79592569ff3e9b348f80f20439e87e#rule#0002"
+  ],
+  "b": [
+   "gb_5768_part3_2025_text_mirror#0026",
+   "beijing_traffic_sign_marking_guide_2023#0001",
+   "beijing_traffic_sign_marking_guide_2023#0005",
+   "gb_5768_part2_2022_ocr_mirror#0032",
+   "gb_5768_part2_2022_ocr_mirror#0033",
+   "gb_5768_part2_2022_ocr_mirror#0126"
+  ],
+  "c": [
+   "beijing_traffic_sign_marking_guide_2023#0001",
+   "beijing_traffic_sign_marking_guide_2023#0005",
+   "gb_5768_part2_2022_ocr_mirror#0032",
+   "gb_5768_part2_2022_ocr_mirror#0033",
+   "gb_5768_part2_2022_ocr_mirror#0126"
+  ]
+ },
+ {
+  "case": "syn_dev_003",
+  "qlen8": 169,
+  "qlenp": 68,
+  "a": [
+   "manual_weather_traffic_safety_reference_2026#0002",
+   "traffic_accident_procedure_146#rule#0166",
+   "manual_weather_traffic_safety_reference_2026#0003",
+   "gongbao_auto_79592569ff3e9b348f80f20439e87e#rule#0002",
+   "road_traffic_safety_regulation_1614_pdf#0016",
+   "court_case_highway_management_liability#rule#0017"
+  ],
+  "a_plain": [
+   "manual_weather_traffic_safety_reference_2026#0002",
+   "traffic_accident_procedure_146#rule#0166",
+   "manual_weather_traffic_safety_reference_2026#0003",
+   "gongbao_auto_79592569ff3e9b348f80f20439e87e#rule#0002",
+   "road_traffic_safety_regulation_1614_pdf#0016",
+   "court_case_highway_management_liability#rule#0017"
+  ],
+  "b": [
+   "road_traffic_safety_regulation_1614_pdf#0015",
+   "driver_license_162_pdf#0003",
+   "driver_license_162_pdf#0021",
+   "driver_license_162_pdf#0024",
+   "driver_license_162_pdf#0036",
+   "beijing_traffic_sign_marking_guide_2023#0002"
+  ],
+  "c": [
+   "gb_5768_part2_2022_ocr_mirror#0126",
+   "beijing_traffic_sign_marking_guide_2023#0001",
+   "beijing_traffic_sign_marking_guide_2023#0005",
+   "gb_5768_part2_2022_ocr_mirror#0032",
+   "gb_5768_part2_2022_ocr_mirror#0033"
+  ]
+ },
+ {
+  "case": "syn_dev_004",
+  "qlen8": 254,
+  "qlenp": 103,
+  "a": [
+   "manual_weather_traffic_safety_reference_2026#0002",
+   "demerit_management_163#rule#0029",
+   "db11_t_854_2023_road_work_safety#0019",
+   "road_traffic_safety_regulation_1614_pdf#rule#0189",
+   "gb_5768_part2_2022_ocr_mirror#0012",
+   "demerit_management_163#rule#0034"
+  ],
+  "a_plain": [
+   "manual_weather_traffic_safety_reference_2026#0002",
+   "demerit_management_163#rule#0029",
+   "db11_t_854_2023_road_work_safety#0019",
+   "road_traffic_safety_regulation_1614_pdf#rule#0189",
+   "gb_5768_part2_2022_ocr_mirror#0012",
+   "demerit_management_163#rule#0034"
+  ],
+  "b": [
+   "gongbao_auto_4fefe6e63fa7b310c4c0309bc64983#rule#0022",
+   "supreme_court_typical_cases_traffic_2025#rule#0010",
+   "gongbao_auto_176caec7a6e5744826a2af6b047702#0005",
+   "gongbao_auto_3990ac1b7fbce4aa3385667e53f532#0001",
+   "gongbao_auto_3990ac1b7fbce4aa3385667e53f532#0002",
+   "gongbao_auto_3990ac1b7fbce4aa3385667e53f532#0004"
+  ],
+  "c": [
+   "court_case_traffic_accident_book_weight#0002",
+   "court_case_traffic_accident_book_weight#0003",
+   "db11_t_854_2023_road_work_safety#0019",
+   "db11_t_854_2023_road_work_safety#0026",
+   "gb_5768_part2_2022_ocr_mirror#0012"
+  ]
+ },
+ {
+  "case": "syn_dev_005",
+  "qlen8": 58,
+  "qlenp": 12,
+  "a": [
+   "road_traffic_safety_regulation_1614_pdf#0010",
+   "manual_special_period_traffic_management_reference_2026#rule#0001",
+   "beijing_summer_travel_safety_2024#0004",
+   "traffic_violation_procedure_157_pdf#rule#0019",
+   "road_traffic_safety_regulation_1614_pdf#0015",
+   "driver_license_162_pdf#rule#0135"
+  ],
+  "a_plain": [
+   "road_traffic_safety_regulation_1614_pdf#0010",
+   "manual_special_period_traffic_management_reference_2026#rule#0001",
+   "beijing_summer_travel_safety_2024#0004",
+   "traffic_violation_procedure_157_pdf#rule#0019",
+   "road_traffic_safety_regulation_1614_pdf#0015",
+   "driver_license_162_pdf#rule#0135"
+  ],
+  "b": [
+   "driver_license_162_pdf#0003",
+   "driver_license_162_pdf#0021",
+   "driver_license_162_pdf#0024",
+   "driver_license_162_pdf#0036",
+   "demerit_management_163#0005",
+   "driver_license_162_pdf#0004"
+  ],
+  "c": [
+   "manual_special_period_traffic_management_reference_2026#0001",
+   "manual_special_period_traffic_management_reference_2026#rule#0001",
+   "beijing_summer_travel_safety_2024#0004",
+   "manual_holiday_traffic_management_reference_2026#0001",
+   "manual_weather_traffic_safety_reference_2026#0003",
+   "road_safety_plan_14th_five_year#0011"
+  ]
+ },
+ {
+  "case": "syn_dev_006",
+  "qlen8": 54,
+  "qlenp": 6,
+  "a": [
+   "gb_5768_part3_2025_text_mirror#0026",
+   "road_traffic_safety_law_2021#rule#0119",
+   "supreme_court_typical_cases_traffic_2025#0006",
+   "supreme_court_typical_cases_traffic_2025#rule#0007",
+   "gb_5768_part2_2022_ocr_mirror#0032",
+   "supreme_court_typical_cases_traffic_2025#rule#0050"
+  ],
+  "a_plain": [
+   "gb_5768_part3_2025_text_mirror#0026",
+   "road_traffic_safety_law_2021#rule#0119",
+   "supreme_court_typical_cases_traffic_2025#0006",
+   "supreme_court_typical_cases_traffic_2025#rule#0007",
+   "gb_5768_part2_2022_ocr_mirror#0032",
+   "supreme_court_typical_cases_traffic_2025#rule#0050"
+  ],
+  "b": [
+   "beijing_traffic_sign_marking_guide_2023#0001",
+   "beijing_traffic_sign_marking_guide_2023#0005",
+   "gb_5768_part2_2022_ocr_mirror#0032",
+   "gb_5768_part2_2022_ocr_mirror#0126",
+   "gb_5768_part2_2022_ocr_mirror#0127",
+   "gb_5768_part3_2025_text_mirror#0026"
+  ],
+  "c": [
+   "road_safety_plan_14th_five_year#0011",
+   "beijing_national_day_travel_management_2025#0001",
+   "manual_traffic_marking_visual_reference_2026#0001",
+   "db11_t_854_2023_road_work_safety#0006",
+   "db11_t_854_2023_road_work_safety#0017"
+  ]
+ },
+ {
+  "case": "syn_dev_007",
+  "qlen8": 55,
+  "qlenp": 10,
+  "a": [
+   "driver_license_162_pdf#0013",
+   "demerit_management_163#rule#0029",
+   "driver_license_162_pdf#0007",
+   "demerit_management_163#rule#0034",
+   "driver_license_162_pdf#0004",
+   "driver_license_162_pdf#rule#0064"
+  ],
+  "a_plain": [
+   "driver_license_162_pdf#0013",
+   "demerit_management_163#rule#0029",
+   "driver_license_162_pdf#0007",
+   "demerit_management_163#rule#0034",
+   "driver_license_162_pdf#0004",
+   "driver_license_162_pdf#rule#0064"
+  ],
+  "b": [
+   "highway_law_2017_beijing#rule#0060",
+   "gb_19522_2024_text#0001",
+   "gb_19522_2024_text#0002",
+   "beijing_extreme_wind_temporary_control_2025#0002",
+   "beijing_national_day_travel_management_2025#0002",
+   "beijing_snow_driving_safety_2025#0001"
+  ],
+  "c": [
+   "manual_special_road_condition_reference_2026#0004",
+   "supreme_court_typical_cases_traffic_2025#0006",
+   "beijing_national_day_travel_management_2025#0002",
+   "beijing_traffic_sign_marking_guide_2023#0010",
+   "gb_5768_part2_2022_ocr_mirror#0130"
+  ]
+ },
+ {
+  "case": "syn_dev_008",
+  "qlen8": 49,
+  "qlenp": 10,
+  "a": [
+   "gb_5768_part3_2025_text_mirror#0026",
+   "supreme_court_typical_cases_traffic_2025#rule#0007",
+   "gb_5768_part2_2022_ocr_mirror#0126",
+   "supreme_court_typical_cases_traffic_2025#rule#0050",
+   "beijing_traffic_sign_marking_guide_2023#0001",
+   "court_case_highway_management_liability#rule#0010"
+  ],
+  "a_plain": [
+   "gb_5768_part3_2025_text_mirror#0026",
+   "supreme_court_typical_cases_traffic_2025#rule#0007",
+   "gb_5768_part2_2022_ocr_mirror#0126",
+   "supreme_court_typical_cases_traffic_2025#rule#0050",
+   "beijing_traffic_sign_marking_guide_2023#0001",
+   "court_case_highway_management_liability#rule#0010"
+  ],
+  "b": [
+   "gb_5768_part2_2022_ocr_mirror#0126",
+   "beijing_traffic_sign_marking_guide_2023#0001",
+   "gb_5768_part2_2022_ocr_mirror#0132",
+   "manual_traffic_sign_visual_reference_2026#0002",
+   "beijing_traffic_sign_marking_guide_2023#0002",
+   "beijing_traffic_sign_marking_guide_2023#0005"
+  ],
+  "c": [
+   "gb_5768_part3_2025_text_mirror#0026",
+   "court_case_highway_management_liability#0003",
+   "gb_5768_part3_2025_text_mirror#0025",
+   "gongbao_auto_3990ac1b7fbce4aa3385667e53f532#0001",
+   "gongbao_auto_3990ac1b7fbce4aa3385667e53f532#0002"
+  ]
+ },
+ {
+  "case": "syn_dev_009",
+  "qlen8": 53,
+  "qlenp": 8,
+  "a": [
+   "gongbao_auto_3990ac1b7fbce4aa3385667e53f532#0002",
+   "supreme_court_typical_cases_traffic_2025#rule#0071",
+   "gongbao_auto_8e8afbe5d39de5092516140ce02ef7#0002",
+   "supreme_court_typical_cases_traffic_2025#rule#0014",
+   "road_traffic_safety_regulation_1614_pdf#0006",
+   "supreme_court_typical_cases_traffic_2025#rule#0069"
+  ],
+  "a_plain": [
+   "gongbao_auto_3990ac1b7fbce4aa3385667e53f532#0002",
+   "supreme_court_typical_cases_traffic_2025#rule#0071",
+   "gongbao_auto_8e8afbe5d39de5092516140ce02ef7#0002",
+   "supreme_court_typical_cases_traffic_2025#rule#0014",
+   "road_traffic_safety_regulation_1614_pdf#0006",
+   "supreme_court_typical_cases_traffic_2025#rule#0069"
+  ],
+  "b": [
+   "gb_5768_part3_2025_text_mirror#0026",
+   "gb_5768_part2_2022_ocr_mirror#0029",
+   "gb_5768_part3_2025_text_mirror#0025",
+   "gongbao_auto_176caec7a6e5744826a2af6b047702#rule#0013",
+   "gongbao_auto_3990ac1b7fbce4aa3385667e53f532#rule#0015",
+   "beijing_traffic_sign_marking_guide_2023#rule#0002"
+  ],
+  "c": [
+   "manual_special_period_traffic_management_reference_2026#0002",
+   "supreme_court_traffic_cases_commentary_2025#0003",
+   "supreme_court_traffic_cases_commentary_2025#0004",
+   "supreme_court_typical_cases_traffic_2025#0004",
+   "court_case_traffic_insurance_recourse_2014#0002"
+  ]
+ },
+ {
+  "case": "syn_dev_010",
+  "qlen8": 54,
+  "qlenp": 11,
+  "a": [
+   "road_traffic_safety_law_2021#0009",
+   "road_traffic_safety_law_2021#rule#0097",
+   "road_traffic_safety_regulation_1614_pdf#0006",
+   "road_traffic_safety_law_2021#rule#0128",
+   "road_traffic_safety_regulation_1614_pdf#0013",
+   "supreme_court_typical_cases_traffic_2025#rule#0014"
+  ],
+  "a_plain": [
+   "road_traffic_safety_law_2021#0009",
+   "road_traffic_safety_law_2021#rule#0097",
+   "road_traffic_safety_regulation_1614_pdf#0006",
+   "road_traffic_safety_law_2021#rule#0128",
+   "road_traffic_safety_regulation_1614_pdf#0013",
+   "supreme_court_typical_cases_traffic_2025#rule#0014"
+  ],
+  "b": [
+   "beijing_traffic_sign_marking_guide_2023#0001",
+   "beijing_traffic_sign_marking_guide_2023#0005",
+   "gb_5768_part2_2022_ocr_mirror#0029",
+   "gb_5768_part2_2022_ocr_mirror#0032",
+   "gb_5768_part2_2022_ocr_mirror#0033",
+   "gb_5768_part2_2022_ocr_mirror#0126"
+  ],
+  "c": [
+   "gb_5768_part2_2022_ocr_mirror#0117",
+   "gongbao_auto_176caec7a6e5744826a2af6b047702#0003",
+   "road_safety_plan_14th_five_year#0011",
+   "gb_5768_part2_2022_ocr_mirror#0047",
+   "gb_5768_part2_2022_ocr_mirror#0060"
+  ]
+ },
+ {
+  "case": "syn_dev_011",
+  "qlen8": 65,
+  "qlenp": 11,
+  "a": [
+   "gb_5768_part2_2022_ocr_mirror#0117",
+   "gb_5768_part2_2022_ocr_mirror#rule#0040",
+   "gb_5768_part2_2022_ocr_mirror#0118",
+   "gb_5768_part2_2022_ocr_mirror#rule#0028",
+   "road_traffic_safety_regulation_1614_pdf#0013",
+   "road_traffic_safety_regulation_1614_pdf#rule#0125"
+  ],
+  "a_plain": [
+   "gb_5768_part2_2022_ocr_mirror#0117",
+   "gb_5768_part2_2022_ocr_mirror#rule#0040",
+   "gb_5768_part2_2022_ocr_mirror#0118",
+   "gb_5768_part2_2022_ocr_mirror#rule#0028",
+   "road_traffic_safety_regulation_1614_pdf#0013",
+   "road_traffic_safety_regulation_1614_pdf#rule#0125"
+  ],
+  "b": [
+   "gb_5768_part2_2022_ocr_mirror#0029",
+   "road_traffic_safety_regulation_1614_pdf#0009",
+   "road_traffic_safety_regulation_1614_pdf#0010",
+   "road_traffic_safety_regulation_1614_pdf#0011",
+   "road_traffic_safety_regulation_1614_pdf#0013",
+   "gb_5768_part3_2025_text_mirror#0016"
+  ],
+  "c": [
+   "manual_traffic_sign_visual_reference_2026#0002",
+   "gb_5768_part2_2022_ocr_mirror#0029",
+   "manual_holiday_traffic_management_reference_2026#0002",
+   "gb_5768_part3_2025_text_mirror#0016",
+   "manual_weather_traffic_safety_reference_2026#0002"
+  ]
+ },
+ {
+  "case": "syn_dev_012",
+  "qlen8": 223,
+  "qlenp": 93,
+  "a": [
+   "gb_5768_part3_2025_text_mirror#0026",
+   "gongbao_auto_176caec7a6e5744826a2af6b047702#rule#0015",
+   "road_traffic_safety_regulation_1614_pdf#0013",
+   "supreme_court_typical_cases_traffic_2025#rule#0014",
+   "beijing_traffic_sign_marking_guide_2023#0001",
+   "road_traffic_safety_law_2021#rule#0119"
+  ],
+  "a_plain": [
+   "gb_5768_part3_2025_text_mirror#0026",
+   "gongbao_auto_176caec7a6e5744826a2af6b047702#rule#0015",
+   "road_traffic_safety_regulation_1614_pdf#0013",
+   "supreme_court_typical_cases_traffic_2025#rule#0014",
+   "beijing_traffic_sign_marking_guide_2023#0001",
+   "road_traffic_safety_law_2021#rule#0119"
+  ],
+  "b": [
+   "court_case_traffic_inheritance_liability#0001",
+   "court_case_traffic_inheritance_liability#0002",
+   "gb_5768_part3_2025_text_mirror#0026",
+   "gongbao_auto_3990ac1b7fbce4aa3385667e53f532#0003",
+   "traffic_accident_procedure_146#0004",
+   "court_case_traffic_inheritance_liability#rule#0007"
+  ],
+  "c": [
+   "manual_traffic_sign_visual_reference_2026#0002",
+   "gongbao_auto_176caec7a6e5744826a2af6b047702#rule#0015",
+   "gongbao_auto_3990ac1b7fbce4aa3385667e53f532#0001",
+   "gongbao_auto_176caec7a6e5744826a2af6b047702#0003",
+   "supreme_court_typical_cases_traffic_2025#0006",
+   "gb_5768_part3_2025_text_mirror#0026"
+  ]
+ },
+ {
+  "case": "syn_dev_013",
+  "qlen8": 55,
+  "qlenp": 10,
+  "a": [
+   "driver_license_162_pdf#0011",
+   "driver_license_162_pdf#rule#0064",
+   "driver_license_162_pdf#0034",
+   "driver_license_162_pdf#rule#0133",
+   "driver_license_162_pdf#0004",
+   "demerit_management_163#rule#0034"
+  ],
+  "a_plain": [
+   "driver_license_162_pdf#0011",
+   "driver_license_162_pdf#rule#0064",
+   "driver_license_162_pdf#0034",
+   "driver_license_162_pdf#rule#0133",
+   "driver_license_162_pdf#0004",
+   "demerit_management_163#rule#0034"
+  ],
+  "b": [
+   "driver_license_162_pdf#0003",
+   "driver_license_162_pdf#0021",
+   "driver_license_162_pdf#0024",
+   "driver_license_162_pdf#0036",
+   "road_traffic_safety_regulation_1614_pdf#0012",
+   "driver_license_162_pdf#0004"
+  ],
+  "c": [
+   "court_case_highway_management_liability#0003",
+   "gb_5768_part3_2025_text_mirror#0025",
+   "gb_5768_part3_2025_text_mirror#0026",
+   "gongbao_auto_3990ac1b7fbce4aa3385667e53f532#0001",
+   "gongbao_auto_3990ac1b7fbce4aa3385667e53f532#0002"
+  ]
+ },
+ {
+  "case": "syn_dev_014",
+  "qlen8": 119,
+  "qlenp": 15,
+  "a": [
+   "driver_license_162_pdf#0026",
+   "driver_license_162_pdf#rule#0198",
+   "driver_license_162_pdf#0011",
+   "gongbao_auto_79592569ff3e9b348f80f20439e87e#rule#0010",
+   "manual_special_road_condition_reference_2026#0002",
+   "gongbao_auto_79592569ff3e9b348f80f20439e87e#rule#0002"
+  ],
+  "a_plain": [
+   "driver_license_162_pdf#0026",
+   "driver_license_162_pdf#rule#0198",
+   "driver_license_162_pdf#0011",
+   "gongbao_auto_79592569ff3e9b348f80f20439e87e#rule#0010",
+   "manual_special_road_condition_reference_2026#0002",
+   "gongbao_auto_79592569ff3e9b348f80f20439e87e#rule#0002"
+  ],
+  "b": [
+   "driver_license_162_pdf#0019",
+   "court_case_traffic_inheritance_liability#0003",
+   "road_traffic_safety_regulation_1614_pdf#0011",
+   "beijing_fog_driving_safety_2025#0001",
+   "gongbao_auto_176caec7a6e5744826a2af6b047702#rule#0013",
+   "road_traffic_safety_regulation_1614_pdf#rule#0124"
+  ],
+  "c": [
+   "gongbao_auto_3990ac1b7fbce4aa3385667e53f532#0001",
+   "gongbao_auto_3990ac1b7fbce4aa3385667e53f532#0003",
+   "motor_vehicle_compulsory_insurance_162_pdf#0001",
+   "motor_vehicle_compulsory_insurance_162_pdf#0002",
+   "motor_vehicle_compulsory_insurance_162_pdf#0003"
+  ]
+ },
+ {
+  "case": "syn_dev_015",
+  "qlen8": 54,
+  "qlenp": 8,
+  "a": [
+   "beijing_traffic_sign_marking_guide_2023#0005",
+   "supreme_court_typical_cases_traffic_2025#rule#0007",
+   "beijing_traffic_sign_marking_guide_2023#0001",
+   "road_traffic_safety_law_2021#rule#0119",
+   "gb_5768_part2_2022_ocr_mirror#0032",
+   "supreme_court_typical_cases_traffic_2025#rule#0050"
+  ],
+  "a_plain": [
+   "beijing_traffic_sign_marking_guide_2023#0005",
+   "supreme_court_typical_cases_traffic_2025#rule#0007",
+   "beijing_traffic_sign_marking_guide_2023#0001",
+   "road_traffic_safety_law_2021#rule#0119",
+   "gb_5768_part2_2022_ocr_mirror#0032",
+   "supreme_court_typical_cases_traffic_2025#rule#0050"
+  ],
+  "b": [
+   "beijing_traffic_sign_marking_guide_2023#0001",
+   "beijing_traffic_sign_marking_guide_2023#0002",
+   "beijing_traffic_sign_marking_guide_2023#0005",
+   "beijing_traffic_sign_marking_guide_2023#0006",
+   "gb_5768_part1_2025_text_mirror#0005",
+   "gb_5768_part1_2025_text_mirror#0006"
+  ],
+  "c": [
+   "road_traffic_safety_regulation_1614_pdf#0015",
+   "road_safety_plan_14th_five_year#0011",
+   "road_traffic_safety_regulation_1614_pdf#0016",
+   "court_case_highway_management_liability#0002",
+   "court_case_highway_management_liability#0003"
+  ]
+ },
+ {
+  "case": "syn_dev_016",
+  "qlen8": 236,
+  "qlenp": 85,
+  "a": [
+   "manual_traffic_sign_visual_reference_2026#0002",
+   "manual_traffic_marking_visual_reference_2026#rule#0004",
+   "manual_traffic_marking_visual_reference_2026#0002",
+   "traffic_accident_procedure_146#rule#0028",
+   "road_traffic_safety_regulation_1614_pdf#0013",
+   "supreme_court_typical_cases_traffic_2025#rule#0014"
+  ],
+  "a_plain": [
+   "manual_traffic_sign_visual_reference_2026#0002",
+   "manual_traffic_marking_visual_reference_2026#rule#0004",
+   "manual_traffic_marking_visual_reference_2026#0002",
+   "traffic_accident_procedure_146#rule#0028",
+   "road_traffic_safety_regulation_1614_pdf#0013",
+   "supreme_court_typical_cases_traffic_2025#rule#0014"
+  ],
+  "b": [
+   "beijing_traffic_sign_marking_guide_2023#0001",
+   "beijing_traffic_sign_marking_guide_2023#0005",
+   "beijing_traffic_sign_marking_guide_2023#0006",
+   "gb_5768_part2_2022_ocr_mirror#0032",
+   "gb_5768_part2_2022_ocr_mirror#0126",
+   "gb_5768_part2_2022_ocr_mirror#0127"
+  ],
+  "c": [
+   "beijing_rainstorm_traffic_support_2025#0001",
+   "city_road_management_1545_pdf#rule#0010",
+   "beijing_rainstorm_traffic_support_2025#0002",
+   "manual_weather_traffic_safety_reference_2026#0001",
+   "manual_weather_traffic_safety_reference_2026#0002",
+   "manual_weather_traffic_safety_reference_2026#0004"
+  ]
+ },
+ {
+  "case": "syn_dev_017",
+  "qlen8": 170,
+  "qlenp": 32,
+  "a": [
+   "road_traffic_safety_regulation_1614_pdf#0013",
+   "gb_5768_part2_2022_ocr_mirror#rule#0028",
+   "beijing_traffic_sign_marking_guide_2023#0004",
+   "supreme_court_typical_cases_traffic_2025#rule#0014",
+   "gb_5768_part3_2025_text_mirror#0016",
+   "beijing_traffic_sign_marking_guide_2023#rule#0002"
+  ],
+  "a_plain": [
+   "road_traffic_safety_regulation_1614_pdf#0013",
+   "gb_5768_part2_2022_ocr_mirror#rule#0028",
+   "beijing_traffic_sign_marking_guide_2023#0004",
+   "supreme_court_typical_cases_traffic_2025#rule#0014",
+   "gb_5768_part3_2025_text_mirror#0016",
+   "beijing_traffic_sign_marking_guide_2023#rule#0002"
+  ],
+  "b": [
+   "road_traffic_safety_regulation_1614_pdf#0012",
+   "driver_license_162_pdf#0003",
+   "driver_license_162_pdf#0021",
+   "driver_license_162_pdf#0024",
+   "driver_license_162_pdf#0036",
+   "beijing_traffic_sign_marking_guide_2023#0002"
+  ],
+  "c": [
+   "beijing_rainstorm_traffic_support_2025#0002",
+   "gongbao_auto_1b93898b67dc94529831eee8ed3a6f#rule#0040",
+   "beijing_rainstorm_traffic_support_2025#0001",
+   "road_safety_plan_14th_five_year#0011",
+   "road_traffic_safety_regulation_1614_pdf#0018",
+   "gb_5768_part3_2025_text_mirror#0017"
+  ]
+ },
+ {
+  "case": "syn_dev_018",
+  "qlen8": 54,
+  "qlenp": 9,
+  "a": [
+   "driver_license_162_pdf#0007",
+   "road_safety_plan_14th_five_year#rule#0021",
+   "gongbao_auto_8e8afbe5d39de5092516140ce02ef7#0002",
+   "driver_license_162_pdf#rule#0064",
+   "driver_license_162_pdf#0006",
+   "driver_license_162_pdf#rule#0133"
+  ],
+  "a_plain": [
+   "driver_license_162_pdf#0007",
+   "road_safety_plan_14th_five_year#rule#0021",
+   "gongbao_auto_8e8afbe5d39de5092516140ce02ef7#0002",
+   "driver_license_162_pdf#rule#0064",
+   "driver_license_162_pdf#0006",
+   "driver_license_162_pdf#rule#0133"
+  ],
+  "b": [
+   "gb_5768_part3_2025_text_mirror#0026",
+   "driver_license_162_pdf#0013",
+   "beijing_extreme_wind_temporary_control_2025#0002",
+   "beijing_traffic_sign_marking_guide_2023#0006",
+   "db11_t_854_2023_road_work_safety#0022",
+   "gb_5768_part3_2025_text_mirror#0025"
+  ],
+  "c": [
+   "gb_5768_part2_2022_ocr_mirror#0028",
+   "manual_special_road_condition_reference_2026#0001",
+   "db11_t_854_2023_road_work_safety#0012",
+   "gb_5768_part2_2022_visual_text_assist#0021",
+   "road_traffic_safety_law_2021#0007"
+  ]
+ },
+ {
+  "case": "syn_dev_019",
+  "qlen8": 58,
+  "qlenp": 12,
+  "a": [
+   "db11_t_854_2023_road_work_safety#0014",
+   "city_road_management_1545_pdf#rule#0012",
+   "manual_special_road_condition_reference_2026#0003",
+   "city_road_management_1545_pdf#rule#0013",
+   "road_safety_plan_14th_five_year#0011",
+   "city_road_management_1545_pdf#rule#0036"
+  ],
+  "a_plain": [
+   "db11_t_854_2023_road_work_safety#0014",
+   "city_road_management_1545_pdf#rule#0012",
+   "manual_special_road_condition_reference_2026#0003",
+   "city_road_management_1545_pdf#rule#0013",
+   "road_safety_plan_14th_five_year#0011",
+   "city_road_management_1545_pdf#rule#0036"
+  ],
+  "b": [
+   "db11_t_854_2023_road_work_safety#0014",
+   "db11_t_854_2023_road_work_safety#0013",
+   "db11_t_854_2023_road_work_safety#0004",
+   "db11_t_854_2023_road_work_safety#0005",
+   "db11_t_854_2023_road_work_safety#0012",
+   "db11_t_854_2023_road_work_safety#0017"
+  ],
+  "c": [
+   "manual_special_road_condition_reference_2026#0001",
+   "manual_special_road_condition_reference_2026#0003",
+   "manual_special_road_condition_reference_2026#0004",
+   "db11_t_854_2023_road_work_safety#0004",
+   "db11_t_854_2023_road_work_safety#0008"
+  ]
+ },
+ {
+  "case": "syn_dev_020",
+  "qlen8": 153,
+  "qlenp": 38,
+  "a": [
+   "supreme_court_typical_cases_traffic_2025#0006",
+   "supreme_court_traffic_cases_commentary_2025#rule#0011",
+   "gb_5768_part3_2025_text_mirror#0026",
+   "supreme_court_typical_cases_traffic_2025#rule#0007",
+   "supreme_court_traffic_cases_commentary_2025#0002",
+   "road_traffic_safety_law_2021#rule#0119"
+  ],
+  "a_plain": [
+   "supreme_court_typical_cases_traffic_2025#0006",
+   "supreme_court_traffic_cases_commentary_2025#rule#0011",
+   "gb_5768_part3_2025_text_mirror#0026",
+   "supreme_court_typical_cases_traffic_2025#rule#0007",
+   "supreme_court_traffic_cases_commentary_2025#0002",
+   "road_traffic_safety_law_2021#rule#0119"
+  ],
+  "b": [
+   "beijing_traffic_sign_marking_guide_2023#0002",
+   "gb_5768_part1_2025_text_mirror#0005",
+   "gb_5768_part2_2022_ocr_mirror#0129",
+   "supreme_court_typical_cases_traffic_2025#0006",
+   "beijing_traffic_sign_marking_guide_2023#0005",
+   "gb_5768_part1_2025_text_mirror#0006"
+  ],
+  "c": [
+   "supreme_court_typical_cases_traffic_2025#0006",
+   "beijing_national_day_travel_management_2025#0002",
+   "beijing_traffic_sign_marking_guide_2023#0002",
+   "court_case_traffic_fake_policy_2007#0001",
+   "court_case_traffic_fake_policy_2007#0002"
+  ]
+ },
+ {
+  "case": "syn_dev_021",
+  "qlen8": 132,
+  "qlenp": 18,
+  "a": [
+   "road_safety_plan_14th_five_year#0012",
+   "road_traffic_safety_law_2021#rule#0097",
+   "court_case_traffic_inheritance_liability#0003",
+   "gongbao_auto_79592569ff3e9b348f80f20439e87e#rule#0002",
+   "court_case_highway_management_liability#0003",
+   "demerit_management_163#rule#0029"
+  ],
+  "a_plain": [
+   "road_safety_plan_14th_five_year#0012",
+   "road_traffic_safety_law_2021#rule#0097",
+   "court_case_traffic_inheritance_liability#0003",
+   "gongbao_auto_79592569ff3e9b348f80f20439e87e#rule#0002",
+   "court_case_highway_management_liability#0003",
+   "demerit_management_163#rule#0029"
+  ],
+  "b": [
+   "beijing_rainstorm_traffic_support_2025#0002",
+   "beijing_rainstorm_traffic_support_2025#0001",
+   "road_traffic_safety_law_2021#0008",
+   "court_case_traffic_inheritance_liability#rule#0013",
+   "db11_t_854_2023_road_work_safety#rule#0002",
+   "gongbao_auto_1b93898b67dc94529831eee8ed3a6f#rule#0040"
+  ],
+  "c": [
+   "road_safety_plan_14th_five_year#0012",
+   "road_traffic_safety_law_2021#rule#0097",
+   "road_traffic_safety_law_2021#rule#0126",
+   "road_traffic_safety_law_2021#0008",
+   "road_traffic_safety_law_2021#0009",
+   "road_traffic_safety_regulation_1614_pdf#0006"
+  ]
+ },
+ {
+  "case": "syn_dev_022",
+  "qlen8": 242,
+  "qlenp": 73,
+  "a": [
+   "manual_holiday_traffic_management_reference_2026#0003",
+   "road_safety_plan_14th_five_year#rule#0002",
+   "manual_special_road_condition_reference_2026#0002",
+   "manual_holiday_traffic_management_reference_2026#rule#0006",
+   "beijing_summer_travel_safety_2024#0004",
+   "traffic_accident_procedure_146#rule#0037"
+  ],
+  "a_plain": [
+   "manual_holiday_traffic_management_reference_2026#0003",
+   "road_safety_plan_14th_five_year#rule#0002",
+   "manual_special_road_condition_reference_2026#0002",
+   "manual_holiday_traffic_management_reference_2026#rule#0006",
+   "beijing_summer_travel_safety_2024#0004",
+   "traffic_accident_procedure_146#rule#0037"
+  ],
+  "b": [
+   "driver_license_162_pdf#0003",
+   "driver_license_162_pdf#0021",
+   "driver_license_162_pdf#0024",
+   "driver_license_162_pdf#0036",
+   "driver_license_162_pdf#0004",
+   "driver_license_162_pdf#0005"
+  ],
+  "c": [
+   "court_case_traffic_inheritance_liability#0004",
+   "court_case_traffic_inheritance_liability#rule#0017",
+   "gongbao_auto_40e47f44a43f8f75f1d4ce807f4426#0003",
+   "road_traffic_safety_regulation_1614_pdf#0020",
+   "traffic_violation_procedure_157_pdf#0012",
+   "gongbao_auto_40e47f44a43f8f75f1d4ce807f4426#rule#0013"
+  ]
+ },
+ {
+  "case": "syn_dev_023",
+  "qlen8": 117,
+  "qlenp": 14,
+  "a": [
+   "driver_license_162_pdf#0011",
+   "driver_license_162_pdf#rule#0135",
+   "driver_license_162_pdf#0006",
+   "road_traffic_safety_law_2021#rule#0105",
+   "driver_license_162_pdf#0021",
+   "gongbao_auto_b3ec121dd4649b5c485de1705a003f#rule#0002"
+  ],
+  "a_plain": [
+   "driver_license_162_pdf#0011",
+   "driver_license_162_pdf#rule#0135",
+   "driver_license_162_pdf#0006",
+   "road_traffic_safety_law_2021#rule#0105",
+   "driver_license_162_pdf#0021",
+   "gongbao_auto_b3ec121dd4649b5c485de1705a003f#rule#0002"
+  ],
+  "b": [
+   "driver_license_162_pdf#0021",
+   "driver_license_162_pdf#0036",
+   "driver_license_162_pdf#0003",
+   "driver_license_162_pdf#0006",
+   "driver_license_162_pdf#0034",
+   "driver_license_162_pdf#0004"
+  ],
+  "c": [
+   "gongbao_auto_3990ac1b7fbce4aa3385667e53f532#0001",
+   "driver_license_162_pdf#0006",
+   "driver_license_162_pdf#0011",
+   "moj_law_257#0002",
+   "road_safety_plan_14th_five_year#0011"
+  ]
+ },
+ {
+  "case": "syn_dev_024",
+  "qlen8": 61,
+  "qlenp": 11,
+  "a": [
+   "gb_5768_part3_2025_text_mirror#0026",
+   "supreme_court_typical_cases_traffic_2025#rule#0007",
+   "beijing_traffic_sign_marking_guide_2023#0001",
+   "supreme_court_typical_cases_traffic_2025#rule#0050",
+   "supreme_court_typical_cases_traffic_2025#0004",
+   "road_traffic_safety_law_2021#rule#0119"
+  ],
+  "a_plain": [
+   "gb_5768_part3_2025_text_mirror#0026",
+   "supreme_court_typical_cases_traffic_2025#rule#0007",
+   "beijing_traffic_sign_marking_guide_2023#0001",
+   "supreme_court_typical_cases_traffic_2025#rule#0050",
+   "supreme_court_typical_cases_traffic_2025#0004",
+   "road_traffic_safety_law_2021#rule#0119"
+  ],
+  "b": [
+   "beijing_traffic_sign_marking_guide_2023#0001",
+   "gb_5768_part2_2022_ocr_mirror#0132",
+   "gb_5768_part3_2025_text_mirror#0026",
+   "manual_traffic_sign_visual_reference_2026#0002",
+   "road_safety_plan_14th_five_year#0015",
+   "beijing_traffic_sign_marking_guide_2023#0002"
+  ],
+  "c": [
+   "supreme_court_traffic_cases_commentary_2025#0003",
+   "gongbao_auto_d1f8d92912b266a821a7d087b946a3#rule#0021",
+   "supreme_court_typical_cases_traffic_2025#0004",
+   "road_traffic_safety_law_2021#rule#0063",
+   "road_traffic_safety_law_2021#rule#0064",
+   "road_traffic_safety_law_2021#rule#0073"
+  ]
+ },
+ {
+  "case": "syn_dev_025",
+  "qlen8": 144,
+  "qlenp": 38,
+  "a": [
+   "gb_5768_part3_2025_text_mirror#0026",
+   "supreme_court_typical_cases_traffic_2025#rule#0007",
+   "beijing_national_day_travel_management_2025#0002",
+   "supreme_court_traffic_cases_commentary_2025#rule#0011",
+   "court_case_traffic_insurance_recourse_2014#0002",
+   "road_traffic_safety_law_2021#rule#0119"
+  ],
+  "a_plain": [
+   "gb_5768_part3_2025_text_mirror#0026",
+   "supreme_court_typical_cases_traffic_2025#rule#0007",
+   "beijing_national_day_travel_management_2025#0002",
+   "supreme_court_traffic_cases_commentary_2025#rule#0011",
+   "court_case_traffic_insurance_recourse_2014#0002",
+   "road_traffic_safety_law_2021#rule#0119"
+  ],
+  "b": [
+   "gb_5768_part3_2025_text_mirror#0026",
+   "gongbao_auto_3990ac1b7fbce4aa3385667e53f532#0001",
+   "beijing_traffic_sign_marking_guide_2023#0001",
+   "beijing_traffic_sign_marking_guide_2023#0002",
+   "beijing_traffic_sign_marking_guide_2023#0005",
+   "beijing_traffic_sign_marking_guide_2023#0006"
+  ],
+  "c": [
+   "gongbao_auto_3990ac1b7fbce4aa3385667e53f532#0001",
+   "beijing_traffic_sign_marking_guide_2023#0001",
+   "beijing_traffic_sign_marking_guide_2023#0002",
+   "beijing_traffic_sign_marking_guide_2023#0005",
+   "beijing_traffic_sign_marking_guide_2023#0006"
+  ]
+ },
+ {
+  "case": "syn_dev_026",
+  "qlen8": 49,
+  "qlenp": 10,
+  "a": [
+   "manual_special_period_traffic_management_reference_2026#0002",
+   "gb_5768_part2_2022_ocr_mirror#rule#0040",
+   "gb_5768_part2_2022_ocr_mirror#0012",
+   "gongbao_auto_8e8afbe5d39de5092516140ce02ef7#rule#0012",
+   "court_case_traffic_accident_book_weight#0002",
+   "gongbao_auto_8e8afbe5d39de5092516140ce02ef7#rule#0008"
+  ],
+  "a_plain": [
+   "manual_special_period_traffic_management_reference_2026#0002",
+   "gb_5768_part2_2022_ocr_mirror#rule#0040",
+   "gb_5768_part2_2022_ocr_mirror#0012",
+   "gongbao_auto_8e8afbe5d39de5092516140ce02ef7#rule#0012",
+   "court_case_traffic_accident_book_weight#0002",
+   "gongbao_auto_8e8afbe5d39de5092516140ce02ef7#rule#0008"
+  ],
+  "b": [
+   "manual_special_period_traffic_management_reference_2026#0002",
+   "manual_special_road_condition_reference_2026#0001",
+   "db11_t_854_2023_road_work_safety#0018",
+   "db11_t_854_2023_road_work_safety#0019",
+   "gb_5768_part2_2022_ocr_mirror#0044",
+   "gb_5768_part2_2022_ocr_mirror#0068"
+  ],
+  "c": [
+   "manual_special_period_traffic_management_reference_2026#0002",
+   "manual_special_period_traffic_management_reference_2026#rule#0001",
+   "manual_traffic_marking_visual_reference_2026#0003",
+   "manual_traffic_sign_visual_reference_2026#0003",
+   "manual_special_period_traffic_management_reference_2026#0003",
+   "gongbao_auto_b3ec121dd4649b5c485de1705a003f#0003"
+  ]
+ },
+ {
+  "case": "syn_dev_027",
+  "qlen8": 54,
+  "qlenp": 9,
+  "a": [
+   "road_traffic_safety_regulation_1614_pdf#0009",
+   "supreme_court_typical_cases_traffic_2025#rule#0071",
+   "beijing_traffic_sign_marking_guide_2023#0002",
+   "supreme_court_typical_cases_traffic_2025#rule#0014",
+   "driver_license_162_pdf#0013",
+   "supreme_court_typical_cases_traffic_2025#rule#0069"
+  ],
+  "a_plain": [
+   "road_traffic_safety_regulation_1614_pdf#0009",
+   "supreme_court_typical_cases_traffic_2025#rule#0071",
+   "beijing_traffic_sign_marking_guide_2023#0002",
+   "supreme_court_typical_cases_traffic_2025#rule#0014",
+   "driver_license_162_pdf#0013",
+   "supreme_court_typical_cases_traffic_2025#rule#0069"
+  ],
+  "b": [
+   "beijing_traffic_sign_marking_guide_2023#0005",
+   "driver_license_162_pdf#0003",
+   "driver_license_162_pdf#0021",
+   "driver_license_162_pdf#0024",
+   "driver_license_162_pdf#0036",
+   "beijing_traffic_sign_marking_guide_2023#0001"
+  ],
+  "c": [
+   "road_traffic_safety_regulation_1614_pdf#0009",
+   "gb_5768_part3_2025_text_mirror#rule#0012",
+   "gb_5768_part3_2025_text_mirror#0016",
+   "gb_5768_part3_2025_text_mirror#0026",
+   "gb_5768_part3_2025_text_mirror#0045",
+   "gongbao_auto_3990ac1b7fbce4aa3385667e53f532#0002"
+  ]
+ },
+ {
+  "case": "syn_dev_028",
+  "qlen8": 47,
+  "qlenp": 8,
+  "a": [
+   "driver_license_162_pdf#0013",
+   "road_traffic_safety_law_2021#rule#0165",
+   "gb_5768_part2_2022_ocr_mirror#0033",
+   "road_traffic_safety_law_2021#rule#0168",
+   "db11_t_854_2023_road_work_safety#0017",
+   "court_case_traffic_inheritance_liability#rule#0009"
+  ],
+  "a_plain": [
+   "driver_license_162_pdf#0013",
+   "road_traffic_safety_law_2021#rule#0165",
+   "gb_5768_part2_2022_ocr_mirror#0033",
+   "road_traffic_safety_law_2021#rule#0168",
+   "db11_t_854_2023_road_work_safety#0017",
+   "court_case_traffic_inheritance_liability#rule#0009"
+  ],
+  "b": [
+   "beijing_traffic_sign_marking_guide_2023#0005",
+   "driver_license_162_pdf#0021",
+   "driver_license_162_pdf#0036",
+   "beijing_traffic_sign_marking_guide_2023#0001",
+   "gb_5768_part2_2022_ocr_mirror#0032",
+   "gb_5768_part2_2022_ocr_mirror#0033"
+  ],
+  "c": [
+   "db11_t_854_2023_road_work_safety#0017",
+   "road_traffic_safety_law_2021#rule#0168",
+   "road_safety_plan_14th_five_year#0011",
+   "road_traffic_safety_law_2021#0007",
+   "beijing_summer_travel_safety_2024#0005",
+   "beijing_traffic_sign_marking_guide_2023#0001"
+  ]
+ },
+ {
+  "case": "syn_dev_029",
+  "qlen8": 107,
+  "qlenp": 14,
+  "a": [
+   "road_traffic_safety_regulation_1614_pdf#0013",
+   "gb_5768_part2_2022_ocr_mirror#rule#0040",
+   "road_traffic_safety_regulation_1614_pdf#0009",
+   "gb_5768_part2_2022_ocr_mirror#rule#0019",
+   "gb_5768_part2_2022_ocr_mirror#0117",
+   "road_traffic_safety_regulation_1614_pdf#rule#0125"
+  ],
+  "a_plain": [
+   "road_traffic_safety_regulation_1614_pdf#0013",
+   "gb_5768_part2_2022_ocr_mirror#rule#0040",
+   "road_traffic_safety_regulation_1614_pdf#0009",
+   "gb_5768_part2_2022_ocr_mirror#rule#0019",
+   "gb_5768_part2_2022_ocr_mirror#0117",
+   "road_traffic_safety_regulation_1614_pdf#rule#0125"
+  ],
+  "b": [
+   "road_traffic_safety_regulation_1614_pdf#0010",
+   "road_traffic_safety_regulation_1614_pdf#0011",
+   "driver_license_162_pdf#0003",
+   "driver_license_162_pdf#0021",
+   "driver_license_162_pdf#0024",
+   "driver_license_162_pdf#0036"
+  ],
+  "c": [
+   "gongbao_auto_cb500758d3e43eb9745e1fc9569db9#0001",
+   "gongbao_auto_0256892471a03b60e4f30e60906e0c#rule#0008",
+   "gongbao_auto_0256892471a03b60e4f30e60906e0c#0002",
+   "gongbao_auto_cb500758d3e43eb9745e1fc9569db9#0002",
+   "court_case_traffic_accident_book_weight#0002",
+   "gongbao_auto_8e8afbe5d39de5092516140ce02ef7#0002"
+  ]
+ },
+ {
+  "case": "syn_dev_030",
+  "qlen8": 56,
+  "qlenp": 11,
+  "a": [
+   "manual_traffic_sign_visual_reference_2026#0002",
+   "gb_5768_part2_2022_ocr_mirror#rule#0039",
+   "gb_5768_part2_2022_ocr_mirror#0117",
+   "gb_5768_part2_2022_ocr_mirror#rule#0040",
+   "gb_5768_part2_2022_ocr_mirror#0118",
+   "road_traffic_safety_law_2021#rule#0092"
+  ],
+  "a_plain": [
+   "manual_traffic_sign_visual_reference_2026#0002",
+   "gb_5768_part2_2022_ocr_mirror#rule#0039",
+   "gb_5768_part2_2022_ocr_mirror#0117",
+   "gb_5768_part2_2022_ocr_mirror#rule#0040",
+   "gb_5768_part2_2022_ocr_mirror#0118",
+   "road_traffic_safety_law_2021#rule#0092"
+  ],
+  "b": [
+   "gb_5768_part2_2022_ocr_mirror#0030",
+   "gb_5768_part2_2022_ocr_mirror#0051",
+   "beijing_traffic_sign_marking_guide_2023#0004",
+   "gb_5768_part2_2022_ocr_mirror#0040",
+   "gongbao_auto_0256892471a03b60e4f30e60906e0c#rule#0008",
+   "gb_5768_part2_2022_ocr_mirror#rule#0019"
+  ],
+  "c": [
+   "beijing_summer_travel_safety_2024#0001",
+   "beijing_summer_travel_safety_2024#0002",
+   "beijing_traffic_sign_marking_guide_2023#0001",
+   "gb_5768_part2_2022_ocr_mirror#0054",
+   "gb_5768_part3_2025_text_mirror#0043"
+  ]
+ },
+ {
+  "case": "syn_dev_031",
+  "qlen8": 187,
+  "qlenp": 80,
+  "a": [
+   "manual_weather_traffic_safety_reference_2026#0001",
+   "driver_license_162_pdf#rule#0135",
+   "manual_weather_traffic_safety_reference_2026#0002",
+   "manual_special_road_condition_reference_2026#rule#0002",
+   "gongbao_auto_b3ec121dd4649b5c485de1705a003f#0005",
+   "beijing_summer_travel_safety_2024#rule#0003"
+  ],
+  "a_plain": [
+   "manual_weather_traffic_safety_reference_2026#0001",
+   "driver_license_162_pdf#rule#0135",
+   "manual_weather_traffic_safety_reference_2026#0002",
+   "manual_special_road_condition_reference_2026#rule#0002",
+   "gongbao_auto_b3ec121dd4649b5c485de1705a003f#0005",
+   "beijing_summer_travel_safety_2024#rule#0003"
+  ],
+  "b": [
+   "driver_license_162_pdf#0003",
+   "driver_license_162_pdf#0021",
+   "driver_license_162_pdf#0036",
+   "driver_license_162_pdf#0004",
+   "driver_license_162_pdf#0006",
+   "driver_license_162_pdf#0011"
+  ],
+  "c": [
+   "beijing_rainstorm_traffic_support_2025#0001",
+   "beijing_rainstorm_traffic_support_2025#0002",
+   "manual_weather_traffic_safety_reference_2026#0001",
+   "db11_t_854_2023_road_work_safety#0023",
+   "gb_5768_part2_2022_ocr_mirror#0046"
+  ]
+ },
+ {
+  "case": "syn_dev_032",
+  "qlen8": 51,
+  "qlenp": 8,
+  "a": [
+   "gongbao_auto_8e8afbe5d39de5092516140ce02ef7#0002",
+   "gongbao_auto_79592569ff3e9b348f80f20439e87e#rule#0002",
+   "driver_license_162_pdf#0012",
+   "road_traffic_safety_law_2021#rule#0165",
+   "gb_5768_part2_2022_ocr_mirror#0033",
+   "gongbao_auto_8e8afbe5d39de5092516140ce02ef7#rule#0008"
+  ],
+  "a_plain": [
+   "gongbao_auto_8e8afbe5d39de5092516140ce02ef7#0002",
+   "gongbao_auto_79592569ff3e9b348f80f20439e87e#rule#0002",
+   "driver_license_162_pdf#0012",
+   "road_traffic_safety_law_2021#rule#0165",
+   "gb_5768_part2_2022_ocr_mirror#0033",
+   "gongbao_auto_8e8afbe5d39de5092516140ce02ef7#rule#0008"
+  ],
+  "b": [
+   "beijing_traffic_sign_marking_guide_2023#0001",
+   "beijing_traffic_sign_marking_guide_2023#0005",
+   "gb_5768_part2_2022_ocr_mirror#0032",
+   "gb_5768_part2_2022_ocr_mirror#0033",
+   "gb_5768_part2_2022_ocr_mirror#0126",
+   "gb_5768_part2_2022_ocr_mirror#0127"
+  ],
+  "c": [
+   "road_traffic_safety_law_2021#0007",
+   "beijing_summer_travel_safety_2024#0004",
+   "beijing_rainstorm_traffic_support_2025#0002",
+   "beijing_snow_driving_safety_2025#0002",
+   "db11_t_854_2023_road_work_safety#0012"
+  ]
+ },
+ {
+  "case": "syn_dev_033",
+  "qlen8": 169,
+  "qlenp": 44,
+  "a": [
+   "manual_special_road_condition_reference_2026#0004",
+   "driver_license_162_pdf#rule#0135",
+   "manual_weather_traffic_safety_reference_2026#0001",
+   "manual_weather_traffic_safety_reference_2026#rule#0001",
+   "manual_holiday_traffic_management_reference_2026#0003",
+   "manual_holiday_traffic_management_reference_2026#rule#0006"
+  ],
+  "a_plain": [
+   "manual_special_road_condition_reference_2026#0004",
+   "driver_license_162_pdf#rule#0135",
+   "manual_weather_traffic_safety_reference_2026#0001",
+   "manual_weather_traffic_safety_reference_2026#rule#0001",
+   "manual_holiday_traffic_management_reference_2026#0003",
+   "manual_holiday_traffic_management_reference_2026#rule#0006"
+  ],
+  "b": [
+   "driver_license_162_pdf#0021",
+   "driver_license_162_pdf#0036",
+   "driver_license_162_pdf#0003",
+   "driver_license_162_pdf#0006",
+   "driver_license_162_pdf#0034",
+   "driver_license_162_pdf#0004"
+  ],
+  "c": [
+   "beijing_snow_driving_safety_2025#0001",
+   "manual_weather_traffic_safety_reference_2026#rule#0005",
+   "manual_special_road_condition_reference_2026#0001",
+   "beijing_snow_driving_safety_2025#0002",
+   "beijing_traffic_sign_marking_guide_2023#0002",
+   "court_case_traffic_fake_policy_2007#0002"
+  ]
+ },
+ {
+  "case": "syn_dev_034",
+  "qlen8": 53,
+  "qlenp": 8,
+  "a": [
+   "gb_5768_part2_2022_ocr_mirror#0118",
+   "gb_5768_part2_2022_ocr_mirror#rule#0040",
+   "gb_5768_part2_2022_ocr_mirror#0117",
+   "road_traffic_safety_regulation_1614_pdf#rule#0125",
+   "road_traffic_safety_regulation_1614_pdf#0010",
+   "gb_5768_part2_2022_ocr_mirror#rule#0028"
+  ],
+  "a_plain": [
+   "gb_5768_part2_2022_ocr_mirror#0118",
+   "gb_5768_part2_2022_ocr_mirror#rule#0040",
+   "gb_5768_part2_2022_ocr_mirror#0117",
+   "road_traffic_safety_regulation_1614_pdf#rule#0125",
+   "road_traffic_safety_regulation_1614_pdf#0010",
+   "gb_5768_part2_2022_ocr_mirror#rule#0028"
+  ],
+  "b": [
+   "road_traffic_safety_regulation_1614_pdf#0010",
+   "road_traffic_safety_regulation_1614_pdf#0011",
+   "gongbao_auto_0256892471a03b60e4f30e60906e0c#rule#0008",
+   "gb_5768_part2_2022_ocr_mirror#rule#0019",
+   "gb_5768_part2_2022_ocr_mirror#rule#0028",
+   "gb_5768_part2_2022_ocr_mirror#rule#0040"
+  ],
+  "c": [
+   "beijing_rainstorm_traffic_support_2025#0001",
+   "manual_weather_traffic_safety_reference_2026#0001",
+   "beijing_rainstorm_traffic_support_2025#0002",
+   "manual_holiday_traffic_management_reference_2026#0002",
+   "manual_traffic_sign_visual_reference_2026#0002"
+  ]
+ },
+ {
+  "case": "syn_dev_035",
+  "qlen8": 123,
+  "qlenp": 20,
+  "a": [
+   "road_traffic_safety_regulation_1614_pdf#0009",
+   "gb_5768_part2_2022_ocr_mirror#rule#0040",
+   "gb_5768_part2_2022_ocr_mirror#0118",
+   "gb_5768_part2_2022_ocr_mirror#rule#0019",
+   "gb_5768_part2_2022_ocr_mirror#0117",
+   "road_traffic_safety_regulation_1614_pdf#rule#0089"
+  ],
+  "a_plain": [
+   "road_traffic_safety_regulation_1614_pdf#0009",
+   "gb_5768_part2_2022_ocr_mirror#rule#0040",
+   "gb_5768_part2_2022_ocr_mirror#0118",
+   "gb_5768_part2_2022_ocr_mirror#rule#0019",
+   "gb_5768_part2_2022_ocr_mirror#0117",
+   "road_traffic_safety_regulation_1614_pdf#rule#0089"
+  ],
+  "b": [
+   "gb_5768_part2_2022_ocr_mirror#0029",
+   "gb_5768_part3_2025_text_mirror#0016",
+   "road_traffic_safety_regulation_1614_pdf#0009",
+   "road_traffic_safety_regulation_1614_pdf#0013",
+   "gongbao_auto_176caec7a6e5744826a2af6b047702#rule#0013",
+   "beijing_traffic_sign_marking_guide_2023#rule#0002"
+  ],
+  "c": [
+   "road_safety_plan_14th_five_year#0012",
+   "beijing_traffic_sign_marking_guide_2023#0004",
+   "db11_t_854_2023_road_work_safety#0014",
+   "db11_t_854_2023_road_work_safety#0016",
+   "db11_t_854_2023_road_work_safety#0017"
+  ]
+ },
+ {
+  "case": "syn_dev_036",
+  "qlen8": 180,
+  "qlenp": 44,
+  "a": [
+   "road_traffic_safety_regulation_1614_pdf#0013",
+   "supreme_court_traffic_cases_commentary_2025#rule#0011",
+   "gb_5768_part2_2022_ocr_mirror#0129",
+   "gongbao_auto_3990ac1b7fbce4aa3385667e53f532#rule#0017",
+   "road_traffic_safety_regulation_1614_pdf#0009",
+   "road_traffic_safety_law_2021#rule#0090"
+  ],
+  "a_plain": [
+   "road_traffic_safety_regulation_1614_pdf#0013",
+   "supreme_court_traffic_cases_commentary_2025#rule#0011",
+   "gb_5768_part2_2022_ocr_mirror#0129",
+   "gongbao_auto_3990ac1b7fbce4aa3385667e53f532#rule#0017",
+   "road_traffic_safety_regulation_1614_pdf#0009",
+   "road_traffic_safety_law_2021#rule#0090"
+  ],
+  "b": [
+   "beijing_traffic_sign_marking_guide_2023#0002",
+   "gb_5768_part1_2025_text_mirror#0005",
+   "gb_5768_part2_2022_ocr_mirror#0129",
+   "road_traffic_safety_regulation_1614_pdf#0012",
+   "supreme_court_traffic_cases_commentary_2025#0002",
+   "supreme_court_typical_cases_traffic_2025#0006"
+  ],
+  "c": [
+   "gb_5768_part3_2025_text_mirror#0026",
+   "gongbao_auto_176caec7a6e5744826a2af6b047702#rule#0015",
+   "beijing_traffic_sign_marking_guide_2023#0006",
+   "gb_5768_part3_2025_text_mirror#0025",
+   "road_traffic_safety_regulation_1614_pdf#0014",
+   "supreme_court_traffic_cases_commentary_2025#0002"
+  ]
+ },
+ {
+  "case": "syn_dev_037",
+  "qlen8": 121,
+  "qlenp": 17,
+  "a": [
+   "driver_license_162_pdf#0013",
+   "demerit_management_163#rule#0029",
+   "driver_license_162_pdf#0011",
+   "demerit_management_163#rule#0034",
+   "driver_license_162_pdf#0007",
+   "demerit_management_163#rule#0031"
+  ],
+  "a_plain": [
+   "driver_license_162_pdf#0013",
+   "demerit_management_163#rule#0029",
+   "driver_license_162_pdf#0011",
+   "demerit_management_163#rule#0034",
+   "driver_license_162_pdf#0007",
+   "demerit_management_163#rule#0031"
+  ],
+  "b": [
+   "road_traffic_safety_regulation_1614_pdf#0011",
+   "beijing_fog_driving_safety_2025#0001",
+   "road_traffic_safety_regulation_1614_pdf#rule#0124",
+   "gongbao_auto_3990ac1b7fbce4aa3385667e53f532#rule#0015",
+   "court_case_traffic_inheritance_liability#rule#0012",
+   "driver_license_162_pdf#rule#0036"
+  ],
+  "c": [
+   "beijing_traffic_sign_marking_guide_2023#0001",
+   "beijing_traffic_sign_marking_guide_2023#0004",
+   "gb_5768_part2_2022_ocr_mirror#0021",
+   "gb_5768_part2_2022_ocr_mirror#0030",
+   "gb_5768_part2_2022_ocr_mirror#0031"
+  ]
+ },
+ {
+  "case": "syn_dev_038",
+  "qlen8": 136,
+  "qlenp": 13,
+  "a": [
+   "gb_5768_part3_2025_text_mirror#0026",
+   "supreme_court_traffic_cases_commentary_2025#rule#0011",
+   "beijing_traffic_sign_marking_guide_2023#0001",
+   "gongbao_auto_176caec7a6e5744826a2af6b047702#rule#0015",
+   "beijing_traffic_sign_marking_guide_2023#0005",
+   "supreme_court_typical_cases_traffic_2025#rule#0007"
+  ],
+  "a_plain": [
+   "gb_5768_part3_2025_text_mirror#0026",
+   "supreme_court_traffic_cases_commentary_2025#rule#0011",
+   "beijing_traffic_sign_marking_guide_2023#0001",
+   "gongbao_auto_176caec7a6e5744826a2af6b047702#rule#0015",
+   "beijing_traffic_sign_marking_guide_2023#0005",
+   "supreme_court_typical_cases_traffic_2025#rule#0007"
+  ],
+  "b": [
+   "gb_5768_part3_2025_text_mirror#0026",
+   "gongbao_auto_3990ac1b7fbce4aa3385667e53f532#rule#0015",
+   "gongbao_auto_3990ac1b7fbce4aa3385667e53f532#0001",
+   "gongbao_auto_3990ac1b7fbce4aa3385667e53f532#0003",
+   "beijing_traffic_sign_marking_guide_2023#0001",
+   "beijing_traffic_sign_marking_guide_2023#0002"
+  ],
+  "c": [
+   "gb_5768_part2_2022_ocr_mirror#0024",
+   "moj_law_257#0002",
+   "road_safety_plan_14th_five_year#0011",
+   "traffic_accident_procedure_146#0008",
+   "gongbao_auto_3990ac1b7fbce4aa3385667e53f532#0002"
+  ]
+ },
+ {
+  "case": "syn_dev_039",
+  "qlen8": 61,
+  "qlenp": 8,
+  "a": [
+   "gb_5768_part3_2025_text_mirror#0026",
+   "road_traffic_safety_law_2021#rule#0119",
+   "gb_5768_part2_2022_ocr_mirror#0032",
+   "supreme_court_typical_cases_traffic_2025#rule#0007",
+   "gb_5768_part2_2022_ocr_mirror#0020",
+   "supreme_court_typical_cases_traffic_2025#rule#0050"
+  ],
+  "a_plain": [
+   "gb_5768_part3_2025_text_mirror#0026",
+   "road_traffic_safety_law_2021#rule#0119",
+   "gb_5768_part2_2022_ocr_mirror#0032",
+   "supreme_court_typical_cases_traffic_2025#rule#0007",
+   "gb_5768_part2_2022_ocr_mirror#0020",
+   "supreme_court_typical_cases_traffic_2025#rule#0050"
+  ],
+  "b": [
+   "beijing_traffic_sign_marking_guide_2023#0001",
+   "beijing_traffic_sign_marking_guide_2023#0005",
+   "gb_5768_part2_2022_ocr_mirror#0032",
+   "gb_5768_part2_2022_ocr_mirror#0126",
+   "gb_5768_part2_2022_ocr_mirror#0127",
+   "gb_5768_part3_2025_text_mirror#0026"
+  ],
+  "c": [
+   "road_safety_plan_14th_five_year#0013",
+   "court_case_highway_management_liability#0002",
+   "court_case_highway_management_liability#0003",
+   "db11_t_854_2023_road_work_safety#0019",
+   "gb_5768_part2_2022_ocr_mirror#0012"
+  ]
+ },
+ {
+  "case": "syn_dev_040",
+  "qlen8": 124,
+  "qlenp": 18,
+  "a": [
+   "road_traffic_safety_regulation_1614_pdf#0013",
+   "gb_5768_part2_2022_ocr_mirror#rule#0028",
+   "gb_5768_part2_2022_ocr_mirror#0117",
+   "gb_5768_part2_2022_ocr_mirror#rule#0040",
+   "beijing_fog_driving_safety_2025#0001",
+   "road_traffic_safety_regulation_1614_pdf#rule#0125"
+  ],
+  "a_plain": [
+   "road_traffic_safety_regulation_1614_pdf#0013",
+   "gb_5768_part2_2022_ocr_mirror#rule#0028",
+   "gb_5768_part2_2022_ocr_mirror#0117",
+   "gb_5768_part2_2022_ocr_mirror#rule#0040",
+   "beijing_fog_driving_safety_2025#0001",
+   "road_traffic_safety_regulation_1614_pdf#rule#0125"
+  ],
+  "b": [
+   "beijing_fog_driving_safety_2025#0001",
+   "road_traffic_safety_regulation_1614_pdf#0011",
+   "road_traffic_safety_regulation_1614_pdf#0013",
+   "gongbao_auto_176caec7a6e5744826a2af6b047702#rule#0015",
+   "supreme_court_typical_cases_traffic_2025#rule#0007",
+   "supreme_court_typical_cases_traffic_2025#rule#0050"
+  ],
+  "c": [
+   "beijing_fog_driving_safety_2025#0001",
+   "mot_holiday_toll_free_and_spring_festival_release_2026#0003",
+   "mot_holiday_toll_free_and_spring_festival_release_2026#0007",
+   "road_traffic_safety_regulation_1614_pdf#0011",
+   "gb_5768_part2_2022_ocr_mirror#0029"
+  ]
+ },
+ {
+  "case": "syn_dev_041",
+  "qlen8": 255,
+  "qlenp": 82,
+  "a": [
+   "supreme_court_traffic_cases_commentary_2025#0002",
+   "supreme_court_typical_cases_traffic_2025#rule#0007",
+   "manual_traffic_sign_visual_reference_2026#0002",
+   "gongbao_auto_176caec7a6e5744826a2af6b047702#rule#0015",
+   "supreme_court_typical_cases_traffic_2025#0002",
+   "supreme_court_traffic_cases_commentary_2025#rule#0011"
+  ],
+  "a_plain": [
+   "supreme_court_traffic_cases_commentary_2025#0002",
+   "supreme_court_typical_cases_traffic_2025#rule#0007",
+   "manual_traffic_sign_visual_reference_2026#0002",
+   "gongbao_auto_176caec7a6e5744826a2af6b047702#rule#0015",
+   "supreme_court_typical_cases_traffic_2025#0002",
+   "supreme_court_traffic_cases_commentary_2025#rule#0011"
+  ],
+  "b": [
+   "gongbao_auto_3990ac1b7fbce4aa3385667e53f532#0001",
+   "supreme_court_traffic_cases_commentary_2025#0002",
+   "supreme_court_typical_cases_traffic_2025#0006",
+   "supreme_court_typical_cases_traffic_2025#0007",
+   "supreme_court_typical_cases_traffic_2025#0002",
+   "supreme_court_typical_cases_traffic_2025#0004"
+  ],
+  "c": [
+   "gongbao_auto_3990ac1b7fbce4aa3385667e53f532#0001",
+   "supreme_court_traffic_cases_commentary_2025#0002",
+   "supreme_court_typical_cases_traffic_2025#0007",
+   "gongbao_auto_3990ac1b7fbce4aa3385667e53f532#0003",
+   "motor_vehicle_compulsory_insurance_162_pdf#0001"
+  ]
+ },
+ {
+  "case": "syn_dev_042",
+  "qlen8": 47,
+  "qlenp": 7,
+  "a": [
+   "beijing_traffic_sign_marking_guide_2023#0001",
+   "supreme_court_typical_cases_traffic_2025#rule#0007",
+   "supreme_court_typical_cases_traffic_2025#0006",
+   "supreme_court_typical_cases_traffic_2025#rule#0050",
+   "gb_5768_part2_2022_ocr_mirror#0132",
+   "road_traffic_safety_law_2021#rule#0119"
+  ],
+  "a_plain": [
+   "beijing_traffic_sign_marking_guide_2023#0001",
+   "supreme_court_typical_cases_traffic_2025#rule#0007",
+   "supreme_court_typical_cases_traffic_2025#0006",
+   "supreme_court_typical_cases_traffic_2025#rule#0050",
+   "gb_5768_part2_2022_ocr_mirror#0132",
+   "road_traffic_safety_law_2021#rule#0119"
+  ],
+  "b": [
+   "beijing_traffic_sign_marking_guide_2023#0001",
+   "gb_5768_part2_2022_ocr_mirror#0132",
+   "manual_traffic_sign_visual_reference_2026#0002",
+   "beijing_traffic_sign_marking_guide_2023#0002",
+   "beijing_traffic_sign_marking_guide_2023#0005",
+   "beijing_traffic_sign_marking_guide_2023#0006"
+  ],
+  "c": [
+   "manual_special_road_condition_reference_2026#0002",
+   "manual_holiday_traffic_management_reference_2026#0003",
+   "manual_special_road_condition_reference_2026#0001",
+   "manual_traffic_marking_visual_reference_2026#0001",
+   "manual_weather_traffic_safety_reference_2026#0002"
+  ]
+ },
+ {
+  "case": "syn_dev_043",
+  "qlen8": 142,
+  "qlenp": 14,
+  "a": [
+   "supreme_court_typical_cases_traffic_2025#0004",
+   "road_traffic_safety_law_2021#rule#0119",
+   "gb_5768_part3_2025_text_mirror#0026",
+   "supreme_court_traffic_cases_commentary_2025#rule#0011",
+   "gb_5768_part1_2025_text_mirror#0005",
+   "traffic_accident_procedure_146#rule#0027"
+  ],
+  "a_plain": [
+   "supreme_court_typical_cases_traffic_2025#0004",
+   "road_traffic_safety_law_2021#rule#0119",
+   "gb_5768_part3_2025_text_mirror#0026",
+   "supreme_court_traffic_cases_commentary_2025#rule#0011",
+   "gb_5768_part1_2025_text_mirror#0005",
+   "traffic_accident_procedure_146#rule#0027"
+  ],
+  "b": [
+   "gb_5768_part3_2025_text_mirror#0026",
+   "gongbao_auto_3990ac1b7fbce4aa3385667e53f532#0001",
+   "gongbao_auto_3990ac1b7fbce4aa3385667e53f532#0003",
+   "gongbao_auto_3990ac1b7fbce4aa3385667e53f532#rule#0015",
+   "beijing_traffic_sign_marking_guide_2023#0001",
+   "beijing_traffic_sign_marking_guide_2023#0002"
+  ],
+  "c": [
+   "beijing_national_day_travel_management_2025#0002",
+   "beijing_traffic_sign_marking_guide_2023#0001",
+   "beijing_traffic_sign_marking_guide_2023#0002",
+   "beijing_traffic_sign_marking_guide_2023#0005",
+   "beijing_traffic_sign_marking_guide_2023#0006"
+  ]
+ },
+ {
+  "case": "syn_dev_044",
+  "qlen8": 259,
+  "qlenp": 101,
+  "a": [
+   "road_safety_plan_14th_five_year#0006",
+   "driver_license_162_pdf#rule#0135",
+   "gb_5768_part3_2025_text_mirror#0026",
+   "manual_traffic_sign_visual_reference_2026#rule#0007",
+   "manual_traffic_sign_visual_reference_2026#0001",
+   "gongbao_auto_b3ec121dd4649b5c485de1705a003f#rule#0008"
+  ],
+  "a_plain": [
+   "road_safety_plan_14th_five_year#0006",
+   "driver_license_162_pdf#rule#0135",
+   "gb_5768_part3_2025_text_mirror#0026",
+   "manual_traffic_sign_visual_reference_2026#rule#0007",
+   "manual_traffic_sign_visual_reference_2026#0001",
+   "gongbao_auto_b3ec121dd4649b5c485de1705a003f#rule#0008"
+  ],
+  "b": [
+   "beijing_traffic_sign_marking_guide_2023#0002",
+   "beijing_traffic_sign_marking_guide_2023#0005",
+   "gb_5768_part1_2025_text_mirror#0005",
+   "gb_5768_part1_2025_text_mirror#0006",
+   "gb_5768_part2_2022_ocr_mirror#0129",
+   "supreme_court_typical_cases_traffic_2025#0006"
+  ],
+  "c": [
+   "beijing_fog_driving_safety_2025#0001",
+   "court_case_traffic_inheritance_liability#rule#0012",
+   "mot_holiday_toll_free_and_spring_festival_release_2026#0007",
+   "beijing_summer_travel_safety_2024#0004",
+   "manual_weather_traffic_safety_reference_2026#0002",
+   "road_traffic_safety_regulation_1614_pdf#0011"
+  ]
+ },
+ {
+  "case": "syn_dev_045",
+  "qlen8": 45,
+  "qlenp": 11,
+  "a": [
+   "driver_license_162_pdf#0013",
+   "driver_license_162_pdf#rule#0064",
+   "gb_5768_part2_2022_ocr_mirror#0033",
+   "driver_license_162_pdf#rule#0133",
+   "gb_5768_part3_2025_text_mirror#0026",
+   "driver_license_162_pdf#rule#0132"
+  ],
+  "a_plain": [
+   "driver_license_162_pdf#0013",
+   "driver_license_162_pdf#rule#0064",
+   "gb_5768_part2_2022_ocr_mirror#0033",
+   "driver_license_162_pdf#rule#0133",
+   "gb_5768_part3_2025_text_mirror#0026",
+   "driver_license_162_pdf#rule#0132"
+  ],
+  "b": [
+   "beijing_traffic_sign_marking_guide_2023#0001",
+   "beijing_traffic_sign_marking_guide_2023#0005",
+   "gb_5768_part2_2022_ocr_mirror#0032",
+   "gb_5768_part2_2022_ocr_mirror#0033",
+   "gb_5768_part2_2022_ocr_mirror#0126",
+   "gb_5768_part2_2022_ocr_mirror#0127"
+  ],
+  "c": [
+   "driver_license_162_pdf#0003",
+   "driver_license_162_pdf#0004",
+   "driver_license_162_pdf#0005",
+   "driver_license_162_pdf#0006",
+   "driver_license_162_pdf#0007"
+  ]
+ },
+ {
+  "case": "syn_dev_046",
+  "qlen8": 50,
+  "qlenp": 7,
+  "a": [
+   "db11_t_854_2023_road_work_safety#0025",
+   "highway_law_2017_beijing#rule#0060",
+   "driver_license_162_pdf#0013",
+   "motor_vehicle_compulsory_insurance_162_pdf#rule#0084",
+   "manual_weather_traffic_safety_reference_2026#0002",
+   "highway_law_2017_beijing#rule#0055"
+  ],
+  "a_plain": [
+   "db11_t_854_2023_road_work_safety#0025",
+   "highway_law_2017_beijing#rule#0060",
+   "driver_license_162_pdf#0013",
+   "motor_vehicle_compulsory_insurance_162_pdf#rule#0084",
+   "manual_weather_traffic_safety_reference_2026#0002",
+   "highway_law_2017_beijing#rule#0055"
+  ],
+  "b": [
+   "driver_license_162_pdf#0013",
+   "driver_license_162_pdf#0008",
+   "driver_license_162_pdf#0006",
+   "driver_license_162_pdf#0007",
+   "driver_license_162_pdf#rule#0022",
+   "driver_license_162_pdf#rule#0033"
+  ],
+  "c": [
+   "manual_special_road_condition_reference_2026#0001",
+   "beijing_summer_travel_safety_2024#0004",
+   "gb_5768_part2_2022_ocr_mirror#0028",
+   "gb_5768_part3_2025_text_mirror#0042",
+   "manual_weather_traffic_safety_reference_2026#0003"
+  ]
+ },
+ {
+  "case": "syn_dev_047",
+  "qlen8": 169,
+  "qlenp": 57,
+  "a": [
+   "road_traffic_safety_law_2021#0007",
+   "road_traffic_safety_law_2021#rule#0085",
+   "beijing_national_day_travel_management_2025#0002",
+   "gongbao_auto_4fefe6e63fa7b310c4c0309bc64983#rule#0005",
+   "manual_holiday_traffic_management_reference_2026#0001",
+   "traffic_accident_procedure_146#rule#0055"
+  ],
+  "a_plain": [
+   "road_traffic_safety_law_2021#0007",
+   "road_traffic_safety_law_2021#rule#0085",
+   "beijing_national_day_travel_management_2025#0002",
+   "gongbao_auto_4fefe6e63fa7b310c4c0309bc64983#rule#0005",
+   "manual_holiday_traffic_management_reference_2026#0001",
+   "traffic_accident_procedure_146#rule#0055"
+  ],
+  "b": [
+   "road_traffic_safety_law_2021#0007",
+   "gongbao_auto_3990ac1b7fbce4aa3385667e53f532#rule#0001",
+   "gongbao_auto_3990ac1b7fbce4aa3385667e53f532#rule#0002",
+   "gongbao_auto_3990ac1b7fbce4aa3385667e53f532#rule#0015",
+   "motor_vehicle_compulsory_insurance_162_pdf#rule#0014",
+   "motor_vehicle_compulsory_insurance_162_pdf#rule#0016"
+  ],
+  "c": [
+   "beijing_national_day_travel_management_2025#0002",
+   "city_road_management_1545_pdf#rule#0010",
+   "highway_law_2017_beijing#rule#0055",
+   "highway_law_2017_beijing#rule#0060",
+   "manual_special_road_condition_reference_2026#rule#0002",
+   "beijing_summer_travel_safety_2024#0004"
+  ]
+ },
+ {
+  "case": "syn_dev_048",
+  "qlen8": 175,
+  "qlenp": 56,
+  "a": [
+   "road_traffic_safety_regulation_1614_pdf#0009",
+   "road_traffic_safety_regulation_1614_pdf#rule#0089",
+   "gb_5768_part2_2022_ocr_mirror#0117",
+   "gb_5768_part2_2022_ocr_mirror#rule#0033",
+   "driver_license_162_pdf#0007",
+   "demerit_management_163#rule#0034"
+  ],
+  "a_plain": [
+   "road_traffic_safety_regulation_1614_pdf#0009",
+   "road_traffic_safety_regulation_1614_pdf#rule#0089",
+   "gb_5768_part2_2022_ocr_mirror#0117",
+   "gb_5768_part2_2022_ocr_mirror#rule#0033",
+   "driver_license_162_pdf#0007",
+   "demerit_management_163#rule#0034"
+  ],
+  "b": [
+   "driver_license_162_pdf#0003",
+   "driver_license_162_pdf#0021",
+   "driver_license_162_pdf#0024",
+   "driver_license_162_pdf#0036",
+   "beijing_traffic_sign_marking_guide_2023#0002",
+   "gb_5768_part1_2025_text_mirror#0005"
+  ],
+  "c": [
+   "road_safety_plan_14th_five_year#0012",
+   "gongbao_auto_176caec7a6e5744826a2af6b047702#rule#0013",
+   "beijing_traffic_sign_marking_guide_2023#rule#0002",
+   "gb_5768_part2_2022_ocr_mirror#rule#0027",
+   "court_case_traffic_inheritance_liability#rule#0009",
+   "court_case_traffic_inheritance_liability#rule#0013"
+  ]
+ },
+ {
+  "case": "syn_dev_049",
+  "qlen8": 116,
+  "qlenp": 11,
+  "a": [
+   "supreme_court_typical_cases_traffic_2025#0004",
+   "gongbao_auto_79592569ff3e9b348f80f20439e87e#rule#0002",
+   "supreme_court_traffic_cases_commentary_2025#0003",
+   "road_traffic_safety_law_2021#rule#0106",
+   "road_traffic_safety_regulation_1614_pdf#0009",
+   "traffic_accident_procedure_146#rule#0027"
+  ],
+  "a_plain": [
+   "supreme_court_typical_cases_traffic_2025#0004",
+   "gongbao_auto_79592569ff3e9b348f80f20439e87e#rule#0002",
+   "supreme_court_traffic_cases_commentary_2025#0003",
+   "road_traffic_safety_law_2021#rule#0106",
+   "road_traffic_safety_regulation_1614_pdf#0009",
+   "traffic_accident_procedure_146#rule#0027"
+  ],
+  "b": [
+   "driver_license_162_pdf#0003",
+   "driver_license_162_pdf#0006",
+   "driver_license_162_pdf#0021",
+   "driver_license_162_pdf#0024",
+   "driver_license_162_pdf#0036",
+   "supreme_court_typical_cases_traffic_2025#0006"
+  ],
+  "c": [
+   "moj_law_257#0002",
+   "road_safety_plan_14th_five_year#0011",
+   "gb_5768_part2_2022_ocr_mirror#0024",
+   "railway_accident_response_1051_pdf#0006",
+   "supreme_court_traffic_cases_commentary_2025#0003"
+  ]
+ }
+]

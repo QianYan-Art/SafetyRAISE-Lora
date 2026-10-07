@@ -1,0 +1,7 @@
+{
+  "_note": "仓库所有者 2026-10-02:OpenRouter 总预算 50 USD,当前账户内可用于实验 20 USD。cap_usd 是软件侧上限;真正的硬上限应是专用 key 的 credit limit(见 README)。 2026-10-03 仓库所有者批准 qwen/qwen3.8-27b 采样并会给 key 充值,总额仍算在 50 USD key 上限内;软件上限提到 45(留 5 美元余量)。 2026-10-03 仓库所有者:剩余额度尽量只用于 luna(评审/评测),不再新增 qwen/qwen3.8-27b 采样。",
+  "currency": "USD",
+  "total_budget_usd": 50.0,
+  "cap_usd": 45.0,
+  "scope": "openrouter"
+}

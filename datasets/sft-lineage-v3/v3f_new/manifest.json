@@ -1,0 +1,22 @@
+{
+ "name": "v3f_new",
+ "rev_run": "20261005_132207_rev4",
+ "train": 40,
+ "eval": 4,
+ "cases_train": 40,
+ "tokens_train": 731081,
+ "min_gain": 1.0,
+ "per_case": 1,
+ "cov_drop": 0.08,
+ "template_effort": "xhigh",
+ "template_sha256": "c3cf9e34abf4f9e36c2d72165aa9c132d3e2a725b6c2586aaa3a8af9d7a81041",
+ "skipped": {
+  "评审未提升": 26,
+  "覆盖率明显下降": 5,
+  "修订稿硬门/循环未过": 5,
+  "无引用": 4
+ },
+ "mean_gain": 3.4,
+ "abs_min_rows": 0,
+ "note": "合成案件;未经人工核实;思考为学生原生输出,报告为教师(luna max)依据评审缺陷的最小改动修订稿"
+}

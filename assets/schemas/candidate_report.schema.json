@@ -1,0 +1,178 @@
+{
+ "$defs": {
+  "Claim": {
+   "additionalProperties": false,
+   "properties": {
+    "claim_id": {
+     "minLength": 1,
+     "title": "Claim Id",
+     "type": "string"
+    },
+    "text_span": {
+     "$ref": "#/$defs/TextSpan"
+    },
+    "type": {
+     "enum": [
+      "fact",
+      "inference",
+      "knowledge"
+     ],
+     "title": "Type",
+     "type": "string"
+    },
+    "evidence_refs": {
+     "items": {
+      "type": "string"
+     },
+     "title": "Evidence Refs",
+     "type": "array"
+    },
+    "knowledge_refs": {
+     "items": {
+      "type": "string"
+     },
+     "title": "Knowledge Refs",
+     "type": "array"
+    }
+   },
+   "required": [
+    "claim_id",
+    "text_span",
+    "type"
+   ],
+   "title": "Claim",
+   "type": "object"
+  },
+  "IssueResponse": {
+   "additionalProperties": false,
+   "properties": {
+    "issue_id": {
+     "minLength": 1,
+     "title": "Issue Id",
+     "type": "string"
+    },
+    "action": {
+     "enum": [
+      "revised",
+      "contested"
+     ],
+     "title": "Action",
+     "type": "string"
+    },
+    "explanation": {
+     "minLength": 1,
+     "title": "Explanation",
+     "type": "string"
+    },
+    "source_refs": {
+     "items": {
+      "type": "string"
+     },
+     "minItems": 1,
+     "title": "Source Refs",
+     "type": "array"
+    }
+   },
+   "required": [
+    "issue_id",
+    "action",
+    "explanation",
+    "source_refs"
+   ],
+   "title": "IssueResponse",
+   "type": "object"
+  },
+  "ObligationResolution": {
+   "additionalProperties": false,
+   "properties": {
+    "obligation_id": {
+     "minLength": 1,
+     "title": "Obligation Id",
+     "type": "string"
+    },
+    "treatment": {
+     "enum": [
+      "covered",
+      "uncertain",
+      "not_relevant"
+     ],
+     "title": "Treatment",
+     "type": "string"
+    },
+    "resolution": {
+     "minLength": 1,
+     "title": "Resolution",
+     "type": "string"
+    }
+   },
+   "required": [
+    "obligation_id",
+    "treatment",
+    "resolution"
+   ],
+   "title": "ObligationResolution",
+   "type": "object"
+  },
+  "TextSpan": {
+   "additionalProperties": false,
+   "properties": {
+    "start": {
+     "minimum": 0,
+     "title": "Start",
+     "type": "integer"
+    },
+    "end": {
+     "minimum": 1,
+     "title": "End",
+     "type": "integer"
+    }
+   },
+   "required": [
+    "start",
+    "end"
+   ],
+   "title": "TextSpan",
+   "type": "object"
+  }
+ },
+ "additionalProperties": false,
+ "properties": {
+  "version": {
+   "minimum": 0,
+   "title": "Version",
+   "type": "integer"
+  },
+  "report_markdown": {
+   "minLength": 1,
+   "title": "Report Markdown",
+   "type": "string"
+  },
+  "claims": {
+   "items": {
+    "$ref": "#/$defs/Claim"
+   },
+   "title": "Claims",
+   "type": "array"
+  },
+  "obligation_resolutions": {
+   "items": {
+    "$ref": "#/$defs/ObligationResolution"
+   },
+   "title": "Obligation Resolutions",
+   "type": "array"
+  },
+  "issue_responses": {
+   "items": {
+    "$ref": "#/$defs/IssueResponse"
+   },
+   "title": "Issue Responses",
+   "type": "array"
+  }
+ },
+ "required": [
+  "version",
+  "report_markdown"
+ ],
+ "title": "CandidateReport",
+ "type": "object"
+}

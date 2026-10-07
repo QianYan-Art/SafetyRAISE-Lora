@@ -1,0 +1,26 @@
+{"event": "start", "samples": 69, "accum": 4, "total_updates": 17, "lr": 5e-05, "r": 16, "lora_from": 32, "max_len": 32768, "t": 1791179380.6}
+{"event": "eval", "update": 0, "eval_loss": 0.5136, "t": 1791179527.1}
+{"event": "update", "update": 1, "loss": 0.8569, "grad_norm": 0.305, "lr": 5e-05, "tokens": 78815, "sec": 881.7, "tok_s": 89.4, "peak_gib": 38.5, "temp": -1.0, "epoch": 0.057971014492753624, "t": 1791180408.8}
+{"event": "update", "update": 2, "loss": 0.8951, "grad_norm": 0.333, "lr": 5e-05, "tokens": 70466, "sec": 771.4, "tok_s": 91.3, "peak_gib": 38.5, "temp": -1.0, "epoch": 0.11594202898550725, "t": 1791181180.2}
+{"event": "update", "update": 3, "loss": 0.5471, "grad_norm": 0.559, "lr": 4.957e-05, "tokens": 45932, "sec": 487.5, "tok_s": 94.2, "peak_gib": 38.5, "temp": -1.0, "epoch": 0.17391304347826086, "t": 1791181667.7}
+{"event": "update", "update": 4, "loss": 0.908, "grad_norm": 0.346, "lr": 4.829e-05, "tokens": 74585, "sec": 669.4, "tok_s": 111.4, "peak_gib": 38.5, "temp": -1.0, "epoch": 0.2318840579710145, "t": 1791182337.1}
+{"event": "update", "update": 5, "loss": 0.6484, "grad_norm": 0.321, "lr": 4.621e-05, "tokens": 55380, "sec": 482.8, "tok_s": 114.7, "peak_gib": 38.5, "temp": -1.0, "epoch": 0.2898550724637681, "t": 1791182819.9}
+{"event": "update", "update": 6, "loss": 0.8059, "grad_norm": 0.421, "lr": 4.341e-05, "tokens": 61215, "sec": 742.9, "tok_s": 82.4, "peak_gib": 38.5, "temp": -1.0, "epoch": 0.34782608695652173, "t": 1791183562.8}
+{"event": "eval", "update": 6, "eval_loss": 0.5118, "t": 1791183709.5}
+{"event": "checkpoint", "update": 6, "cursor": 24, "tag": "", "t": 1791183711.0}
+{"event": "update", "update": 7, "loss": 0.5273, "grad_norm": 0.554, "lr": 4e-05, "tokens": 53543, "sec": 471.0, "tok_s": 113.7, "peak_gib": 39.5, "temp": -1.0, "epoch": 0.4057971014492754, "t": 1791184182.0}
+{"event": "update", "update": 8, "loss": 0.9582, "grad_norm": 0.365, "lr": 3.611e-05, "tokens": 68262, "sec": 608.3, "tok_s": 112.2, "peak_gib": 39.5, "temp": -1.0, "epoch": 0.463768115942029, "t": 1791184790.2}
+{"event": "update", "update": 9, "loss": 0.7549, "grad_norm": 0.261, "lr": 3.189e-05, "tokens": 87152, "sec": 996.5, "tok_s": 87.5, "peak_gib": 42.6, "temp": -1.0, "epoch": 0.5217391304347826, "t": 1791185786.7}
+{"event": "update", "update": 10, "loss": 0.6342, "grad_norm": 0.344, "lr": 2.75e-05, "tokens": 58008, "sec": 680.4, "tok_s": 85.3, "peak_gib": 42.6, "temp": -1.0, "epoch": 0.5797101449275363, "t": 1791186467.2}
+{"event": "update", "update": 11, "loss": 0.7607, "grad_norm": 0.371, "lr": 2.311e-05, "tokens": 56841, "sec": 600.9, "tok_s": 94.6, "peak_gib": 42.6, "temp": -1.0, "epoch": 0.6376811594202898, "t": 1791187068.1}
+{"event": "update", "update": 12, "loss": 0.7169, "grad_norm": 0.317, "lr": 1.889e-05, "tokens": 68822, "sec": 613.6, "tok_s": 112.2, "peak_gib": 42.6, "temp": -1.0, "epoch": 0.6956521739130435, "t": 1791187681.7}
+{"event": "eval", "update": 12, "eval_loss": 0.5173, "t": 1791187829.2}
+{"event": "checkpoint", "update": 12, "cursor": 48, "tag": "", "t": 1791187831.2}
+{"event": "update", "update": 13, "loss": 0.5378, "grad_norm": 0.422, "lr": 1.5e-05, "tokens": 53390, "sec": 643.7, "tok_s": 82.9, "peak_gib": 42.6, "temp": -1.0, "epoch": 0.7536231884057971, "t": 1791188474.8}
+{"event": "update", "update": 14, "loss": 1.0279, "grad_norm": 0.342, "lr": 1.159e-05, "tokens": 72584, "sec": 738.7, "tok_s": 98.3, "peak_gib": 42.6, "temp": -1.0, "epoch": 0.8115942028985508, "t": 1791189213.6}
+{"event": "update", "update": 15, "loss": 0.5044, "grad_norm": 0.338, "lr": 8.79e-06, "tokens": 51366, "sec": 445.1, "tok_s": 115.4, "peak_gib": 42.6, "temp": -1.0, "epoch": 0.8695652173913043, "t": 1791189658.6}
+{"event": "update", "update": 16, "loss": 0.5366, "grad_norm": 0.31, "lr": 6.71e-06, "tokens": 55390, "sec": 480.4, "tok_s": 115.3, "peak_gib": 42.6, "temp": -1.0, "epoch": 0.927536231884058, "t": 1791190139.0}
+{"event": "update", "update": 17, "loss": 0.6803, "grad_norm": 0.275, "lr": 5.43e-06, "tokens": 65766, "sec": 732.1, "tok_s": 89.8, "peak_gib": 42.6, "temp": -1.0, "epoch": 0.9855072463768116, "t": 1791190871.1}
+{"event": "checkpoint", "update": 17, "cursor": 68, "tag": "final", "t": 1791190872.3}
+{"event": "eval", "update": 17, "eval_loss": 0.518, "t": 1791191019.6}
+{"event": "done", "updates": 17, "hours": 3.19, "t": 1791191019.6}

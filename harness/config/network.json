@@ -1,0 +1,9 @@
+{
+  "_note": "按主机选择通道。env_proxy = 经进程环境里的 HTTPS_PROXY(CONNECT 隧道,地址不落盘);direct = 直连。仓库所有者 2026-10-02:OpenRouter 全部走代理,MiniMax 直连(取代 docs/api-authorization.md 中'一律禁用代理'的旧规定)。 http = 明文 HTTP,仅用于局域网 Orin 本地评测服务。",
+  "routes": {
+    "openrouter.ai": "env_proxy",
+    "api.minimaxi.com": "direct",
+    "192.168.55.1:8000": "http",
+    "192.168.55.1:8080": "http"
+  }
+}

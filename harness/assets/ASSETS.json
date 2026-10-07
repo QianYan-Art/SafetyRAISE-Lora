@@ -1,0 +1,34 @@
+{
+  "_note": "冻结自生产仓库(只读来源)的提示资产;生产提示变更后需人工重新冻结并更新本文件。",
+  "source_repo": "D:\\MCP_Server\\TS_analysis_report",
+  "source_commit": "7200e308f80cc6d08a0fb3eac4098fc86104f2f8",
+  "source_commit_date": "2026-09-25",
+  "frozen_on": "2026-10-02",
+  "files": {
+    "report_prompt.md": {
+      "source": "D:\\MCP_Server\\TS_analysis_report\\backend\\config\\report_prompt.md",
+      "sha256": "056fce3cf9308497ce23098f4242a51d86c6a871569e873a32fffbc979b6c774",
+      "bytes": 16946,
+      "identical_to_source_now": true
+    },
+    "guidance_prompt.md": {
+      "source": "D:\\MCP_Server\\TS_analysis_report\\backend\\config\\guidance_prompt.md",
+      "sha256": "aa92cde0d4f723469218a1fb9117fe94a5a9693ce0307f171a2ba348be28802a",
+      "bytes": 6561,
+      "identical_to_source_now": true
+    },
+    "input_accident_template.json": {
+      "source": "D:\\MCP_Server\\TS_analysis_report\\backend\\config\\input_accident_template.json",
+      "sha256": "25853203c83dbc23a57b0c041031930afb081fd3c9c89f366aa6ab4b27d7ba2d",
+      "bytes": 899,
+      "identical_to_source_now": true
+    },
+    "model_output.py": {
+      "source": "D:\\MCP_Server\\TS_analysis_report\\backend\\app\\core\\model_output.py",
+      "frozen_as": "sr_eval/prod_model_output.py",
+      "sha256": "c2f4e7b47ac2716338565e034646a304c4039362a74821534f3cdd8dec1c0ed9",
+      "bytes": 10518,
+      "identical_to_source_now": true
+    }
+  }
+}

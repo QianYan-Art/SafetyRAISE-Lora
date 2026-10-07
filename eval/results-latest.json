@@ -1,0 +1,158 @@
+{
+ "generated": "2026-10-06 03:24",
+ "note": "luna(max) 严格评审,满分 25;未经人工核实",
+ "systems": {
+  "基座(云端xhigh)": {
+   "dev12": {
+    "n_valid": 12,
+    "luna_mean": 15.667,
+    "defects": 6.42,
+    "hard_fail": 1,
+    "report_chars_median": 3725,
+    "rounds": 1.92,
+    "think_total_median": 49226,
+    "think_last_median": 14185
+   },
+   "dev50": {
+    "n": 33,
+    "luna_mean": 16.182,
+    "ci": [
+     15.303,
+     17.061
+    ],
+    "hard_fail": 3,
+    "paired_vs_teacher": -5.485,
+    "paired_ci": [
+     -6.485,
+     -4.485
+    ]
+   }
+  },
+  "v2a": {
+   "dev12": {
+    "n_valid": 12,
+    "luna_mean": 18.917,
+    "defects": 4.83,
+    "hard_fail": 1,
+    "report_chars_median": 1760,
+    "rounds": 2,
+    "think_total_median": 520,
+    "think_last_median": 206
+   },
+   "dev50": {
+    "n": 33,
+    "luna_mean": 19.273,
+    "ci": [
+     18.636,
+     19.909
+    ],
+    "hard_fail": 1,
+    "paired_vs_teacher": -2.394,
+    "paired_ci": [
+     -3.03,
+     -1.758
+    ]
+   }
+  },
+  "teacher(luna)": {
+   "dev12": {
+    "n_valid": 12,
+    "luna_mean": 21.417,
+    "defects": 3.17,
+    "hard_fail": 2,
+    "report_chars_median": 2105,
+    "rounds": 1.83,
+    "think_total_median": 2423,
+    "think_last_median": 1649
+   }
+  },
+  "v3b": {
+   "dev12": {
+    "n_valid": 12,
+    "luna_mean": 16.083,
+    "defects": 6.42,
+    "hard_fail": 4,
+    "report_chars_median": 3391,
+    "rounds": 1.33,
+    "think_total_median": 13075,
+    "think_last_median": 6877
+   }
+  },
+  "v3c": {
+   "dev12": {
+    "n_valid": 11,
+    "luna_mean": 19.636,
+    "defects": 4.09,
+    "hard_fail": 2,
+    "report_chars_median": 2281,
+    "rounds": 1.33,
+    "think_total_median": 12216,
+    "think_last_median": 10687
+   }
+  },
+  "v3d": {
+   "dev12": {
+    "n_valid": 12,
+    "luna_mean": 19.25,
+    "defects": 4.08,
+    "hard_fail": 1,
+    "report_chars_median": 2388,
+    "rounds": 1.17,
+    "think_total_median": 12497,
+    "think_last_median": 11309
+   },
+   "dev50": {
+    "n": 50,
+    "luna_mean": 19.58,
+    "ci": [
+     18.94,
+     20.2
+    ],
+    "hard_fail": 4,
+    "paired_vs_teacher": -1.66,
+    "paired_ci": [
+     -2.38,
+     -0.98
+    ]
+   }
+  },
+  "v3e(失败)": {
+   "dev12": {
+    "n_valid": 11,
+    "luna_mean": 17.364,
+    "defects": 5.27,
+    "hard_fail": 5,
+    "report_chars_median": 3040,
+    "rounds": 1.17,
+    "think_total_median": 6940,
+    "think_last_median": 6239
+   }
+  },
+  "v3f": {
+   "dev12": {
+    "n_valid": 12,
+    "luna_mean": 20.417,
+    "defects": 3.25,
+    "hard_fail": 1,
+    "report_chars_median": 1872,
+    "rounds": 1.08,
+    "think_total_median": 8660,
+    "think_last_median": 7459
+   },
+   "dev50": {
+    "n": 49,
+    "luna_mean": 19.816,
+    "ci": [
+     19.122,
+     20.49
+    ],
+    "hard_fail": 8,
+    "paired_vs_teacher": -1.388,
+    "paired_ci": [
+     -2.163,
+     -0.653
+    ]
+   }
+  }
+ }
+}
