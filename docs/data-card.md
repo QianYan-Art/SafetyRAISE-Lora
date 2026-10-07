@@ -74,6 +74,11 @@
 - 由文本版重建 token 版：用 `assets/templates/qwen3.8-compact.chat_template.jinja` 渲染 `messages` + 学生思考 + 回答，按 `answer_start` 切段，细节见 `harness/sr_eval/live/rows.py`。
 - 扩展：见 [`extension-guide.md`](extension-guide.md)。
 
+## 4b. `datasets/live-post-training-v3h2/`（第二轮后训练集）与 `datasets/mtp-retrain-data/`
+
+- `live-post-training-v3h2/`：28 对偏好（26 `pair_revised` + 2 `pair_seeded_*`），文件同 §4（`rows.jsonl.gz`、`records.jsonl.gz`、`provenance.jsonl`、`manifest.json`）。与第一轮的调用互不重叠（构建时 `--exclude-calls`）；每个源调用至多一行；方向抽检 13/15 两位评审一致认可选中侧，2 条因 DeepSeek 判 tie 剔除（清单见 `manifest.json` 的 `excluded_rows`）。**不含锚点**；绝对质量不要求满分（见 §4.3 口径）。窗口 p50 23.8K、最长 29.6K。训练配方见技术报告 §6.8。
+- `mtp-retrain-data/train.jsonl.gz`：MTP 头重训用的 60 条序列（学生在线上协议下的首回合输出：提示 + 思考 + 最终 JSON；排除了第一轮后训练用过的案件；共约 140 万 token；字段 `sample_id, case_id, kind, input_ids, labels`，`labels` 只覆盖回答段，用 compact 档位模板渲染，分词器同 §4.1）。留出集用终版模型自己在开发案上的输出（`make_mtp_data.py --eval-traces`），不入仓库。
+
 ## 5. `eval/`
 
 `results-latest.{md,json}`（各版本 12/50 案评审快照）、`teacher-compare-{dev,test}.md`、`prod-retrieval-gap-dev.json`（线上检索与近似检索的差距）、`orin-train-logs/`（Orin 训练日志摘要）。

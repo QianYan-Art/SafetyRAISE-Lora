@@ -39,6 +39,8 @@ The repository contains the synthetic datasets (v1 SFT release, v3 SFT lineage, 
 | `harness/cases/` | 评测台使用的合成事故案件（37 字段事故信息 + 专家指导意见） | train 240 / dev 50 / test 50 |
 | `datasets/sft-lineage-v3/` | v3b–v3f 逐版监督微调数据（学生原生思考 + 教师最小改动修订报告） | 约 100 万 token 量级，逐版清单 |
 | `datasets/live-post-training-v3h/` | **线上环境后训练集**（偏好对 + 锚点，文本版与 token 版） | 26 行：16 对偏好 + 10 锚点 |
+| `datasets/live-post-training-v3h2/` | 第二轮后训练集（偏好对，文本版与 token 版） | 28 对偏好 |
+| `datasets/mtp-retrain-data/` | MTP 头重训用的学生线上协议输出序列 | 60 条，约 140 万 token |
 
 数据质量与限制见数据卡；`v1-synthetic-release` 的清单中标注 `outbound_eligible: false`（首版治理策略，沿用原样），发布范围以仓库所有者的授权为准。
 

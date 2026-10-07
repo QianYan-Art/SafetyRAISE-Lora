@@ -75,6 +75,16 @@ bash post_chain_final.sh <初始适配器目录(如 v3f ckpt)> <TAG> <name> -- \
 
 链路：停 llama-server → `train_simpo.py` → 合并（`make_gguf_v3.sh`，保留 Q8_0）→ Q4_K_M → `serve_llama.sh`；状态写 `~/work/runs/<TAG>_post.status`，失败写 `FAIL:`。速度参考（~26K token 行）：锚点约 455 s、偏好对约 980 s；峰值显存 43.3 GiB（26.5K）。
 
+### 4b. 第二轮续训（偏好 + 加强的 NLL 监督）
+
+```bash
+# 第一轮结束后，从 v3h 的适配器接着训；数据 datasets/live-post-training-v3h2/rows.jsonl.gz 解压为 ~/work/data/v3h2_pairs.jsonl
+bash post_chain_final.sh ~/work/runs/v3h_sft/ckpt v3h2 v3h2 --   --beta 2.0 --gamma 0.4 --sft_lambda 1.0 --lr 1e-4 --accum 2 --epochs 1   --report_only --max_len 32768 --lora_from 32 --longest_first 2 --save_every 4
+# 构建这类数据时排除上一轮已用调用：post_pipeline.py … --exclude-calls <used_calls.json> --unique-calls --pair-quota 30 --anchor-quota 0
+```
+
+训练完成后的评测、量化回归、MTP 重训与终版探针由 `harness/tools/auto_final.sh`（笔记本侧）与 `harness/orin/mtp_chain.sh`（Orin 侧）串起来；等待用 `harness/tools/wait_event.sh <日志> <已见行数>`。
+
 ## 5. 评测
 
 ```bash
@@ -89,7 +99,7 @@ python -B harness/tools/live_batch.py --tag <tag> --cases-file <dev12.txt> --bac
 
 ## 6. MTP 头重训
 
-`train_mtp.py --mode cache`（载入终版模型 + 适配器缓存隐藏状态，约 110 分钟）→ `--mode train`（约 65 分钟）→ `merge_lora.py --mtp_overlay mtp.safetensors` → 重转 GGUF → 实测接受率并核对输出不变。MTP 只影响速度。
+`harness/orin/mtp_chain.sh <适配器目录> <TAG> <训练jsonl> <留出jsonl> [量化]`：停服务 → `train_mtp.py --mode cache`（训练集与留出集，载入终版模型 + 适配器缓存隐藏状态，约 100–110 分钟）→ `--mode train`（约 65 分钟）→ `merge_lora.py --mtp_overlay`（经 `make_gguf_v3.sh`）→ 转 GGUF/量化 → `serve_llama.sh` 起服务。训练序列用 `harness/tools/make_mtp_data.py` 构造（线上协议、compact 档位渲染的“主模型自己的输出”）；终版用 `harness/tools/speed_probe.py` 测单槽位解码速度与草稿接受率（读 llama-server 的 `timings`），再复评首回合。MTP 只影响速度，不影响（贪心）输出。
 
 ## 7. 踩坑清单
 

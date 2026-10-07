@@ -282,7 +282,7 @@ def build_post(traces_dir, out_dir, *, revise_results=None, dry_run=False,
                template=None, max_len=28000, anchor_quota=70, pair_quota=30,
                quotas=None, seed=7, seed_errors_enabled=True, audit_results=None,
                unique_calls=False, seeded_cap=4, original_anchor_cap=6, min_long=0, long_tokens=28000,
-               audit_fraction=.2, anchor_allowlist=None) -> dict:
+               audit_fraction=.2, anchor_allowlist=None, exclude_calls=None) -> dict:
     """产出混合训练行与盲评包；离线构建绝不发起教师调用。"""
     from .audit import build_audit
     from .rows import build_row
@@ -365,6 +365,11 @@ def build_post(traces_dir, out_dir, *, revise_results=None, dry_run=False,
     drops.update("trace_load:" + error["reason"] for error in load_errors)
     drops.update("revision_load:" + error["reason"] for error in revision_errors)
     drops["unused_revision"] += len(set(revisions) - used_revisions)
+    if exclude_calls:  # 第二轮续训:排除前一轮已用过的源调用
+        blocked = set(exclude_calls)
+        before = len(candidates)
+        candidates = [c for c in candidates if c["record"]["source_call_sha256"] not in blocked]
+        drops["excluded_used_call"] += before - len(candidates)
     if anchor_allowlist is not None:  # 锚点只取经全量严审通过的调用;偏好对不受限(方向由抽检确认)
         allowed = set(anchor_allowlist)
         kept = [c for c in candidates if not c["row"]["kind"].startswith("anchor_")
@@ -462,6 +467,7 @@ def main(argv=None) -> int:
     parser.add_argument("--long-tokens", type=int, default=28000)
     parser.add_argument("--audit-fraction", type=float, default=.2, help="抽检比例;1.0=全量(用于全量严审筛锚点)")
     parser.add_argument("--anchor-allowlist", help="JSON 数组:允许作为锚点的 source_call_sha256")
+    parser.add_argument("--exclude-calls", help="JSON 数组:要排除的 source_call_sha256(前一轮已用)")
     parser.add_argument("--audit-results")
     args = parser.parse_args(argv)
     quotas = {}
@@ -479,6 +485,7 @@ def main(argv=None) -> int:
             original_anchor_cap=args.original_anchor_cap, min_long=args.min_long, long_tokens=args.long_tokens,
             audit_fraction=args.audit_fraction,
             anchor_allowlist=(json.loads(Path(args.anchor_allowlist).read_text(encoding="utf-8")) if args.anchor_allowlist else None),
+            exclude_calls=(json.loads(Path(args.exclude_calls).read_text(encoding="utf-8")) if args.exclude_calls else None),
         )
     except (OSError, ValueError) as exc:
         parser.error(str(exc))

@@ -26,6 +26,7 @@ ap.add_argument("--original-anchor-cap", type=int, default=6)
 ap.add_argument("--min-long", type=int, default=0)
 ap.add_argument("--audit-fraction", type=float, default=.2)
 ap.add_argument("--anchor-allowlist")
+ap.add_argument("--exclude-calls")
 ap.add_argument("--final", action="store_true")
 ap.add_argument("--skip-revise", action="store_true", help="只用已有修订结果构建(MiniMax 不可用时)")
 args = ap.parse_args()
@@ -90,6 +91,8 @@ out = ROOT / "harness" / "reports" / f"post_{args.tag}_{stamp}"
 cmd = [sys.executable, "-B", "-m", "sr_eval.live.build_post", "--traces", str(traces), "--out", str(out),
        "--anchor-quota", str(args.anchor_quota), "--pair-quota", str(args.pair_quota), "--max-len", str(args.max_len)]
 cmd += ["--audit-fraction", str(args.audit_fraction)]
+if args.exclude_calls:
+    cmd += ["--exclude-calls", args.exclude_calls]
 if args.anchor_allowlist:
     cmd += ["--anchor-allowlist", args.anchor_allowlist]
 if args.unique_calls:
