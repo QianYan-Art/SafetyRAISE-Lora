@@ -114,13 +114,19 @@ def _template(template: Any = None, profile_dir: Path | None = None) -> tuple[An
 
 
 def _legacy_python(python_exe: str | Path | None = None) -> Path | None:
-    """定位已有的完整 Python 环境；不下载、不安装依赖。"""
+    """定位已有的完整 Python 环境（装了 tokenizers/jinja2 的 .venv，或环境变量 SR_LEGACY_PYTHON 指定的解释器）；不下载、不安装依赖。"""
     if python_exe:
         path = Path(python_exe)
         return path if path.exists() else None
+    env = os.environ.get("SR_LEGACY_PYTHON")
+    if env and Path(env).exists():
+        return Path(env)
     root = Path(__file__).resolve().parents[3]
-    candidate = root / ".venv" / "Scripts" / "python.exe"
-    return candidate if candidate.exists() else None
+    for rel in (".venv/Scripts/python.exe", ".venv/bin/python"):
+        candidate = root / rel
+        if candidate.exists():
+            return candidate
+    return None
 
 
 _BRIDGE_SCRIPT = r'''

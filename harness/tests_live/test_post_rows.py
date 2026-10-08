@@ -54,7 +54,9 @@ def test_row_is_fieldwise_identical_to_pairs_response_ids_and_json_boundary() ->
     row = result["row"]
     assert row is not None
     root = Path(__file__).resolve().parents[2]
-    legacy_python = root / ".venv" / "Scripts" / "python.exe"
+    legacy_python = Path(os.environ.get("SR_LEGACY_PYTHON") or "")
+    if not legacy_python.is_file():
+        legacy_python = next((root / rel for rel in (".venv/Scripts/python.exe", ".venv/bin/python") if (root / rel).exists()), legacy_python)
     script = r'''
 import json, sys
 from sr_eval.sft import QwenTemplate

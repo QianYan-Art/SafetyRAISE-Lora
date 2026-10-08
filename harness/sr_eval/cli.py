@@ -48,7 +48,7 @@ def preflight_openrouter(client: LLMClient, models: list[str]) -> None:
     b = _budget()
     st = client.openrouter_key_status()
     if st["limit"] is None:
-        raise LLMError("key_has_no_limit", detail="该 OpenRouter key 没有 credit limit;docs/api-authorization.md 要求有可证明的费用上界,请换用设置了额度上限的专用 key")
+        raise LLMError("key_has_no_limit", detail="该 OpenRouter key 没有 credit limit;评测台要求有可证明的费用上界(见 harness/README.md“费用与外发闸门”),请换用设置了额度上限的专用 key")
     if float(st["limit"]) > float(b["total_budget_usd"]) + 1e-9:
         raise LLMError("key_limit_above_budget", detail=f"key 额度 {st['limit']} > 总预算 {b['total_budget_usd']}")
     remaining = st["limit_remaining"]

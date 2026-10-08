@@ -12,3 +12,6 @@ profiles/assets/*/tokenizer.json
 *.gguf
 *.log
 .env
+
+# 本地密钥文件（SR_SECRETS_FILE 缺省位置）与运行产物
+secrets.local.txt

@@ -1,7 +1,7 @@
 """OpenAI 兼容聊天客户端 + 无密钥账本 + 预算硬门。
 
 - 通道按主机路由(config/network.json):OpenRouter 经环境代理(仓库所有者 2026-10-02 指示),MiniMax 直连;
-- 密钥只在进程内读取(环境变量或补充.txt 的指定字段),不进入账本、日志、异常文本;
+- 密钥只在进程内读取(环境变量;或环境变量 SR_SECRETS_FILE 指向的本地“字段: 值”文本文件,缺省为仓库根目录的 secrets.local.txt,已被 .gitignore 排除),不进入账本、日志、异常文本;
 - 每次请求先按最坏情况预留费用,超过预算上限就不发送;预留与结算都写入账本;
 - 不自动重试可能已生成结果的请求(网络中断 → billing_state=unknown,由人对账)。
 """
@@ -26,7 +26,7 @@ HARNESS_DIR = Path(__file__).resolve().parent.parent
 DATASET_DIR = HARNESS_DIR.parent
 CONFIG_DIR = HARNESS_DIR / "config"
 LEDGER_PATH = HARNESS_DIR / "ledger" / "api-calls.jsonl"
-SECRETS_FILE = DATASET_DIR / "补充.txt"
+SECRETS_FILE = Path(os.environ["SR_SECRETS_FILE"]) if os.environ.get("SR_SECRETS_FILE") else DATASET_DIR / "secrets.local.txt"
 
 PROVIDERS = {
     "openrouter": {"host": "openrouter.ai", "path": "/api/v1/chat/completions", "key_env": ("OPENROUTER_API_KEY",),
@@ -278,7 +278,7 @@ class LLMClient:
     def openrouter_key_status(self) -> dict[str, Any]:
         key = read_secret(*[PROVIDERS["openrouter"][k] for k in ("key_env", "key_fields")])
         if not key:
-            raise LLMError("credential_unavailable", detail="未找到 OPENROUTER_API_KEY 或 补充.txt 的 openrouter_key 字段")
+            raise LLMError("credential_unavailable", detail="未找到 OPENROUTER_API_KEY(或 SR_SECRETS_FILE 指向文件里的 openrouter_key 字段)")
         status, _h, body = self.transport.request("openrouter.ai", "GET", "/api/v1/key",
                                                   {"Authorization": f"Bearer {key}", "Accept": "application/json"}, None, 30)
         if status != 200:

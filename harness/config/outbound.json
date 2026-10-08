@@ -3,6 +3,6 @@
   "synthetic_cases_external_send": true,
   "synthetic_cases_basis": "仓库所有者 2026-09-30 AskUserQuestion:合成数据可上云训练",
   "public_statutes_external_send": true,
-  "public_statutes_basis": "仓库所有者 2026-10-02 明确批准公开法规/知识库片段外发(原为未授权:docs/api-authorization.md 对 official-prc-traffic 快照限定仅本地)。范围:评测台使用的生产知识库快照中的公开官方来源片段,发往仓库所有者指定的 OpenRouter 四模型与 MiniMax;不含真实案件。",
+  "public_statutes_basis": "仓库所有者 2026-10-02 明确批准公开法规/知识库片段外发(此前按保守口径限定为仅本地)。范围:评测台使用的生产知识库快照中的公开官方来源片段,发往仓库所有者指定的 OpenRouter 四模型与 MiniMax;不含真实案件。",
   "real_case_external_send": false
 }
