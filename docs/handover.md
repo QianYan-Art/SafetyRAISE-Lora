@@ -28,7 +28,7 @@
 
 | Orin 路径 | 内容 |
 | --- | --- |
-| `~/work/scripts/` | 仓库 `harness/orin/` 的内容（把它整个复制过去；各脚本按这个位置互相调用） |
+| `~/work/scripts/` | 仓库 `harness/orin/` 的内容（整个复制过去；各脚本按这个位置互相调用），**再加上 `harness/tools/` 里的 7 个小工具**：`probe_multi.py`、`speed_probe2.py`、`answer_probe.py`、`answer_multi.py`、`bench_table.py`、`probe_compare.py`、`draft_log_compare.py`（解码研究脚本会从同一目录调用它们）。`dump_hidden`、`bw_probe`、`sampler_cost` 等 C++/CUDA 诊断程序按各自源文件头注释里的编译命令现编。Orin 家目录另有一份 `README_DELIVERY.md`（有什么、怎么启动、核对哈希），内容与本节一致 |
 | `~/work/templates/` | 服务端用的 `compact.jinja` 聊天模板和思考预算提示语 `budget_msg.txt`（分别是仓库 `assets/templates/qwen3.8-compact.chat_template.jinja` 和 `assets/templates/budget_msg.txt` 的副本，内容一致，可核对 SHA-256） |
 | `~/work/data/` | 训练与探针数据：`v3h2_pairs.jsonl`（第二轮后训练集）、`train.jsonl` / `eval.jsonl`（MTP 重训的训练 / 留出序列）、`v3f_train.jsonl` / `v3f_eval.jsonl`、`probe_trace_*.json` / `answer_trace_*.json`（速度探针用）、`draft_ids/`（草稿词表子集）。这些在仓库 `datasets/` 里都有（压缩版） |
 | `~/work/llama.cpp/`、`~/work/llama-opt/` | llama.cpp 提交 `bed0a856…`：库存构建 / 带补丁（`inference/patches/`）的优化构建，源码和 `build/bin` |

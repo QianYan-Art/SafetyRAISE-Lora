@@ -76,6 +76,8 @@ python -B -m sr_eval.cli summary --run bake1
 
 ## `orin/`：Orin 上的脚本（整个目录复制到 `~/work/scripts/`）
 
+解码研究脚本还会从同一目录调用 `tools/` 里的 7 个小工具，也要复制过去：`probe_multi.py`、`speed_probe2.py`、`answer_probe.py`、`answer_multi.py`、`bench_table.py`、`probe_compare.py`、`draft_log_compare.py`。C++/CUDA 诊断程序（`dump_hidden.cpp` 等）的编译命令写在各源文件的头注释里。
+
 | 类别 | 脚本 |
 | --- | --- |
 | 训练 | `train_sft.py`（QLoRA SFT，只适配上半层，断点续训）· `train_simpo.py`（SimPO + 锚点，无参考模型，一次只放一条序列，梯度解耦）· `train_simpo_v3a.py`（v3a 当时用的旧版 SimPO，仅作记录）· `train_mtp.py`（MTP 头自蒸馏，逐块反传，每个 epoch 原子保存最优） |

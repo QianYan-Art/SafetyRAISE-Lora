@@ -15,6 +15,7 @@
 
 | 路径 | 内容 |
 | --- | --- |
+| （Orin 上的位置） | `harness/orin/` 的脚本整个放在 `~/work/scripts/`，再加 `harness/tools/` 里的 `probe_multi.py`、`speed_probe2.py`、`answer_probe.py`、`answer_multi.py`、`bench_table.py`、`probe_compare.py`、`draft_log_compare.py`；下表里 `harness/orin/`、`harness/tools/` 的脚本在 Orin 上都在这一个目录 |
 | `inference/patches/` | 对 llama.cpp 的补丁（对上游提交 `bed0a85` 干净应用），见下 |
 | `inference/draft-vocab/` | MTP 草稿词表子集的 token id 列表与覆盖率报告（不是权重） |
 | `harness/orin/serve_llama.sh` | 通用启动脚本。环境变量见脚本头注释：`LLAMA_DIR`、`SPEC_N_MAX`、`SPEC_P_MIN`、`SPEC_TYPES`（逗号分隔，顺序即优先级）、`NGRAM_N/NGRAM_M`、`SR_TEMP/SR_TOP_K/SR_TOP_P/SR_MIN_P`（服务端默认采样）、`KV_TYPE`、`EXTRA_ARGS`、`WRAP`、`DRY_RUN`；补丁相关的 `SR_MTP_DRAFT_IDS`、`SR_SPEC_BATCH_TOKENS`、`SR_MMVQ_MAX_NE11`、`SR_CUBLAS_MIN_NE11` 直接设在环境里 |

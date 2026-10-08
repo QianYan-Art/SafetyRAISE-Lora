@@ -59,7 +59,7 @@
 通过 0 项,失败 0 项
   Skipping
 2/2 backends passed
-[1;32mOK[0m
+OK
 === bench mmq ub=512 kv=[-ctk q8_0 -ctv q8_0] env=[X=1] 02:12:40
 | model                          |       size |     params | backend    | ngl | type_k | type_v |  fa |            test |                  t/s |
 | ------------------------------ | ---------: | ---------: | ---------- | --: | -----: | -----: | --: | --------------: | -------------------: |
