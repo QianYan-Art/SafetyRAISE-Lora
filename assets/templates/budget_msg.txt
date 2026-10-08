@@ -1,0 +1,1 @@
+Thinking budget reached. The key facts, field statuses and sources are settled; stop analysing and write the final JSON answer directly.

@@ -21,7 +21,7 @@ pytest harness/tests          # 评测台：假传输层
 pytest harness/tests_live     # 线上环境模拟器与后训练流水线（需要冻结的线上代码；SR_QWEN_PROFILE_DIR 指向 compact 档位目录）
 ```
 
-测试输出目录若放在系统临时目录会因路径限制失败，请用 `--basetemp <repo 内路径>`。
+测试输出目录必须在仓库内：先 `mkdir -p .scratch`，再加 `--basetemp=.scratch/pt`（放在系统临时目录会被工作区路径检查拒绝；`.scratch/` 已被 `.gitignore` 排除）。`tests_live` 里需要精确分词的几条测试通过环境变量 `SR_LEGACY_PYTHON` 找一个装了 `tokenizers`、`jinja2` 的 Python（缺省找 `.venv/Scripts/python.exe` 或 `.venv/bin/python`），并需要 `profiles/assets/*/tokenizer.json` 已就位。2026-10-08 在干净克隆里验证过：`harness/tests` 76 通过，`harness/tests_live` 126 通过、1 跳过。
 
 ## 2. SFT（旧路径格式的 v3 谱系，Orin）
 
@@ -37,7 +37,8 @@ pytest harness/tests_live     # 线上环境模拟器与后训练流水线（需
 ## 3. 后训练数据流水线（线上环境模拟器）
 
 ```bash
-# 3.1 学生在线采样（第 1 回合；服务端用 compact 档位 + 思考预算 4000；同一台服务一次只跑一个批次）
+# 3.1 学生在线采样（第 1 回合；服务端用 compact 档位；v3h / v3h2 的数据是在思考预算 4000 下采的，
+#     新采样请按交付配置起服务（serve_delivery.sh，预算 5120、KV q8_0），让学生的思考分布与部署一致；同一台服务一次只跑一个批次）
 SR_LOCAL_HOST=<orin>:8080 SR_LIVE_EFFORT=compact SR_LIVE_ATTEMPT_TIMEOUT=7200 \
 SR_QWEN_PROFILE_DIR=profiles/assets/qwen3.8-compact-v1 \
 python -B harness/tools/live_batch.py --tag post1 --cases-file <cases.txt> --backend local --reviewer scripted \
@@ -95,13 +96,34 @@ python -B harness/tools/live_batch.py --tag <tag> --cases-file <dev12.txt> --bac
     --retrieval sparse_half --workers 6 --stable-limit 32768 --output-reserve 1 --max-tokens 32000
 ```
 
-对比口径：同一批开发案、同一档位与预算；看硬门失败、评审分、思考长度、检索轮数、合法率与 37 项指标，不要只看评审分。
+终版总评测（交付配置，开发 12 案，6 路并发，约 3 小时）：
+
+```bash
+bash harness/tools/final_eval.sh                # 先在 Orin 上起 serve_delivery.sh；脚本头注释写明参数
+python harness/tools/final_eval_summary.py <评测期间新增的 llama-server 日志>   # 服务端统计
+python harness/tools/live_compare.py v3f=<运行目录> final=<运行目录>            # 状态分布、首调用确定性合格率、37 项指标
+```
+
+对比口径：同一批开发案、同一档位与预算、同一采样与 KV 精度；看硬门失败、评审分、思考长度、检索轮数、合法率与 37 项指标，**还要看各调用的结束原因**（`finish_reason=length` 的数量），不要只看评审分和案件状态。开评测前先用 `harness/tools/live_prompt_sizes.py` 精确计各案提示 token（不调用任何模型），提示 ≥ 23K 的案件在 32768 窗口 + 预算 5120 下会被截断；评测中途就要看内容类指标，别等到跑完。结果快照见 `eval/final-eval-2026-10-08/`。
 
 ## 6. MTP 头重训
 
 `harness/orin/mtp_chain.sh <适配器目录> <TAG> <训练jsonl> <留出jsonl> [量化]`：停服务 → `train_mtp.py --mode cache`（训练集与留出集，载入终版模型 + 适配器缓存隐藏状态，约 100–110 分钟）→ `--mode train`（约 65 分钟）→ `merge_lora.py --mtp_overlay`（经 `make_gguf_v3.sh`）→ 转 GGUF/量化 → `serve_llama.sh` 起服务。训练序列用 `harness/tools/make_mtp_data.py` 构造（线上协议、compact 档位渲染的“主模型自己的输出”）；终版用 `harness/tools/speed_probe.py` 测单槽位解码速度与草稿接受率（读 llama-server 的 `timings`），再复评首回合。MTP 只影响速度，不影响（贪心）输出。
 
-## 7. 踩坑清单
+## 7. 解码与预填充优化的复现
+
+llama.cpp 补丁、词表子集和所有探针脚本见 `inference/README.md`。顺序：
+
+1. 打补丁、构建优化版 llama.cpp（`inference/README.md` 的“应用与构建”）；用 `harness/tools/draft_vocab.py` 重新生成词表子集（换分词器 / 词表时必须重做），或直接用 `inference/draft-vocab/` 里的 id 文件。
+2. 批大小曲线与预填充对照：`bash harness/orin/prefill_study.sh <GGUF 基名>`（llama-bench、KL 散度、nsys）。
+3. 分区间投机对照：`bash harness/orin/region_sweep.sh <GGUF 基名> harness/orin/region_configs.txt <提示轨迹.json> <答案轨迹.json> <输出.jsonl>`，再用 `harness/tools/region_table.py` 汇表。答案轨迹由 live 运行的首回合生成（含学生真实的思考文本），格式见 `harness/tools/answer_probe.py` 头注释。
+4. 多路并发：`bash harness/orin/multi_batch.sh <GGUF 基名> harness/orin/multi_configs.txt`，`harness/tools/multi_table.py` 汇表；答案区间并发用 `answer_multi_batch.sh`。
+5. 训练特征与服务特征是否失配：`bash harness/orin/served_feature_check.sh <GGUF 基名>`。
+6. 交付启动：`bash harness/orin/serve_delivery.sh <GGUF 基名>`（`SR_BASELINE=1` 回到库存构建）。
+
+注意：同一提示、同一种子下不同配置的采样轨迹会因数值差异分叉，区间探针是单样本，差别在 5% 以内的配置不要硬分高下。
+
+## 8. 踩坑清单
 
 | 现象 | 原因 / 处理 |
 | --- | --- |
@@ -113,3 +135,8 @@ python -B harness/tools/live_batch.py --tag <tag> --cases-file <dev12.txt> --bac
 | `.cmd` 启动器报找不到命令 | 参数含空格会被拆坏；任务文本走标准输入，路径用正斜杠 |
 | 评审 JSON 解析不到 | 不同评审输出形态不同（数组 / 拼接的多个对象 / 偏好材料里 `passed` 是对象）；`audit_collect.py` 已兼容 |
 | 校验指标改动后修订“耗尽” | 先用真实输出核对误判率；标记词表曾漏“为空”导致约 46% 误判 |
+| MTP 训练第 2 轮报显存不足（`kl_div`） | 每块 logits 保留到整步反传，监督区间长时峰值 50 GiB，Orin 统一内存里系统还自占约 9 GiB；改成逐块反传、每轮刷新最佳即落盘、`PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True`，失败后 `SKIP_CACHE=1` 续跑 |
+| 总评测里一批调用以 `length` 结束、输出只有几个 token | 每槽位窗口 32768 容不下提示 + 思考预算 5120 + 答案：提示 ≥ 约 23K 的调用会被截断（终版总评测 11/34）。开评测前用 `live_prompt_sizes.py` 估各案提示长度，评测中途看各调用结束原因；对策见 `handover.md` 第 6 节 |
+| 增量构建后日志里缺新加的行 | 编辑源文件的同时后台正在 make，会编出旧内容却带新时间戳；用二进制行为或日志判断构建是否含改动，重要改动后 `touch` 再编一次 |
+| 后台脚本被 `pkill -f` 误杀自己 | 同一条 ssh 命令里的 `pkill -f '模式'` 会匹配到命令行本身；先用 `pgrep -f` 取 PID，再按 PID 杀，或把杀进程写进脚本文件里 |
+| 编辑正在运行的 bash 脚本导致行为错乱 | bash 边读边执行，原地改文件会错位；写成新文件再 `mv` 替换，或停掉再重启 |

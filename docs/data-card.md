@@ -81,7 +81,7 @@
 
 ## 5. `eval/`
 
-`results-latest.{md,json}`（各版本 12/50 案评审快照）、`teacher-compare-{dev,test}.md`、`prod-retrieval-gap-dev.json`（线上检索与近似检索的差距）、`orin-train-logs/`（Orin 训练日志摘要）。
+`results-latest.{md,json}`（各版本 12/50 案评审快照，2026-10-06）、`teacher-compare-{dev,test}.md`、`prod-retrieval-gap-dev.json`（线上检索与近似检索的差距）、`orin-train-logs/`（Orin 训练日志摘要，含 v3h / v3h2 / MTP 头）、`final-eval-2026-10-08/`（终版总评测与解码研究结果）；索引与读法见 [`../eval/README.md`](../eval/README.md)。
 
 ## 6. 不在仓库内的内容
 

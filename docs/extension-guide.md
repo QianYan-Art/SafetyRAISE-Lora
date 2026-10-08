@@ -1,10 +1,10 @@
 # 扩展指南
 
-这份仓库设计为持续更新。下面是最常见的几种扩展，以及每种的注意事项。命令里的路径与环境见 [`reproduction.md`](reproduction.md)。
+这份仓库设计为持续更新。下面是最常见的几种扩展，以及每种的注意事项。接手请先读 [`handover.md`](handover.md)；命令里的路径与环境见 [`reproduction.md`](reproduction.md)。
 
 ## 1. 补更长上下文的数据
 
-- **现状**：训练窗口按 28,000 起步（后训练集放宽到 32,768，即部署槽位上下文）；首提示中位 ≈16.8K，答案 ≤≈5K，思考预算 4,000。首提示 >≈24K 的案件、读片段后的第 2–3 回合、修订轮会超窗。
+- **现状**：训练窗口按 28,000 起步（后训练集放宽到 32,768，即部署槽位上下文）；首提示中位 ≈16.8K，答案 ≤≈5K，思考预算历史数据按 4,000 采集、交付取 5,120。预算 5,120 时首提示 >≈22.6K 的案件、读片段后的第 2–3 回合、修订轮会超窗（终版总评测 11/34 调用被截断，见 `handover.md` 第 6 节和 `deployment.md` §4）。
 - **做法**：
   1. 放宽采样门：`live_batch.py --stable-limit <N> --output-reserve <R>`（`N ≤ 训练窗口`，`R` 为给思考+答案留的余量）；要采多回合就去掉 `--first-call-only`，必要时用 `--reviewer minimax` 取真实审查反馈。
   2. `post_pipeline.py`/`build_post.py` 的 `--max-len` 同步放宽。`harness/sr_eval/live/window.py` 与 `rows.py` 里有硬上限常量（`HARD_WINDOW=32768`），超过需同时改。
