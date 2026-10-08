@@ -44,6 +44,10 @@ The repository contains the synthetic datasets (v1 SFT release, v3 SFT lineage, 
 
 数据质量与限制见数据卡；`v1-synthetic-release` 的清单中标注 `outbound_eligible: false`（首版治理策略，沿用原样），发布范围以仓库所有者的授权为准。
 
+## 交付配置（当前）
+
+模型 = Qwen3.8-27B + 后训练 LoRA（v3h2）合并后量化 **Q4_K_M** 的单个 GGUF，MTP 头已针对该模型重训；服务用 `harness/orin/serve_delivery.sh`：**compact 推理档位、思考预算 5120、KV 缓存 q8_0、每槽位 32768、MTP 草稿 5**。选择依据与局限见技术报告 §6.8–§7。
+
 ## 快速开始
 
 ```bash

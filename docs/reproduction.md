@@ -83,7 +83,7 @@ bash post_chain_final.sh ~/work/runs/v3h_sft/ckpt v3h2 v3h2 --   --beta 2.0 --ga
 # 构建这类数据时排除上一轮已用调用：post_pipeline.py … --exclude-calls <used_calls.json> --unique-calls --pair-quota 30 --anchor-quota 0
 ```
 
-训练完成后的评测、量化回归、MTP 重训与终版探针由 `harness/tools/auto_final.sh`（笔记本侧）与 `harness/orin/mtp_chain.sh`（Orin 侧）串起来；等待用 `harness/tools/wait_event.sh <日志> <已见行数>`。
+训练完成后的评测、量化横评、MTP 重训与终版探针由 `harness/tools/auto_quant_mtp.sh`（笔记本侧）与 `harness/orin/mtp_chain.sh`（Orin 侧）串起来；量化横评表用 `harness/tools/quant_table.py`；等待用 `harness/tools/wait_event.sh <日志> <已见行数>`；交付启动用 `harness/orin/serve_delivery.sh`（KV q8_0、预算 5120）。评测依赖两个 Python 环境：`.venv`（精确分词渲染，需要 tokenizers/jinja2）与 `.venv-live`（模拟器），**清理时 `.venv` 要在评测全部做完之后再删**。
 
 ## 5. 评测
 
