@@ -1,0 +1,17 @@
+diff -ru a/ggml/src/ggml-cuda/mmvq.cu b/ggml/src/ggml-cuda/mmvq.cu
+--- a/ggml/src/ggml-cuda/mmvq.cu
++++ b/ggml/src/ggml-cuda/mmvq.cu
+@@ -359,8 +359,11 @@
+             case GGML_TYPE_Q3_K:
+             case GGML_TYPE_Q4_K:
+             case GGML_TYPE_Q5_K:
+-            case GGML_TYPE_Q6_K:
+-                return ne11 <= 1;
++            case GGML_TYPE_Q6_K: {
++                // SR_MMVQ_MAX_NE11 overrides this k-quant batch limit (default 1 = the upstream Orin tuning) for A/B measurements
++                static const int lim = [] { const char * e = getenv("SR_MMVQ_MAX_NE11"); return e ? atoi(e) : 1; }();
++                return ne11 <= lim;
++            }
+             default:
+                 return ne11 <= MMVQ_MAX_BATCH_SIZE;
+         }

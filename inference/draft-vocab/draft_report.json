@@ -1,0 +1,66 @@
+{
+ "groups": 190,
+ "calls": 176,
+ "tokens": 1497285,
+ "distinct_tokens": 9591,
+ "special": 33,
+ "cv_folds": 5,
+ "cv_coverage": {
+  "0.0": {
+   "16384": 0.9974003978651972,
+   "24576": 0.9976840730077863,
+   "32768": 0.997832620940736,
+   "49152": 0.9979845146696956,
+   "65536": 0.99813572530366
+  },
+  "0.1": {
+   "16384": 0.9971024366934129,
+   "24576": 0.998021445376199,
+   "32768": 0.9982718232109915,
+   "49152": 0.9986260890331581,
+   "65536": 0.9988855164457817
+  },
+  "0.3": {
+   "16384": 0.9956204841907905,
+   "24576": 0.9972758678572745,
+   "32768": 0.9980664806231092,
+   "49152": 0.9986260890331581,
+   "65536": 0.9988855164457817
+  },
+  "1.0": {
+   "16384": 0.991174552238926,
+   "24576": 0.9950508336409681,
+   "32768": 0.9967061926508214,
+   "49152": 0.9981509543185977,
+   "65536": 0.9987272327223436
+  }
+ },
+ "final_prior_weight": 0.1,
+ "outputs": {
+  "16384": {
+   "file": ".scratch/draft/draft_k16384.i32",
+   "domain_tokens_included": 8894,
+   "coverage_on_all_domain_tokens": 0.9995344907616118
+  },
+  "24576": {
+   "file": ".scratch/draft/draft_k24576.i32",
+   "domain_tokens_included": 9591,
+   "coverage_on_all_domain_tokens": 1.0
+  },
+  "32768": {
+   "file": ".scratch/draft/draft_k32768.i32",
+   "domain_tokens_included": 9591,
+   "coverage_on_all_domain_tokens": 1.0
+  },
+  "49152": {
+   "file": ".scratch/draft/draft_k49152.i32",
+   "domain_tokens_included": 9591,
+   "coverage_on_all_domain_tokens": 1.0
+  },
+  "65536": {
+   "file": ".scratch/draft/draft_k65536.i32",
+   "domain_tokens_included": 9591,
+   "coverage_on_all_domain_tokens": 1.0
+  }
+ }
+}

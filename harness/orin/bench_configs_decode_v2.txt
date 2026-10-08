@@ -1,0 +1,9 @@
+# 解码速度单路精简扫描配置(bench_sweep.sh 用;post_chain_auto2.sh 的步骤 D)。格式: 标签|环境变量|probe 额外参数
+# 已有结论:MMVQ 放宽更慢、cuBLAS 预填充无收益,不再扫;这里只扫库存 vs 词表子集 vs 草稿长度/置信度/概率式草稿/不投机。
+stock|LLAMA_DIR=/home/<orin-user>/work/llama.cpp SR_TEMP=1.0 SR_TOP_K=20 SR_TOP_P=0.95 SR_MIN_P=0|--trim-user-chars 4000
+opt_plain|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_TEMP=1.0 SR_TOP_K=20 SR_TOP_P=0.95 SR_MIN_P=0|--trim-user-chars 4000
+sl32k|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k32768.i32 SR_TEMP=1.0 SR_TOP_K=20 SR_TOP_P=0.95 SR_MIN_P=0|--trim-user-chars 4000
+sl32k_n3|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k32768.i32 SPEC_N_MAX=3 SR_TEMP=1.0 SR_TOP_K=20 SR_TOP_P=0.95 SR_MIN_P=0|--trim-user-chars 4000
+sl32k_p05|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k32768.i32 SPEC_P_MIN=0.5 SR_TEMP=1.0 SR_TOP_K=20 SR_TOP_P=0.95 SR_MIN_P=0|--trim-user-chars 4000
+sl32k_prob|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k32768.i32 LLAMA_ARG_SPEC_DRAFT_SAMPLING=probabilistic SR_TEMP=1.0 SR_TOP_K=20 SR_TOP_P=0.95 SR_MIN_P=0|--trim-user-chars 4000
+sl32k_n0|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k32768.i32 SPEC_N_MAX=0 SR_TEMP=1.0 SR_TOP_K=20 SR_TOP_P=0.95 SR_MIN_P=0|--trim-user-chars 4000

@@ -1,0 +1,37 @@
+diff -ru a/ggml/src/ggml-cuda/ggml-cuda.cu b/ggml/src/ggml-cuda/ggml-cuda.cu
+--- a/ggml/src/ggml-cuda/ggml-cuda.cu
++++ b/ggml/src/ggml-cuda/ggml-cuda.cu
+@@ -1624,6 +1624,16 @@
+     ggml_type compute_type = src0->type;
+     if (ggml_is_quantized(compute_type)) {
+         compute_type = fast_fp16_hardware_available(cc) ? GGML_TYPE_F16 : GGML_TYPE_F32;
++        // Prompt-processing batches routed here by SR_CUBLAS_MIN_NE11 (see mmq.cu) use bf16 inputs with fp32 accumulation
++        // instead of fp16 (no fp16 accumulation error or overflow); SR_CUBLAS_QUANT_PREC=f16 restores the upstream fp16 choice.
++        static const bool sr_quant_bf16 = [] {
++            const char * m = getenv("SR_CUBLAS_MIN_NE11");
++            const char * p = getenv("SR_CUBLAS_QUANT_PREC");
++            return m != nullptr && atoll(m) > 0 && !(p != nullptr && std::string(p) == "f16");
++        }();
++        if (sr_quant_bf16 && fast_bf16_hardware_available(cc)) {
++            compute_type = GGML_TYPE_BF16;
++        }
+     } else if (compute_type == GGML_TYPE_F16 && !fast_fp16_hardware_available(cc)) {
+         compute_type = GGML_TYPE_F32;
+     } else if (compute_type == GGML_TYPE_BF16 && !fast_bf16_hardware_available(cc)) {
+
+diff -ru a/ggml/src/ggml-cuda/mmq.cu b/ggml/src/ggml-cuda/mmq.cu
+--- a/ggml/src/ggml-cuda/mmq.cu
++++ b/ggml/src/ggml-cuda/mmq.cu
+@@ -369,6 +369,12 @@
+     }
+ 
+     if (turing_mma_available(cc)) {
++        // SR_CUBLAS_MIN_NE11=N: batches of N or more columns (prompt processing) go through the dequantize + cuBLAS path
++        // instead of MMQ; pair with GGML_CUDA_CUBLAS_COMPUTE_TYPE=bf16 (fp32 accumulate). Unset or 0 keeps MMQ.
++        static const int64_t sr_cublas_min_ne11 = [] { const char * e = getenv("SR_CUBLAS_MIN_NE11"); return e ? (int64_t) atoll(e) : (int64_t) 0; }();
++        if (sr_cublas_min_ne11 > 0 && ne11 >= sr_cublas_min_ne11 && n_experts == 0) {
++            return false;
++        }
+         return true;
+     }
+ 

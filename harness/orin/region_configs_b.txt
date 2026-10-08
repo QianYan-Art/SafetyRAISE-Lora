@@ -1,0 +1,4 @@
+# 分区间投机对照第二批(region_sweep.sh 用):补测更小的草稿长度和库存构建基线。
+n3_p0|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k32768.i32 SPEC_N_MAX=3
+stock_n5|LLAMA_DIR=/home/<orin-user>/work/llama.cpp
+n5_prob|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k32768.i32 LLAMA_ARG_SPEC_DRAFT_SAMPLING=probabilistic

@@ -4,7 +4,7 @@
 #   → make_gguf_v3.sh(合并+MTP 覆盖→Q8_0→Q4_K_M)→ 起 llama-server(3 槽位)→ 写 SERVER_UP。
 #   没有 v3b 数据时退回:直接合并并评测 v3a。状态写 ~/work/runs/<TAG>_post.status,任一步失败写 FAIL:…。
 # 用法(setsid nohup 起): post_chain.sh <v3a训练目录> <最终TAG> [v3b数据名=v3b]
-RUN=$1; TAG=$2; NAME=${3:-v3b}; OV=$HOME/work/mtp/out/mtp.safetensors; ST=$HOME/work/runs/${TAG}_post.status
+RUN=$1; TAG=$2; NAME=${3:-v3b}; OV=${MTP_OVERLAY:-$HOME/work/mtp/out_v3h2/mtp.safetensors}; ST=$HOME/work/runs/${TAG}_post.status
 st() { echo "$(date +%T) $1" >> $ST; }
 : > $ST; st "WAIT_V3A_TRAIN"
 while pgrep -f "[t]rain_simpo.py" > /dev/null; do sleep 60; done

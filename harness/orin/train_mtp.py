@@ -179,23 +179,33 @@ def do_train():
                 x = mtp(h_in.unsqueeze(0), e, (cos, sin))[0]
             prev = x
             lo = max(ts - k - 1, 0)                  # 第一个监督条目:目标 token ids[t+k+1] 落在助手输出区间
-            step_loss, c_k = 0.0, 0
+            c_k = max(m - lo, 0)                     # 本步参与监督的条目数(逐块反传需要先知道归一化分母)
+            step_loss = 0.0
+            # 为省显存:逐块算损失并立即对该块的输入 xc 反传(logits 即用即弃),块梯度填入 gx,
+            # 最后一次性把 gx 反传过 MTP 层(与整段损失一次反传在数学上等价)。
+            gx = torch.zeros_like(x) if (grad and c_k) else None
             for s0 in range(lo, m, args.chunk):
                 e0 = min(s0 + args.chunk, m)
+                xc = x[s0:e0].detach().requires_grad_(True) if grad else x[s0:e0]
                 with torch.autocast("cuda", dtype=torch.bfloat16):
-                    lm = (x[s0:e0] @ W.T).float()
+                    lm = (xc @ W.T).float()
                 with torch.no_grad():
                     lt = (H[s0 + k:e0 + k] @ W.T).float()      # 主模型在位置 t+k 的分布(即对 ids[t+k+1] 的预测)
                 kl = F.kl_div(F.log_softmax(lm, -1), F.log_softmax(lt, -1), log_target=True, reduction="batchmean")
                 ce = F.cross_entropy(lm, ids[s0 + k + 1:e0 + k + 1])
-                step_loss = step_loss + (kl + args.ce_weight * ce) * (e0 - s0)
-                agree[k - 1] += int((lm.argmax(-1) == lt.argmax(-1)).sum()); cnt[k - 1] += e0 - s0; c_k += e0 - s0
-            if c_k:
-                lk = STEP_W[k - 1] * step_loss / c_k
-                total = total + lk
+                lc = (kl + args.ce_weight * ce) * (e0 - s0)
                 if grad:
-                    lk.backward(retain_graph=False)   # 逐步反传,释放该步激活
-        return (float(total) if grad else float(total)), agree, cnt
+                    (STEP_W[k - 1] * lc / c_k).backward()
+                    gx[s0:e0] = xc.grad
+                step_loss += float(lc.detach())
+                agree[k - 1] += int((lm.argmax(-1) == lt.argmax(-1)).sum()); cnt[k - 1] += e0 - s0
+                del lm, lt, kl, ce, lc, xc
+            if c_k:
+                total += STEP_W[k - 1] * step_loss / c_k
+                if grad:
+                    x.backward(gx)                    # 逐步反传,释放该步激活
+                    del gx
+        return total, agree, cnt
 
     def evaluate():
         mtp.eval(); A = [0] * args.steps; C = [0] * args.steps; ls = 0.0
@@ -212,6 +222,14 @@ def do_train():
     base_score = sum(base_top) / len(base_top)
     log(event="eval", epoch=0, loss=round(base_loss, 4), top1_by_step=[round(x, 4) for x in base_top], eval_tokens=n_eval,
         note="原始(官方)MTP 权重在微调后主模型上的各步一致率(第 2、3 步为链式)")
+    def save_best(score, ep):
+        from safetensors.torch import save_file
+        os.makedirs(args.out, exist_ok=True)
+        tmp = os.path.join(args.out, "mtp.safetensors.tmp")
+        save_file(export_names(mtp), tmp, metadata={"format": "pt", "eval_mean_top1": str(score), "epoch": str(ep)})
+        os.replace(tmp, os.path.join(args.out, "mtp.safetensors"))
+        log(event="checkpoint", epoch=ep, eval_mean_top1=round(score, 4))
+
     opt = torch.optim.AdamW(mtp.parameters(), lr=args.lr, weight_decay=0.0)
     total = args.epochs * math.ceil(len(train_files) / args.accum); step = 0
     best = (base_score, None)
@@ -241,12 +259,10 @@ def do_train():
         log(event="epoch", epoch=ep, train_loss=round(tl / len(order), 4), train_top1_by_step=[round(TA[i] / max(TC[i], 1), 4) for i in range(args.steps)],
             eval_loss=round(ev[0], 4), eval_top1_by_step=[round(x, 4) for x in ev[1]], min=round((time.time() - t0) / 60, 1))
         if score >= best[0]:
-            best = (score, export_names(mtp))
+            best = (score, True)
+            save_best(score, ep)                     # 每次刷新最佳就立刻落盘,中途失败也不丢
     if best[1] is None:
         log(event="no_improvement", baseline_score=round(base_score, 4)); return
-    from safetensors.torch import save_file
-    os.makedirs(args.out, exist_ok=True)
-    save_file(best[1], os.path.join(args.out, "mtp.safetensors"), metadata={"format": "pt", "eval_mean_top1": str(best[0])})
     log(event="saved", path=os.path.join(args.out, "mtp.safetensors"), eval_mean_top1=round(best[0], 4), baseline_mean_top1=round(base_score, 4))
 
 

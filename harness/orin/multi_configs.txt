@@ -1,0 +1,15 @@
+# 多槽位并发吞吐配置(multi_batch.sh 用)。格式: 标签|并发路数|环境变量(空格分隔 K=V)。交付配置 6 槽位,另测 3 路与 1 路看负载变化的影响。 仓库所有者 2026-10-08 选定交付采样为模型官方推荐(温度 1.0、top_k 20、top_p 0.95、min_p 0),本表各配置均带 SR_TEMP/SR_TOP_K/SR_TOP_P/SR_MIN_P(服务端默认采样,请求不带采样参数时生效)。
+# 优化构建 + 草稿词表子集 K=32768(IDS);SPEC_N_MAX=草稿长度,SPEC_P_MIN=置信度下限,SR_SPEC_BATCH_TOKENS=按在跑槽位数自适应的每次验证批 token 预算(补丁 0003)。
+stock_n5_s6|6|LLAMA_DIR=/home/<orin-user>/work/llama.cpp SR_TEMP=1.0 SR_TOP_K=20 SR_TOP_P=0.95 SR_MIN_P=0
+sl32k_n5_s6|6|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k32768.i32 SR_TEMP=1.0 SR_TOP_K=20 SR_TOP_P=0.95 SR_MIN_P=0
+sl32k_n3_s6|6|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k32768.i32 SPEC_N_MAX=3 SR_TEMP=1.0 SR_TOP_K=20 SR_TOP_P=0.95 SR_MIN_P=0
+sl32k_n2_s6|6|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k32768.i32 SPEC_N_MAX=2 SR_TEMP=1.0 SR_TOP_K=20 SR_TOP_P=0.95 SR_MIN_P=0
+sl32k_n1_s6|6|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k32768.i32 SPEC_N_MAX=1 SR_TEMP=1.0 SR_TOP_K=20 SR_TOP_P=0.95 SR_MIN_P=0
+sl32k_b16_s6|6|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k32768.i32 SR_SPEC_BATCH_TOKENS=16 SR_TEMP=1.0 SR_TOP_K=20 SR_TOP_P=0.95 SR_MIN_P=0
+sl32k_b24_s6|6|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k32768.i32 SR_SPEC_BATCH_TOKENS=24 SR_TEMP=1.0 SR_TOP_K=20 SR_TOP_P=0.95 SR_MIN_P=0
+sl32k_p05_s6|6|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k32768.i32 SPEC_P_MIN=0.5 SR_TEMP=1.0 SR_TOP_K=20 SR_TOP_P=0.95 SR_MIN_P=0
+sl32k_p07_s6|6|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k32768.i32 SPEC_P_MIN=0.7 SR_TEMP=1.0 SR_TOP_K=20 SR_TOP_P=0.95 SR_MIN_P=0
+sl32k_n5_s3|3|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k32768.i32 SR_TEMP=1.0 SR_TOP_K=20 SR_TOP_P=0.95 SR_MIN_P=0
+sl32k_b16_s3|3|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k32768.i32 SR_SPEC_BATCH_TOKENS=16 SR_TEMP=1.0 SR_TOP_K=20 SR_TOP_P=0.95 SR_MIN_P=0
+sl32k_n5_s1|1|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k32768.i32 SR_TEMP=1.0 SR_TOP_K=20 SR_TOP_P=0.95 SR_MIN_P=0
+sl32k_n8_s6|6|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k32768.i32 SPEC_N_MAX=8 SR_TEMP=1.0 SR_TOP_K=20 SR_TOP_P=0.95 SR_MIN_P=0

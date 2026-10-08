@@ -1,0 +1,60 @@
+diff -ru a/common/speculative.cpp b/common/speculative.cpp
+--- a/common/speculative.cpp
++++ b/common/speculative.cpp
+@@ -1758,7 +1758,9 @@
+                     dp.result_q->emplace_back(cur_p->data, cur_p->data + cur_p->size);
+                 }
+ 
+-                if (params.n_max <= (int) result.size()) {
++                // per-sequence cap (dp.n_max, set by the server): stop drafting early instead of drafting everything and truncating afterwards
++                if (params.n_max <= (int) result.size() ||
++                    (dp.n_max > 0 && dp.n_max <= (int) result.size())) {
+                     drafting[seq_id] = false;
+                     n_drafting--;
+                     continue;
+diff -ru a/tools/server/server-context.cpp b/tools/server/server-context.cpp
+--- a/tools/server/server-context.cpp
++++ b/tools/server/server-context.cpp
+@@ -684,7 +684,8 @@
+             SLT_INF(*this,
+                     "draft acceptance = %0.5f (%5d accepted / %5d generated), mean len = %5.2f\n",
+                     draft_ratio, n_draft_accepted, n_draft_total, mean_acc_len);
+-            SLT_TRC(*this,
++            // INF instead of TRC: the per-position acceptance decides the best draft length, keep it in the default log
++            SLT_INF(*this,
+                     "     acc per pos = (%s)\n", acceptance_rates_per_pos.c_str());
+         }
+ 
+@@ -3095,6 +3096,20 @@
+         std::vector<server_slot *> generating;
+         std::vector<server_slot *> drafting;
+ 
++        // Load-aware draft length (optional, off unless SR_SPEC_BATCH_TOKENS > 0): the verification batch of one iteration holds
++        // (1 + draft) tokens per generating slot. With several slots busy that batch becomes compute-bound, so every extra draft token
++        // that gets rejected costs real time. Cap the draft so the whole batch stays around SR_SPEC_BATCH_TOKENS tokens; a single
++        // active slot keeps the full --spec-draft-n-max.
++        static const int sr_spec_batch_tokens = [] { const char * e = getenv("SR_SPEC_BATCH_TOKENS"); return e ? atoi(e) : 0; }();
++        int sr_n_generating = 0;
++        if (spec && sr_spec_batch_tokens > 0) {
++            iterate(slots, [&](server_slot & s) {
++                if (s.state == SLOT_STATE_GENERATING) {
++                    sr_n_generating++;
++                }
++            });
++        }
++
+         // determine which slots are generating and drafting
+         iterate(slots, [&](server_slot & slot) {
+             if (slot.state != SLOT_STATE_GENERATING) {
+@@ -3116,7 +3131,10 @@
+                 const bool use_ckpt_tgt = ctx_tgt_seq_rm_type == COMMON_CONTEXT_SEQ_RM_TYPE_FULL;
+                 const bool use_ckpt_dft = ctx_dft_seq_rm_type == COMMON_CONTEXT_SEQ_RM_TYPE_FULL;
+ 
+-                const int n_draft_max = slot.get_n_draft_max();
++                int n_draft_max = slot.get_n_draft_max();
++                if (sr_spec_batch_tokens > 0 && sr_n_generating > 1) {
++                    n_draft_max = std::min(n_draft_max, std::max(1, sr_spec_batch_tokens / sr_n_generating - 1));
++                }
+ 
+                 if (n_draft_max > 0) {
+                     GGML_ASSERT(slot.can_speculate());

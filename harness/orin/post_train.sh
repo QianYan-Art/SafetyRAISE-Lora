@@ -2,7 +2,7 @@
 # Orin 侧自动链:等 train_simpo 结束 → 合并/转换/量化 → 起 llama-server(3 槽位,每槽 40960 上下文,MTP 草稿)。
 # 状态写 ~/work/runs/<TAG>_post.status;任何一步失败写 FAIL:<步骤> 并退出(笔记本侧据此告警)。
 # 用法(setsid nohup 起): post_train.sh <训练目录> <TAG> [mtp_overlay]
-RUN=$1; TAG=$2; OV=${3:-$HOME/work/mtp/out/mtp.safetensors}; ST=$HOME/work/runs/${TAG}_post.status
+RUN=$1; TAG=$2; OV=${3:-${MTP_OVERLAY:-$HOME/work/mtp/out_v3h2/mtp.safetensors}}; ST=$HOME/work/runs/${TAG}_post.status
 st() { echo "$(date +%T) $1" >> $ST; }
 : > $ST; st "WAIT_TRAIN"
 while pgrep -f "[t]rain_simpo.py" > /dev/null; do sleep 60; done

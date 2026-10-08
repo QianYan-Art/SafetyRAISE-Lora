@@ -1,0 +1,151 @@
+diff -ru a/src/llama-model.cpp b/src/llama-model.cpp
+--- a/src/llama-model.cpp
++++ b/src/llama-model.cpp
+@@ -29,6 +29,8 @@
+ #include <cassert>
+ #include <cfloat>
+ #include <cstdint>
++#include <cstdio>
++#include <cstdlib>
+ #include <cstring>
+ #include <cmath>
+ #include <functional>
+@@ -1957,6 +1959,92 @@
+         }
+     }
+ 
++    // MTP draft vocabulary shortlist (see llama-model.h): copy the rows of the already loaded `output` tensor that belong to the
++    // listed token ids into a small separate tensor. Rows are independent in every quantisation type, so this is a plain byte copy.
++    if (const char * ids_path = getenv("SR_MTP_DRAFT_IDS"); ids_path && ids_path[0] && output && output->buffer && hparams.n_layer_nextn > 0) {
++        [&]() {
++            std::vector<int32_t> ids;
++            {
++                FILE * f = fopen(ids_path, "rb");
++                if (!f) {
++                    LLAMA_LOG_WARN("%s: SR_MTP_DRAFT_IDS: cannot open '%s' - draft shortlist disabled\n", __func__, ids_path);
++                    return;
++                }
++                fseek(f, 0, SEEK_END);
++                const long sz = ftell(f);
++                fseek(f, 0, SEEK_SET);
++                if (sz <= 0 || sz % (long) sizeof(int32_t) != 0) {
++                    fclose(f);
++                    LLAMA_LOG_WARN("%s: SR_MTP_DRAFT_IDS: '%s' is not a non-empty int32 array - draft shortlist disabled\n", __func__, ids_path);
++                    return;
++                }
++                ids.resize((size_t) sz / sizeof(int32_t));
++                const size_t nr = fread(ids.data(), sizeof(int32_t), ids.size(), f);
++                fclose(f);
++                if (nr != ids.size()) {
++                    LLAMA_LOG_WARN("%s: SR_MTP_DRAFT_IDS: short read on '%s' - draft shortlist disabled\n", __func__, ids_path);
++                    return;
++                }
++            }
++
++            const int64_t n_embd_out = output->ne[0];
++            const int64_t n_rows     = output->ne[1];
++            const int64_t K          = (int64_t) ids.size();
++            if (K < 16 || K >= n_rows) {
++                LLAMA_LOG_WARN("%s: SR_MTP_DRAFT_IDS: %lld ids is outside [16, %lld) - draft shortlist disabled\n", __func__, (long long) K, (long long) n_rows);
++                return;
++            }
++            std::vector<uint8_t> seen((size_t) n_rows, 0);
++            for (int32_t id : ids) {
++                if (id < 0 || id >= n_rows || seen[(size_t) id]) {
++                    LLAMA_LOG_WARN("%s: SR_MTP_DRAFT_IDS: id %d is out of range or repeated - draft shortlist disabled\n", __func__, (int) id);
++                    return;
++                }
++                seen[(size_t) id] = 1;
++            }
++
++            ggml_init_params ip = {
++                /*.mem_size   =*/ 8 * ggml_tensor_overhead(),
++                /*.mem_buffer =*/ nullptr,
++                /*.no_alloc   =*/ true,
++            };
++            ggml_context_ptr ctx_ptr { ggml_init(ip) };
++            if (!ctx_ptr) {
++                LLAMA_LOG_WARN("%s: SR_MTP_DRAFT_IDS: ggml_init failed - draft shortlist disabled\n", __func__);
++                return;
++            }
++            ggml_tensor * head = ggml_new_tensor_2d(ctx_ptr.get(), output->type, n_embd_out, K);
++            ggml_set_name(head, "mtp_draft_head");
++            ggml_tensor * idt = ggml_new_tensor_1d(ctx_ptr.get(), GGML_TYPE_I64, K); // I64 so that set_rows also works on the CPU backend
++            ggml_set_name(idt, "mtp_draft_ids");
++
++            ggml_backend_buffer_t buf = ggml_backend_alloc_ctx_tensors_from_buft(ctx_ptr.get(), ggml_backend_buffer_get_type(output->buffer));
++            if (!buf) {
++                LLAMA_LOG_WARN("%s: SR_MTP_DRAFT_IDS: cannot allocate the shortlist head - draft shortlist disabled\n", __func__);
++                return;
++            }
++            ggml_backend_buffer_set_usage(buf, GGML_BACKEND_BUFFER_USAGE_WEIGHTS);
++
++            const size_t rb = ggml_row_size(output->type, n_embd_out);
++            std::vector<uint8_t> host(rb * (size_t) K);
++            for (int64_t k = 0; k < K; ++k) {
++                ggml_backend_tensor_get(output, host.data() + (size_t) k * rb, (size_t) ids[(size_t) k] * output->nb[1], rb);
++            }
++            ggml_backend_tensor_set(head, host.data(), 0, host.size());
++            std::vector<int64_t> ids64(ids.begin(), ids.end());
++            ggml_backend_tensor_set(idt, ids64.data(), 0, ids64.size() * sizeof(int64_t));
++
++            mtp_draft_head = head;
++            mtp_draft_ids  = idt;
++
++            std::vector<ggml_backend_buffer_ptr> bufs;
++            bufs.emplace_back(buf);
++            pimpl->ctxs_bufs.emplace_back(std::move(ctx_ptr), std::move(bufs));
++            LLAMA_LOG_INFO("%s: MTP draft shortlist enabled: %lld of %lld vocabulary rows (%.1f MiB) from '%s'\n",
++                __func__, (long long) K, (long long) n_rows, host.size() / 1024.0 / 1024.0, ids_path);
++        }();
++    }
++
+     return true;
+ }
+ 
+diff -ru a/src/llama-model.h b/src/llama-model.h
+--- a/src/llama-model.h
++++ b/src/llama-model.h
+@@ -670,6 +670,13 @@
+     struct ggml_tensor * nextn_proj_pre  = nullptr;
+     struct ggml_tensor * nextn_proj_post = nullptr;
+ 
++    // MTP draft vocabulary shortlist (the "proposal head" idea from ninfer): a row subset [n_embd, K] of `output`
++    // plus the K token ids it was taken from. Only the MTP draft step uses it, the target model keeps the full head,
++    // so the verified output does not change - only the bytes read per draft step shrink. Enabled when the
++    // environment variable SR_MTP_DRAFT_IDS points to a little-endian int32 id file; absent => stock behaviour.
++    struct ggml_tensor * mtp_draft_head = nullptr;
++    struct ggml_tensor * mtp_draft_ids  = nullptr;
++
+     // hrm-text initial low-cycle state
+     struct ggml_tensor * hrm_z_l_init = nullptr;
+ 
+diff -ru a/src/models/qwen35.cpp b/src/models/qwen35.cpp
+--- a/src/models/qwen35.cpp
++++ b/src/models/qwen35.cpp
+@@ -650,7 +650,24 @@
+     ggml_tensor * head_w = layer.nextn.shared_head_head ? layer.nextn.shared_head_head : model.output;
+     ggml_tensor * head_s = layer.nextn.shared_head_head ? layer.nextn.shared_head_head_s : model.output_s;
+     GGML_ASSERT(head_w && "QWEN35 MTP: missing LM head (nextn.shared_head_head or model.output)");
+-    cur = build_lora_mm(head_w, cur, head_s);
++    if (model.mtp_draft_head && model.mtp_draft_ids && !layer.nextn.shared_head_head && head_w == model.output) {
++        // Draft vocabulary shortlist: only K rows of the LM head are read, then the K logits are scattered back to their token
++        // ids in a full-vocabulary tensor filled with -inf, so the (backend or CPU) draft sampler downstream is unchanged.
++        const int64_t n_vocab_full = head_w->ne[1];
++        const int64_t K            = model.mtp_draft_head->ne[1];
++
++        // note: the CUDA PAD kernel puts ne1 into gridDim.y (limit 65535), so the vocabulary dimension must not be ne1 there -
++        // pad along dim 0 (ne1 = n_out is tiny), then transpose to [n_out, n_vocab] for the row scatter.
++        ggml_tensor * l_sub   = build_lora_mm(model.mtp_draft_head, cur, head_s);               // [K, n_out]
++        ggml_tensor * l_sub_t = ggml_cont(ctx0, ggml_transpose(ctx0, l_sub));                   // [n_out, K]
++        ggml_tensor * base_t  = ggml_pad(ctx0, l_sub, (int) (n_vocab_full - K), 0, 0, 0);       // [n_vocab, n_out] (shape only)
++        base_t = ggml_fill_inplace(ctx0, base_t, -INFINITY);
++        ggml_tensor * l_full  = ggml_cont(ctx0, ggml_transpose(ctx0, base_t));                  // [n_out, n_vocab]
++        l_full = ggml_set_rows(ctx0, l_full, l_sub_t, model.mtp_draft_ids);                     // row token_id <- shortlist row k
++        cur    = ggml_cont(ctx0, ggml_transpose(ctx0, l_full));                                 // [n_vocab, n_out]
++    } else {
++        cur = build_lora_mm(head_w, cur, head_s);
++    }
+     cb(cur, "result_output", -1);
+ 
+     res->t_logits = cur;

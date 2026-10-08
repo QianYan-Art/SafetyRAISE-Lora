@@ -1,0 +1,8 @@
+# 答案段投机对照配置(answer_sweep.sh 用)。均为优化构建 + 草稿词表子集 K=32768 + KV q8_0;SPEC_TYPES 的顺序即优先级。
+# 先 MTP 单独(基线),再 n-gram 查表在前、MTP 兜底的组合(NGRAM_N=匹配长度,NGRAM_M=草稿长度),最后 n-gram 单独。
+mtp_n5|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k32768.i32
+ng3_12_mtp|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k32768.i32 SPEC_TYPES=ngram-simple,draft-mtp NGRAM_N=3 NGRAM_M=12
+ng3_6_mtp|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k32768.i32 SPEC_TYPES=ngram-simple,draft-mtp NGRAM_N=3 NGRAM_M=6
+ng4_8_mtp|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k32768.i32 SPEC_TYPES=ngram-simple,draft-mtp NGRAM_N=4 NGRAM_M=8
+ng3_24_mtp|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k32768.i32 SPEC_TYPES=ngram-simple,draft-mtp NGRAM_N=3 NGRAM_M=24
+ng3_12_only|LLAMA_DIR=/home/<orin-user>/work/llama-opt SPEC_TYPES=ngram-simple NGRAM_N=3 NGRAM_M=12

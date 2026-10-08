@@ -1,0 +1,4 @@
+# 6 路并发答案区间吞吐配置(answer_multi_batch.sh 用)。格式: 标签|并发路数|环境变量。交付采样(官方 1.0/20/0.95/0)+ 优化构建 + 词表子集 K=32768。
+a6_n5|6|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k32768.i32 SR_TEMP=1.0 SR_TOP_K=20 SR_TOP_P=0.95 SR_MIN_P=0
+a6_n8|6|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k32768.i32 SR_TEMP=1.0 SR_TOP_K=20 SR_TOP_P=0.95 SR_MIN_P=0 SPEC_N_MAX=8
+a6_n12|6|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k32768.i32 SR_TEMP=1.0 SR_TOP_K=20 SR_TOP_P=0.95 SR_MIN_P=0 SPEC_N_MAX=12

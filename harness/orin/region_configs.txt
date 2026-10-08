@@ -1,0 +1,10 @@
+# 分区间投机对照配置(region_sweep.sh 用)。均为优化构建 + 草稿词表子集 K=32768 + KV q8_0 + 服务端默认采样。
+# 变量:SPEC_N_MAX=草稿长度上限,SPEC_P_MIN=置信度下限(草稿时 top-1 概率低于它就停止继续画,让草稿长度随置信度自适应)。
+n5_p0|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k32768.i32
+n5_p05|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k32768.i32 SPEC_P_MIN=0.5
+n8_p0|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k32768.i32 SPEC_N_MAX=8
+n8_p05|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k32768.i32 SPEC_N_MAX=8 SPEC_P_MIN=0.5
+n10_p05|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k32768.i32 SPEC_N_MAX=10 SPEC_P_MIN=0.5
+n10_p07|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k32768.i32 SPEC_N_MAX=10 SPEC_P_MIN=0.7
+n3_p0|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k32768.i32 SPEC_N_MAX=3
+stock_n5|LLAMA_DIR=/home/<orin-user>/work/llama.cpp

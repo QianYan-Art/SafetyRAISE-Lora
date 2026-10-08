@@ -1,0 +1,17 @@
+# 解码速度对照实验配置(bench_sweep.sh 用)——优先组(决定交付配置所需)。格式: 标签|环境变量(空格分隔 K=V)|probe 额外参数
+# 说明: 路径写绝对路径(配置里不展开 $HOME);--trim-user-chars 4000 把提示截到约 5K token,缩短每个配置的预填充时间。
+# 对象: v3h2 交付模型(Q4_K_M、重训 MTP 头),交付配置(6 槽位、KV q8_0、预算 5120)。信息量大的排在前面,结果边跑边出。
+# 顺序: 基线与构建一致性 → 词表子集 → MMVQ 批大小 → 草稿长度 → 置信度门限/概率式草稿采样 → 子集大小 → 不投机对照。次要开关见 bench_configs_decode_extra.txt。
+stock|LLAMA_DIR=/home/<orin-user>/work/llama.cpp|--trim-user-chars 4000
+opt_plain|LLAMA_DIR=/home/<orin-user>/work/llama-opt|--trim-user-chars 4000
+sl32k|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k32768.i32|--trim-user-chars 4000
+sl32k_mmvq4|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k32768.i32 SR_MMVQ_MAX_NE11=4|--trim-user-chars 4000
+sl32k_mmvq8|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k32768.i32 SR_MMVQ_MAX_NE11=8|--trim-user-chars 4000
+sl32k_n3|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k32768.i32 SPEC_N_MAX=3|--trim-user-chars 4000
+sl32k_n4|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k32768.i32 SPEC_N_MAX=4|--trim-user-chars 4000
+sl32k_n6|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k32768.i32 SPEC_N_MAX=6|--trim-user-chars 4000
+sl32k_p05|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k32768.i32 SPEC_P_MIN=0.5|--trim-user-chars 4000
+sl32k_prob|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k32768.i32 LLAMA_ARG_SPEC_DRAFT_SAMPLING=probabilistic|--trim-user-chars 4000
+sl16k|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k16384.i32|--trim-user-chars 4000
+sl64k|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k65536.i32|--trim-user-chars 4000
+sl32k_n0|LLAMA_DIR=/home/<orin-user>/work/llama-opt SR_MTP_DRAFT_IDS=/home/<orin-user>/work/data/draft_ids/draft_k32768.i32 SPEC_N_MAX=0|--trim-user-chars 4000
