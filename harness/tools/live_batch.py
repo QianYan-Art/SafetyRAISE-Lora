@@ -1,7 +1,7 @@
 """批量在线上真实环境模拟器里采样(学生或 MiniMax 作生成者)。每个案件一个 trace,已存在则跳过(可断点续跑)。
 运行环境 .venv-live;PYTHONPATH=harness;harness\\vendor\\safetyraise_7200e30
 用法: live_batch.py --tag T --cases-file cases.txt [--backend local|minimax] [--reviewer scripted|minimax]
-        [--retrieval mixed|fallback|sparse_half] [--workers 4] [--stable-limit 28000] [--output-reserve 4000] [--max-tokens 12000]
+        [--retrieval mixed|fallback|sparse_half] [--workers 4] [--stable-limit 28000] [--max-len N] [--output-reserve 4000] [--max-tokens 12000]
 思考档位:本地学生用环境变量 SR_LIVE_EFFORT(xhigh|medium|low)。结果目录 harness/runs/live_<tag>/;结束输出 EVENT 行。
 """
 import argparse, asyncio, concurrent.futures as cf, json, sys, time
@@ -41,6 +41,7 @@ ap.add_argument("--retrieval", default="mixed")
 ap.add_argument("--seed", type=int, default=7)
 ap.add_argument("--workers", type=int, default=4)
 ap.add_argument("--stable-limit", type=int, default=28000)
+ap.add_argument("--max-len", type=int, default=None, help="窗口硬上限,缺省 = max(32768, stable-limit);评测交付窗口(每槽位 40960)时同时设环境变量 SR_LIVE_MAX_WINDOW=40960")
 ap.add_argument("--output-reserve", type=int, default=4000)
 ap.add_argument("--max-tokens", type=int, default=12000)
 ap.add_argument("--first-call-only", action="store_true", help="只做第一次模型调用(后续调用被拦,不浪费时间);训练行以第 1 回合为主")
@@ -68,7 +69,7 @@ def one(case_path: str) -> dict:
         rev = MiniMaxBackend(allow_network=True, roles=("reviewer",), kb_class=kb)
     backend = RoleBackends({"generator": gen, "reviewer": rev})
     retrieval = build_retrieval(args.retrieval, seed=args.seed, case_id=case["case_id"])
-    guard = (FirstCallWindow if args.first_call_only else TrainingWindow)(stable_limit=args.stable_limit, output_reserve=args.output_reserve)
+    guard = (FirstCallWindow if args.first_call_only else TrainingWindow)(stable_limit=args.stable_limit, max_len=args.max_len or max(32768, args.stable_limit), output_reserve=args.output_reserve)
     try:
         trace = asyncio.run(LiveEnvironment(backend, retrieval, payload_guard=guard).run(case, trace_path=trace_path))
         return {"case_id": case["case_id"], "status": trace["status"], "reason": trace["reason"], "calls": len(trace["calls"]),

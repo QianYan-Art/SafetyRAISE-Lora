@@ -6,7 +6,7 @@
 #      预算耗尽时注入 ~/work/templates/budget_msg.txt 的提示语后强制收束到 </think>。
 # 可选环境变量(缺省值=历来的行为,不设就和以前完全一样;用于解码速度对照实验):
 #   LLAMA_DIR     llama.cpp 源码/构建目录(缺省 ~/work/llama.cpp;优化构建用 ~/work/llama-opt)
-#   SLOT_CTX      每槽位上下文(缺省 32768,训练窗口也是这个值;总 -c = SLOT_CTX × 槽位数;放宽到更长窗口前先读 docs/deployment.md §4)
+#   SLOT_CTX      每槽位上下文(本脚本缺省 32768 = 训练窗口;交付入口 serve_delivery.sh 缺省 40960;总 -c = SLOT_CTX × 槽位数;窗口取舍见 docs/deployment.md §4)
 #   SPEC_N_MAX    MTP 草稿长度(缺省 5)      SPEC_P_MIN  草稿置信度下限(缺省不传,即 llama.cpp 默认 0)
 #   SPEC_TYPES    投机类型,逗号分隔,**顺序即优先级**(缺省 draft-mtp;如 ngram-simple,draft-mtp 表示先查 n-gram,没命中再用 MTP 头;n-gram 参数用 EXTRA_ARGS 传 --spec-ngram-simple-size-n/-m)
 #   LISTEN_HOST / LISTEN_PORT  监听地址(缺省 192.168.55.1:8080)

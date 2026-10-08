@@ -1,0 +1,32 @@
+SafetyRAISE-Lora
+Copyright 2026 QianYan-Art
+
+本仓库按 Apache License 2.0 发布（见 LICENSE），与基座模型 Qwen3.8-27B 的官方许可相同。
+它包含、引用或改动了下列第三方内容，这些内容保留各自原有的许可与版权声明：
+
+1. Qwen3.8-27B（Qwen / Alibaba Cloud，Apache License 2.0）——基座模型。
+   仓库不含其权重。profiles/assets/qwen3.8-official-1d4bf0f2/ 里是其官方文本资产（聊天模板、配置、LICENSE）
+   的原样副本；assets/templates/ 下的聊天模板由其官方聊天模板改写（增设 compact 推理档位，xhigh 行为不变）。
+   本项目训练出的 LoRA 适配器、MTP 头与合并后的权重是它的衍生品，同样按 Apache License 2.0 授权，
+   再分发时须随附该许可与本声明；这些权重不在仓库内，随训练用的机器交接。
+
+2. llama.cpp（ggml authors，MIT License）——inference/patches/ 是对 llama.cpp（提交
+   bed0a856606ee4a24a164066f73d2379447033f5）的修改补丁。补丁中的修改部分随 llama.cpp 的 MIT 许可使用，
+   版权声明与许可文本见 llama.cpp 仓库的 LICENSE 文件。
+
+3. ninfer（Neroued/ninfer，Apache License 2.0）——只借鉴“草稿词表子集（proposal head）”的思路，
+   仓库内没有拷贝它的代码或数据文件；inference/draft-vocab/ 的 id 列表由本项目语料的词频，加其公开的
+   通用词频（权重 0.1）排序得到，该词频文件没有收入仓库。
+
+4. SafetyRAISE 线上系统的提示词与协议资产（assets/prompts/、assets/schemas/、harness/assets/）——
+   取自线上系统的 7200e30 提交，由仓库所有者公开；线上系统的源码与部署配置不在仓库内。
+
+5. 法规与知识库片段——后训练集（datasets/live-post-training-*）的提示里带着线上知识库的片段，
+   来自公开的官方来源（法律法规、公安交管部门公开文件、国家标准等），版权属各自来源。
+   仓库只为复现保留训练提示中出现过的片段，来源标注随片段原样保留。Apache License 2.0 不改变这些文本
+   原有的权利状态；如有异议，请联系仓库所有者删除。
+
+6. 合成数据——案件、专家指导意见、教师修订的报告与评审结论由外部大语言模型按提示词生成，
+   内容为原创合成，不含真实案件或真实个人信息；使用时请遵守相应模型服务的条款。
+
+公开范围与不公开的内容见 README.md“许可与公开范围”和 docs/data-card.md 第 7 节。

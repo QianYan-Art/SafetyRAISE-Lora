@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 from collections import OrderedDict
 
 from app.report_harness.contracts import canonical_digest
@@ -15,8 +16,11 @@ _COUNTS: OrderedDict[str, dict] = OrderedDict()
 class TrainingWindow:
     def __init__(self, *, stable_limit=24000, max_len=32768, output_reserve=8192,
                  reasoning_effort="xhigh", counter=count_payload):
-        if not 0 < output_reserve < stable_limit <= max_len <= 32768:
-            raise ValueError("当前训练窗口参数不合法，不能超过已批准的 32768。")
+        # 训练窗口的批准上限是 32768；评测部署窗口（交付为每槽位 40960）时，用环境变量 SR_LIVE_MAX_WINDOW 放宽。
+        # 构建训练行的上限在 rows.py（HARD_WINDOW，不受此变量影响）。
+        cap = int(os.environ.get("SR_LIVE_MAX_WINDOW") or 32768)
+        if not 0 < output_reserve < stable_limit <= max_len <= cap:
+            raise ValueError(f"当前窗口参数不合法，不能超过已批准的 {cap}（评测更长的部署窗口请设环境变量 SR_LIVE_MAX_WINDOW）。")
         self.stable_limit, self.max_len = stable_limit, max_len
         self.output_reserve, self.reasoning_effort = output_reserve, reasoning_effort
         self.counter = counter

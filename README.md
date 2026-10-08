@@ -22,9 +22,9 @@ SafetyRAISE 系统配套报告模型（Qwen3.8-27B + LoRA）的**训练资产仓
 
 ## 当前状态（2026-10-08）
 
-模型 = Qwen3.8-27B + 后训练 LoRA（**v3h2**）合并后量化 **Q4_K_M** 的单个 GGUF，MTP 头已针对该模型重训。服务用 [`harness/orin/serve_delivery.sh`](harness/orin/serve_delivery.sh)：**compact 推理档位、思考预算 5120、KV 缓存 q8_0、每槽位 32768 × 6 槽位、MTP 草稿（上限 5，按在跑槽位数自适应）、草稿词表子集、服务端默认采样用模型官方推荐值（temperature 1.0、top_k 20、top_p 0.95）**。
+模型 = Qwen3.8-27B + 后训练 LoRA（**v3h2**）合并后量化 **Q4_K_M** 的单个 GGUF，MTP 头已针对该模型重训。服务用 [`harness/orin/serve_delivery.sh`](harness/orin/serve_delivery.sh)：**compact 推理档位、思考预算 5120、KV 缓存 q8_0、6 槽位 × 每槽位 40960（2026-10-08 由 32768 放宽）、MTP 草稿（上限 5，按在跑槽位数自适应）、草稿词表子集、服务端默认采样用模型官方推荐值（temperature 1.0、top_k 20、top_p 0.95）**。
 
-终版总评测（开发 12 案，线上协议全流程，单次采样，自动口径）：发布 6、待审 5、失败 1（v3f 基线 7 / 4 / 1）；首调用通过全部确定性检查 4/12（v3f 1/12）。**主要问题**：预算 5120 在 32768 窗口下，34 次调用里有 11 次被槽位上下文截断（全是提示已超约 23K 的案件）；与教师的差距（v3f 评审配对差 −1.39、独立盲评约 −1.69 分）和硬门失败率（8/50 对教师 3/50）是最近一次实测，终版总评测里没有重测，均尚未达到既定通过线。详见接手指南第 6 节。
+终版总评测（开发 12 案，线上协议全流程，单次采样，自动口径）：发布 6、待审 5、失败 1（v3f 基线 7 / 4 / 1）；首调用通过全部确定性检查 4/12（v3f 1/12）。**主要问题**：总评测是在每槽位 32768 的窗口下跑的，预算 5120 加答案放不下，34 次调用里有 11 次被槽位上下文截断（全是提示已超约 23K 的案件）。交付窗口随后放宽到 40960（按评测的实际 token 数回算，这 11 次都放得下），**放宽后没有重跑评测**，只验证了服务能正常启动与生成；与教师的差距（v3f 评审配对差 −1.39、独立盲评约 −1.69 分）和硬门失败率（8/50 对教师 3/50）是最近一次实测，终版总评测里没有重测，均尚未达到既定通过线。详见接手指南第 6 节。
 
 ## 仓库结构
 
@@ -63,11 +63,15 @@ bash ~/work/scripts/serve_delivery.sh v3h2m-Q4_K_M               # 起交付配�
 
 ## English summary
 
-SafetyRAISE-Lora holds everything needed to continue training the report-generation model of the SafetyRAISE traffic-accident analysis system: a QLoRA fine-tune of Qwen3.8-27B (rank-16 LoRA on the upper 32 layers) trained entirely on a single Jetson AGX Orin 64 GB, served as a merged Q4_K_M GGUF with a retrained MTP draft head through a patched llama.cpp. The repository contains the synthetic datasets (v1 SFT release, v3 SFT lineage, the live-environment post-training sets, MTP retraining sequences), the prompt/schema assets of the production protocol, the training/evaluation/serving scripts, the llama.cpp patches and decoding studies, a technical report, and a handover guide (`docs/handover.md`). Model weights are not in the repository; they travel with the Orin machine (checksums are listed in the handover guide). All cases are synthetic and all quality scores are automatic (unverified by humans).
+SafetyRAISE-Lora holds everything needed to continue training the report-generation model of the SafetyRAISE traffic-accident analysis system: a QLoRA fine-tune of Qwen3.8-27B (rank-16 LoRA on the upper 32 layers) trained entirely on a single Jetson AGX Orin 64 GB, served as a merged Q4_K_M GGUF with a retrained MTP draft head through a patched llama.cpp. The repository contains the synthetic datasets (v1 SFT release, v3 SFT lineage, the live-environment post-training sets, MTP retraining sequences), the prompt/schema assets of the production protocol, the training/evaluation/serving scripts, the llama.cpp patches and decoding studies, a technical report, and a handover guide (`docs/handover.md`). Model weights are not in the repository; they travel with the Orin machine (checksums are listed in the handover guide). All cases are synthetic and all quality scores are automatic (unverified by humans). The repository is released under the Apache License 2.0, the same license as Qwen3.8-27B (see `LICENSE` and `NOTICE`).
 
-## 许可
+## 许可与公开范围
 
-许可证尚待仓库所有者确定（代码、数据、权重各需单独声明；基座 Qwen3.8-27B 沿用其官方许可）。在确定之前，本仓库内容按“保留所有权利”处理。
+- **许可证：Apache License 2.0**，与基座 Qwen3.8-27B 的官方许可相同（[`LICENSE`](LICENSE)；第三方内容的来源与各自许可见 [`NOTICE`](NOTICE)）。代码、文档、提示词与 schema 资产、合成数据集、评测摘要与训练日志都按它发布。
+- **权重不在仓库里**。LoRA 适配器、MTP 头和合并后的 GGUF 是 Qwen3.8-27B 的衍生品，同样按 Apache-2.0 授权（须随附许可与声明），随训练用的 Orin 机器交接。
+- **公开的**：原创合成的案件与数据集（`datasets/` 与 `harness/cases/`，含首版发布包）、代码与脚本、llama.cpp 补丁、线上提示词 / schema / 聊天模板、评测与训练日志的汇总、文档。
+- **不公开的**：模型权重；外部服务调用账本、原始采样轨迹、教师与评审的原始响应、盲评材料；SafetyRAISE 线上系统的源码与部署配置；任何真实案件材料；凭据。
+- 首版发布包 `datasets/v1-synthetic-release/` 的清单里有 `outbound_eligible: false`：这是首版导出时的保守治理标记，原意是“不能据此上传云训练或外部裁判接口”，清单有哈希绑定所以保持原样。包内容是 100% 原创合成，仓库所有者已把合成数据放行用于外部训练与评审，本仓库的公开副本按 Apache-2.0 发布，这个标记对使用者不再构成限制；调用具体的外部服务时仍应自行确认条款与费用。详见 [`docs/data-card.md`](docs/data-card.md) 第 7 节。
 
 ## 标识
 

@@ -7,7 +7,7 @@
 - 设备：Jetson AGX Orin 64GB（JetPack 7.2.1，SM87，MAXN + `jetson_clocks`）
 - 引擎：llama.cpp，固定提交 `bed0a856606ee4a24a164066f73d2379447033f5`（`-DGGML_CUDA=ON -DCMAKE_CUDA_ARCHITECTURES=87`，FA 量化组合默认 `q4_0/q8_0/f16/bf16`），加本目录的补丁
 - 模型：v3h2 合并后的 Q4_K_M 单个 GGUF（含重训的 MTP 头），不挂 LoRA；GGUF 本身与补丁无关，库存 llama.cpp 也能加载
-- 服务参数：compact 推理档位 + 思考预算 5120 + 6 槽位 × 每槽位 32768 上下文 + KV 缓存 q8_0 + MTP 草稿（`--spec-type draft-mtp`，草稿上限 5）
+- 服务参数：compact 推理档位 + 思考预算 5120 + 6 槽位 × 每槽位 40960 上下文（2026-10-08 由 32768 放宽，窗口取舍见 `docs/deployment.md` §4）+ KV 缓存 q8_0 + MTP 草稿（`--spec-type draft-mtp`，草稿上限 5）
 - 服务端默认采样：模型官方推荐值（`generation_config.json`：temperature 1.0、top_k 20、top_p 0.95、min_p 0）。线上请求不带采样参数，所以由服务端默认值决定；请求里带了则以请求为准。**此前 llama-server 用的是内置默认 0.8 / 40 / 0.95 / 0.05**，历次评测都在这个默认下做的，见技术报告。
 - 入口：`harness/orin/serve_delivery.sh <GGUF 基名>`：优化构建 + 草稿词表子集（`SR_MTP_DRAFT_IDS`）+ `SPEC_N_MAX=5` + `SR_SPEC_BATCH_TOKENS=24`（按在跑槽位数自适应草稿长度：6 路时每路 3 个、≤4 路时 5 个）+ 官方采样；`SR_BASELINE=1` 回到库存构建、不用子集和自适应。
 
@@ -85,7 +85,7 @@ cmake --build build -j4 --target llama-server llama-bench llama-cli test-backend
 
 ### 为什么分区间
 
-一次调用的两段差别很大：**思考**约 4 到 5K token、占约四分之三的时间，草稿接受率只有四成上下；**答案**是结构化 JSON、大量照抄证据原文，接受率约 95%。常规探针只生成思考开头的几百个 token，既低估答案段、也测不出长上下文，所以用三类探针：批大小曲线（`llama-bench`）、区间探针（思考区间 = 完整提示从头生成 1500 token；答案区间 = 完整提示 + 学生真实的思考文本之后续写 1200 token）、N 路并发探针。全部在交付配置下（Q4_K_M、KV q8_0、预算 5120、6 槽位 × 32768）。交付形态下 62% 的时间 6 路同时在生成、31% 是 5 路，有预填充在进行的时间约占 33%（`slot_concurrency.py` 对早先全流程服务日志的统计；终版总评测期间实测 6 路同时在生成占 44%、有预填充在进行占 21%，见 `eval/final-eval-2026-10-08/README.md`）。
+一次调用的两段差别很大：**思考**约 4 到 5K token、占约四分之三的时间，草稿接受率只有四成上下；**答案**是结构化 JSON、大量照抄证据原文，接受率约 95%。常规探针只生成思考开头的几百个 token，既低估答案段、也测不出长上下文，所以用三类探针：批大小曲线（`llama-bench`）、区间探针（思考区间 = 完整提示从头生成 1500 token；答案区间 = 完整提示 + 学生真实的思考文本之后续写 1200 token）、N 路并发探针。全部在交付配置下（Q4_K_M、KV q8_0、预算 5120、6 槽位 × 32768；窗口放宽到 40960 之前的测量，解码速度与窗口基本无关）。交付形态下 62% 的时间 6 路同时在生成、31% 是 5 路，有预填充在进行的时间约占 33%（`slot_concurrency.py` 对早先全流程服务日志的统计；终版总评测期间实测 6 路同时在生成占 44%、有预填充在进行占 21%，见 `eval/final-eval-2026-10-08/README.md`）。
 
 ### 机器上限与批大小曲线
 

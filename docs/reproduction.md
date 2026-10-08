@@ -91,9 +91,10 @@ bash post_chain_final.sh ~/work/runs/v3h_sft/ckpt v3h2 v3h2 --   --beta 2.0 --ga
 ```bash
 export PYTHONPATH=harness SR_LOCAL_HOST=<orin>:8080
 python -B -m sr_eval.cli ...                     # 旧路径评测台：见 harness/README.md
-# 部署口径的在线环境评测（32768、不设输出上限，让服务端自然截断）：
+# 部署口径的在线环境评测（窗口 = 服务的每槽位上下文，交付为 40960；不设输出上限，让服务端自然截断；评测更长的窗口要设 SR_LIVE_MAX_WINDOW）：
+export SR_LIVE_MAX_WINDOW=40960
 python -B harness/tools/live_batch.py --tag <tag> --cases-file <dev12.txt> --backend local --reviewer scripted \
-    --retrieval sparse_half --workers 6 --stable-limit 32768 --output-reserve 1 --max-tokens 32000
+    --retrieval sparse_half --workers 6 --stable-limit 40960 --output-reserve 1 --max-tokens 32000
 ```
 
 终版总评测（交付配置，开发 12 案，6 路并发，约 3 小时）：
@@ -104,7 +105,7 @@ python harness/tools/final_eval_summary.py <评测期间新增的 llama-server �
 python harness/tools/live_compare.py v3f=<运行目录> final=<运行目录>            # 状态分布、首调用确定性合格率、37 项指标
 ```
 
-对比口径：同一批开发案、同一档位与预算、同一采样与 KV 精度；看硬门失败、评审分、思考长度、检索轮数、合法率与 37 项指标，**还要看各调用的结束原因**（`finish_reason=length` 的数量），不要只看评审分和案件状态。开评测前先用 `harness/tools/live_prompt_sizes.py` 精确计各案提示 token（不调用任何模型），提示 ≥ 23K 的案件在 32768 窗口 + 预算 5120 下会被截断；评测中途就要看内容类指标，别等到跑完。结果快照见 `eval/final-eval-2026-10-08/`。
+对比口径：同一批开发案、同一档位与预算、同一采样与 KV 精度；看硬门失败、评审分、思考长度、检索轮数、合法率与 37 项指标，**还要看各调用的结束原因**（`finish_reason=length` 的数量），不要只看评审分和案件状态。开评测前先用 `harness/tools/live_prompt_sizes.py` 精确计各案提示 token（不调用任何模型），提示 ≥ 23K 的案件在 32768 窗口 + 预算 5120 下会被截断（交付窗口 40960 的线约 30.6K）；评测中途就要看内容类指标，别等到跑完。结果快照见 `eval/final-eval-2026-10-08/`。
 
 ## 6. MTP 头重训
 
@@ -136,7 +137,7 @@ llama.cpp 补丁、词表子集和所有探针脚本见 `inference/README.md`。
 | 评审 JSON 解析不到 | 不同评审输出形态不同（数组 / 拼接的多个对象 / 偏好材料里 `passed` 是对象）；`audit_collect.py` 已兼容 |
 | 校验指标改动后修订“耗尽” | 先用真实输出核对误判率；标记词表曾漏“为空”导致约 46% 误判 |
 | MTP 训练第 2 轮报显存不足（`kl_div`） | 每块 logits 保留到整步反传，监督区间长时峰值 50 GiB，Orin 统一内存里系统还自占约 9 GiB；改成逐块反传、每轮刷新最佳即落盘、`PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True`，失败后 `SKIP_CACHE=1` 续跑 |
-| 总评测里一批调用以 `length` 结束、输出只有几个 token | 每槽位窗口 32768 容不下提示 + 思考预算 5120 + 答案：提示 ≥ 约 23K 的调用会被截断（终版总评测 11/34）。开评测前用 `live_prompt_sizes.py` 估各案提示长度，评测中途看各调用结束原因；对策见 `handover.md` 第 6 节 |
+| 总评测里一批调用以 `length` 结束、输出只有几个 token | 每槽位窗口 32768 容不下提示 + 思考预算 5120 + 答案：提示 ≥ 约 23K 的调用会被截断（终版总评测 11/34；交付窗口已放宽到 40960，线约 30.6K）。开评测前用 `live_prompt_sizes.py` 估各案提示长度，评测中途看各调用结束原因；对策见 `handover.md` 第 6 节 |
 | 增量构建后日志里缺新加的行 | 编辑源文件的同时后台正在 make，会编出旧内容却带新时间戳；用二进制行为或日志判断构建是否含改动，重要改动后 `touch` 再编一次 |
 | 后台脚本被 `pkill -f` 误杀自己 | 同一条 ssh 命令里的 `pkill -f '模式'` 会匹配到命令行本身；先用 `pgrep -f` 取 PID，再按 PID 杀，或把杀进程写进脚本文件里 |
 | 编辑正在运行的 bash 脚本导致行为错乱 | bash 边读边执行，原地改文件会错位；写成新文件再 `mv` 替换，或停掉再重启 |
