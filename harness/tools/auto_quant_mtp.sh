@@ -17,7 +17,7 @@ wait_status() { local end=$((SECONDS+$3)) last="" line
     case "$line" in *FAIL*) return 2;; *$2*) return 0;; esac; sleep 90
   done; return 3; }
 run_first() { rm -rf harness/runs/live_$1
-  $PY -B harness/tools/live_batch.py --tag $1 --cases-file .scratch/dev12_deploy.txt --backend local --reviewer scripted --retrieval sparse_half \
+  $PY -B harness/tools/live_batch.py --tag $1 --cases-file harness/tools/dev12_deploy.txt --backend local --reviewer scripted --retrieval sparse_half \
     --workers 6 --stable-limit 32768 --output-reserve 1 --max-tokens 32000 --first-call-only > harness/runs/live_$1.log 2>&1; }
 serve() { local out; out=$(ssh_ "bash ~/work/scripts/serve_llama.sh $1 6 4000" 2>&1 | tail -1); echo "$out"; echo "$out" | grep -q SERVER_UP; }
 TR=$(ls harness/runs/live_${TAG}_dev12_first/*.json | head -1)

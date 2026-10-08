@@ -1,0 +1,73 @@
+内核 19914 个, 时间跨度 17505.7 ms, 内核累计 17323.7 ms, 间隙累计 182.1 ms (1.0%)
+
+按类别:
+  mmf/mmvf 浮点矩阵乘            8579.0 ms   49.5%    3472 次  平均   2470.9 µs
+  其他                        4413.9 ms   25.5%    4816 次  平均    916.5 µs
+  gated_delta_net           1898.8 ms   11.0%     336 次  平均   5651.1 µs
+  元素/拷贝/取行                  1704.9 ms    9.8%    8481 次  平均    201.0 µs
+  norm                       470.6 ms    2.7%    2135 次  平均    220.4 µs
+  ssm_conv                   118.3 ms    0.7%     336 次  平均    352.1 µs
+  flash-attn                 106.8 ms    0.6%     112 次  平均    954.0 µs
+  rope                        23.6 ms    0.1%     224 次  平均    105.3 µs
+  mmvq 量化GEMV                  7.7 ms    0.0%       1 次  平均   7725.9 µs
+  q8_1 量化                      0.0 ms    0.0%       1 次  平均      3.7 µs
+
+前 30 个内核:
+     8579.0 ms   3472 次 平均   2470.9 µs  ampere_s16816gemm_bf16_128x128_ldg8_stages_32x5_tn
+     3604.8 ms   3024 次 平均   1192.1 µs  void dequantize_block_q4_K<__nv_bfloat16>
+     1898.8 ms    336 次 平均   5651.1 µs  void gated_delta_net_cuda<
+      765.9 ms    448 次 平均   1709.6 µs  void dequantize_block_q6_K<__nv_bfloat16>
+      621.9 ms    336 次 平均   1850.9 µs  void concat_non_cont<unsigned int, 
+      470.6 ms   2135 次 平均    220.4 µs  void rms_norm_f32<
+      406.5 ms    784 次 平均    518.5 µs  void unary_gated_op_kernel<&op_silu, float>
+      391.0 ms   3472 次 平均    112.6 µs  void convert_unary_cont_vec4<float, __nv_bfloat16>
+      158.9 ms   1232 次 平均    129.0 µs  void k_bin_bcast<&op_add, float, float, float, const float *>
+      118.3 ms    336 次 平均    352.1 µs  void ssm_conv_long_token_f32<
+      106.8 ms    112 次 平均    954.0 µs  void flash_attn_ext_f16<
+       57.8 ms    448 次 平均    128.9 µs  void cpy_scalar<&cpy_1_scalar<float, float>>
+       34.2 ms    448 次 平均     76.3 µs  void fwht_cuda<
+       24.1 ms    112 次 平均    214.9 µs  void unary_gated_op_kernel<&op_sigmoid, float>
+       23.6 ms    224 次 平均    105.3 µs  void rope_multi<
+       20.3 ms    224 次 平均     90.6 µs  void k_set_rows_quant<long, block_q8_0, 
+       11.7 ms    336 次 平均     34.9 µs  void k_get_rows_float_vec<float>
+        7.7 ms      1 次 平均   7725.9 µs  void mul_mat_vec_q<
+        6.6 ms    192 次 平均     34.1 µs  void scale_f32<float>
+        4.7 ms    224 次 平均     21.0 µs  void dequantize_block_q8_0_f16<
+        4.4 ms    672 次 平均      6.5 µs  void cublasLt::splitKreduce_kernel<
+        2.7 ms    337 次 平均      8.1 µs  void k_get_rows_float<float, float>
+        1.4 ms    336 次 平均      4.1 µs  void k_bin_bcast<&op_mul, float, float, float, const float *>
+        1.2 ms    336 次 平均      3.6 µs  void unary_op_kernel<&op_sigmoid, float>
+        0.9 ms    336 次 平均      2.6 µs  void unary_op_kernel<&op_softplus, float>
+        0.0 ms      1 次 平均      3.7 µs  quantize_q8_1
+
+按内核+网格+线程块分组的前 30 项:
+     4398.4 ms    896 次 平均   4909.0 µs  grid=160 block=128  ampere_s16816gemm_bf16_128x128_ldg8_stages_32x5_tn
+     2906.3 ms    896 次 平均   3243.7 µs  grid=544 block=128  ampere_s16816gemm_bf16_128x128_ldg8_stages_32x5_tn
+     2561.7 ms   1120 次 平均   2287.3 µs  grid=348160 block=32  void dequantize_block_q4_K<__nv_bfloat16>
+     1898.8 ms    336 次 平均   5651.1 µs  grid=1536 block=128  void gated_delta_net_cuda<
+      621.9 ms    336 次 平均   1850.9 µs  grid=10240 block=256  void concat_non_cont<unsigned int, 
+      618.4 ms    784 次 平均    788.7 µs  grid=122880 block=32  void dequantize_block_q4_K<__nv_bfloat16>
+      602.2 ms    336 次 平均   1792.3 µs  grid=320 block=128  ampere_s16816gemm_bf16_128x128_ldg8_stages_32x5_tn
+      530.3 ms    224 次 平均   2367.5 µs  grid=348160 block=64  void dequantize_block_q6_K<__nv_bfloat16>
+      352.9 ms    336 次 平均   1050.3 µs  grid=192 block=128  ampere_s16816gemm_bf16_128x128_ldg8_stages_32x5_tn
+      331.3 ms    448 次 平均    739.5 µs  grid=34816 block=256  void unary_gated_op_kernel<&op_silu, float>
+      244.4 ms    112 次 平均   2182.1 µs  grid=384 block=128  ampere_s16816gemm_bf16_128x128_ldg8_stages_32x5_tn
+      227.6 ms    168 次 平均   1355.0 µs  grid=204800 block=64  void dequantize_block_q6_K<__nv_bfloat16>
+      219.5 ms    168 次 平均   1306.6 µs  grid=204800 block=32  void dequantize_block_q4_K<__nv_bfloat16>
+      219.1 ms   2576 次 平均     85.1 µs  grid=2560 block=256  void convert_unary_cont_vec4<float, __nv_bfloat16>
+      175.5 ms    112 次 平均   1566.6 µs  grid=245760 block=32  void dequantize_block_q4_K<__nv_bfloat16>
+      161.7 ms    336 次 平均    481.1 µs  grid=24576 block=256  void rms_norm_f32<
+      157.2 ms    896 次 平均    175.5 µs  grid=10240 block=128  void k_bin_bcast<&op_add, float, float, float, const float *>
+      156.7 ms    903 次 平均    173.5 µs  grid=512 block=1024  void rms_norm_f32<
+      126.7 ms    448 次 平均    282.8 µs  grid=8704 block=256  void convert_unary_cont_vec4<float, __nv_bfloat16>
+      118.3 ms    336 次 平均    352.1 µs  grid=1280 block=128  void ssm_conv_long_token_f32<
+      106.8 ms    112 次 平均    954.0 µs  grid=256 block=128  void flash_attn_ext_f16<
+       98.7 ms    672 次 平均    146.8 µs  grid=8192 block=256  void rms_norm_f32<
+       75.2 ms    336 次 平均    223.9 µs  grid=12288 block=256  void unary_gated_op_kernel<&op_silu, float>
+       54.3 ms    112 次 平均    484.8 µs  grid=49152 block=64  void cpy_scalar<&cpy_1_scalar<float, float>>
+       47.2 ms    112 次 平均    421.6 µs  grid=12288 block=256  void rms_norm_f32<
+       46.1 ms    224 次 平均    205.7 µs  grid=96 block=128  ampere_s16816gemm_bf16_128x128_ldg8_stages_32x5_tn
+       45.2 ms    448 次 平均    100.8 µs  grid=3072 block=256  void convert_unary_cont_vec4<float, __nv_bfloat16>
+       28.6 ms    672 次 平均     42.6 µs  grid=28 block=128  ampere_s16816gemm_bf16_128x128_ldg8_stages_32x5_tn
+       24.1 ms    112 次 平均    214.9 µs  grid=12288 block=256  void unary_gated_op_kernel<&op_sigmoid, float>
+       22.9 ms    168 次 平均    136.6 µs  grid=20480 block=32  void dequantize_block_q4_K<__nv_bfloat16>

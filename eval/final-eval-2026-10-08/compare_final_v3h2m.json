@@ -1,0 +1,191 @@
+{
+ "name": "v3f_full",
+ "traces": 12,
+ "status": {
+  "needs_review": 4,
+  "published": 7,
+  "failed": 1
+ },
+ "reasons": {
+  "invalid_role_response": 3,
+  "evidence_not_found": 1,
+  "training_window_exceeded": 1
+ },
+ "sent_calls": 31,
+ "think_tokens_median": 4027,
+ "answer_tokens_median": 3172,
+ "answer_tokens_max": 8904,
+ "finish": {
+  "stop": 29,
+  "length": 2
+ },
+ "first_call_n": 12,
+ "first_call_deterministic_eligible": 1,
+ "top_fail_signals": [
+  [
+   "metric:obligation_consistency",
+   26
+  ],
+  [
+   "metric:empty_field_fabrication",
+   9
+  ],
+  [
+   "quote_invalid",
+   6
+  ],
+  [
+   "source_not_read:[\"claims\", 3, \"evidence_refs\"]",
+   4
+  ],
+  [
+   "source_not_read:[\"claims\", 2, \"evidence_refs\"]",
+   2
+  ],
+  [
+   "candidate_contract:[\"obligation_resolutions\"]",
+   2
+  ],
+  [
+   "metric:evaluation_attribution",
+   1
+  ]
+ ],
+ "unknown_metrics": {
+  "nonempty_fact_coverage": 146,
+  "evidence_ref_alignment": 159,
+  "empty_field_fabrication": 56,
+  "evaluation_attribution": 5,
+  "obligation_consistency": 122,
+  "conflict_disclosure": 0,
+  "privacy_safety": 0
+ }
+}
+{
+ "name": "v3h2_first_f16",
+ "traces": 12,
+ "status": {
+  "failed": 12
+ },
+ "reasons": {
+  "first_call_only_stop": 12
+ },
+ "sent_calls": 12,
+ "think_tokens_median": 4028,
+ "answer_tokens_median": 3773,
+ "answer_tokens_max": 5137,
+ "finish": {
+  "stop": 12
+ },
+ "first_call_n": 12,
+ "first_call_deterministic_eligible": 4,
+ "top_fail_signals": [
+  [
+   "candidate_schema:extra_forbidden:[\"obligation_resolutions\", ",
+   74
+  ],
+  [
+   "metric:obligation_consistency",
+   6
+  ],
+  [
+   "metric:empty_field_fabrication",
+   6
+  ],
+  [
+   "metric:evaluation_attribution",
+   4
+  ],
+  [
+   "candidate_schema:model_type:[\"obligation_resolutions\", 26]",
+   2
+  ],
+  [
+   "source_not_read:[\"claims\", 12, \"knowledge_refs\"]",
+   2
+  ],
+  [
+   "source_not_read:[\"claims\", 6, \"evidence_refs\"]",
+   2
+  ],
+  [
+   "candidate_contract:[\"claims\", 15, \"knowledge_refs\"]",
+   2
+  ]
+ ],
+ "unknown_metrics": {
+  "nonempty_fact_coverage": 138,
+  "evidence_ref_alignment": 151,
+  "obligation_consistency": 63,
+  "conflict_disclosure": 0,
+  "privacy_safety": 0,
+  "empty_field_fabrication": 41,
+  "evaluation_attribution": 7
+ }
+}
+{
+ "name": "final",
+ "traces": 12,
+ "status": {
+  "published": 6,
+  "needs_review": 5,
+  "failed": 1
+ },
+ "reasons": {
+  "invalid_role_response": 5,
+  "evidence_not_found": 1
+ },
+ "sent_calls": 34,
+ "think_tokens_median": 5144,
+ "answer_tokens_median": 2549,
+ "answer_tokens_max": 5194,
+ "finish": {
+  "stop": 23,
+  "length": 11
+ },
+ "first_call_n": 12,
+ "first_call_deterministic_eligible": 4,
+ "top_fail_signals": [
+  [
+   "candidate_contract:[\"obligation_resolutions\"]",
+   4
+  ],
+  [
+   "quote_invalid",
+   2
+  ],
+  [
+   "invalid_json",
+   2
+  ],
+  [
+   "truncated_output",
+   2
+  ],
+  [
+   "metric:empty_field_fabrication",
+   2
+  ],
+  [
+   "candidate_contract:[\"claims\", 11]",
+   2
+  ],
+  [
+   "source_not_read:[\"claims\", 11, \"knowledge_refs\"]",
+   2
+  ],
+  [
+   "source_not_read:[\"claims\", 9, \"knowledge_refs\"]",
+   2
+  ]
+ ],
+ "unknown_metrics": {
+  "nonempty_fact_coverage": 120,
+  "evidence_ref_alignment": 137,
+  "empty_field_fabrication": 75,
+  "evaluation_attribution": 8,
+  "obligation_consistency": 124,
+  "conflict_disclosure": 0,
+  "privacy_safety": 0
+ }
+}

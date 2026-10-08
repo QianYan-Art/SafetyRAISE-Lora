@@ -1,0 +1,12 @@
+harness/cases/dev/syn_dev_003.json
+harness/cases/dev/syn_dev_010.json
+harness/cases/dev/syn_dev_011.json
+harness/cases/dev/syn_dev_018.json
+harness/cases/dev/syn_dev_027.json
+harness/cases/dev/syn_dev_038.json
+harness/cases/dev/syn_dev_000.json
+harness/cases/dev/syn_dev_004.json
+harness/cases/dev/syn_dev_006.json
+harness/cases/dev/syn_dev_008.json
+harness/cases/dev/syn_dev_012.json
+harness/cases/dev/syn_dev_013.json

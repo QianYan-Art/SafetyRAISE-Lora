@@ -1,0 +1,12 @@
+{
+ "calls": 34,
+ "prompt_tokens_evaluated": 457596,
+ "prompt_seconds": 2831.5,
+ "prompt_tok_s": 161.6,
+ "generated_tokens": 207601,
+ "generated_seconds_sum_over_calls": 49924.5,
+ "per_call_decode_tok_s_token_weighted": 4.16,
+ "per_call_decode_tok_s_median": 3.68,
+ "draft_accept_rate": 0.61,
+ "mean_len_median_over_calls": 2.88
+}

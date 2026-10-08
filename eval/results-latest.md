@@ -25,7 +25,9 @@
 | v3f | 49 | 19.82 (19.12~20.49) | 8/50 | -1.39 (-2.16~-0.65) | 13/7/29 |
 | teacher(luna) | 50 | 21.24 (20.82~21.64) | 3/50 | – | – |
 
-## 运行目录与产物位置
+## 运行目录与产物位置（原开发机上的路径，**未随仓库发布**）
+
+下面的 `harness/runs/…` 是当时开发机上的运行目录，里面是逐案轨迹、评审原文和案件文本，只在开发机保留、没有放进仓库；仓库里只有本文的汇总数字。要重新产生同类结果，用 `harness/sr_eval` 评测台按 `docs/reproduction.md` 重跑。
 
 - 基座(云端xhigh) / `baseapi_dev33`:`harness/runs/20261003_092633_baseapi_dev33`(轨迹 33 份;`gates.json`、`judgements.json`)
 - v2a / `sft_dev50`:`harness/runs/20261003_054845_sft_dev50`(轨迹 33 份;`gates.json`、`judgements.json`)
@@ -39,6 +41,6 @@
 - v3f / `v3f_dev12`:`harness/runs/20261005_193242_v3f_dev12`(轨迹 12 份;`gates.json`、`judgements.json`)
 - v3f / `v3f_dev12to49`:`harness/runs/20261005_211430_v3f_dev12to49`(轨迹 38 份;`gates.json`、`judgements.json`)
 
-- 训练数据:`harness/sft/{v3b,v3c,v3d,v3e_ret,v3f,v3e_gate,v3g_gate}/`(`manifest.json` 记录数量、来源、筛选统计)
-- 盲评材料与 Codex/Kimi 输出:`harness/runs/blind/<名>/`(答案映射 `harness/runs/blind/answers_<名>.json`)
-- 自动链日志:`harness/runs/{auto_eval_v3*.log,big_loop.log,expert_iter.log,eval_rest_*.log}`;Orin 训练日志在 Orin `~/work/runs/*_sft/log.jsonl`(已同步摘要见 `harness/reports/orin-train-logs/`)
+- 训练数据:当时在 `harness/sft/{v3b,v3c,v3d,v3e_ret,v3f,v3e_gate,v3g_gate}/`；其中可发布的各版数据与清单已放入仓库 `datasets/sft-lineage-v3/`(`manifest.json` 记录数量、来源、筛选统计)
+- 盲评材料与外部评审者的输出:当时在 `harness/runs/blind/<名>/`(答案映射 `harness/runs/blind/answers_<名>.json`)；含案件文本与评审原文，未发布
+- 自动链日志:`harness/runs/{auto_eval_v3*.log,big_loop.log,expert_iter.log,eval_rest_*.log}`;Orin 训练日志在 Orin `~/work/runs/*_sft/log.jsonl`(已同步到仓库 `eval/orin-train-logs/`)

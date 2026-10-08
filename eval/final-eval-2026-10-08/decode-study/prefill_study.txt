@@ -1,0 +1,159 @@
+=== 批大小曲线 mmq env=[X=1] 02:10:38
+| model                          |       size |     params | backend    | ngl | type_k | type_v |  fa |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | -----: | -----: | --: | --------------: | -------------------: |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |             pp1 |          7.29 ± 0.52 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |             pp2 |         13.77 ± 0.98 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |             pp3 |         20.56 ± 1.25 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |             pp4 |         27.29 ± 1.60 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |             pp6 |         40.12 ± 2.39 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |             pp8 |         52.99 ± 3.02 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |            pp12 |         70.78 ± 3.68 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |            pp16 |         92.24 ± 4.70 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |            pp24 |        103.44 ± 3.85 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |            pp32 |        119.56 ± 4.00 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |            pp36 |        123.06 ± 3.61 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |            pp48 |        150.53 ± 4.16 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |            pp64 |        174.82 ± 3.99 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |           pp128 |        218.41 ± 3.21 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |           pp256 |        235.72 ± 1.92 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |           pp512 |        238.57 ± 1.14 |
+=== 批大小曲线 mmvq8 env=[SR_MMVQ_MAX_NE11=8] 02:11:12
+| model                          |       size |     params | backend    | ngl | type_k | type_v |  fa |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | -----: | -----: | --: | --------------: | -------------------: |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |             pp1 |          7.30 ± 0.51 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |             pp2 |         14.93 ± 1.05 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |             pp3 |         19.95 ± 1.05 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |             pp4 |         22.76 ± 1.05 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |             pp6 |         28.70 ± 1.16 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |             pp8 |         30.63 ± 0.94 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |            pp12 |         70.40 ± 4.21 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |            pp16 |         92.89 ± 4.91 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |            pp24 |        104.27 ± 3.93 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |            pp32 |        120.16 ± 4.13 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |            pp36 |        123.01 ± 3.66 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |            pp48 |        150.86 ± 4.26 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |            pp64 |        174.65 ± 4.18 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |           pp128 |        219.14 ± 3.48 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |           pp256 |        236.17 ± 1.94 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |           pp512 |        238.37 ± 1.23 |
+=== 批大小曲线 cublas32 env=[SR_CUBLAS_MIN_NE11=32] 02:11:47
+| model                          |       size |     params | backend    | ngl | type_k | type_v |  fa |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | -----: | -----: | --: | --------------: | -------------------: |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |             pp1 |          7.28 ± 0.51 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |             pp2 |         13.79 ± 0.96 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |             pp3 |         20.63 ± 1.27 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |             pp4 |         27.28 ± 1.63 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |             pp6 |         40.22 ± 2.41 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |             pp8 |         53.11 ± 3.05 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |            pp12 |         70.77 ± 3.57 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |            pp16 |         92.48 ± 4.69 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |            pp24 |        103.72 ± 3.93 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |            pp32 |         33.12 ± 0.57 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |            pp36 |         37.10 ± 0.48 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |            pp48 |         48.30 ± 0.64 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |            pp64 |         62.44 ± 0.79 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |           pp128 |        109.30 ± 1.24 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |           pp256 |        165.00 ± 1.61 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |           pp512 |        211.22 ± 2.81 |
+=== test-backend-ops(SR_CUBLAS_MIN_NE11=1:列数≥9 的 q4_K/q6_K 矩阵乘全部走 cuBLAS bf16,对照 CPU 参考) 02:12:36
+通过 0 项,失败 0 项
+  Skipping
+2/2 backends passed
+[1;32mOK[0m
+=== bench mmq ub=512 kv=[-ctk q8_0 -ctv q8_0] env=[X=1] 02:12:40
+| model                          |       size |     params | backend    | ngl | type_k | type_v |  fa |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | -----: | -----: | --: | --------------: | -------------------: |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |          pp2048 |        238.71 ± 0.75 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |          pp8192 |        235.63 ± 0.01 |
+=== bench mmq ub=2048 kv=[-ctk q8_0 -ctv q8_0] env=[X=1] 02:14:57
+| model                          |       size |     params | backend    | ngl | n_ubatch | type_k | type_v |  fa |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | -------: | -----: | -----: | --: | --------------: | -------------------: |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |     2048 |   q8_0 |   q8_0 |   1 |          pp2048 |        228.29 ± 0.44 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |     2048 |   q8_0 |   q8_0 |   1 |          pp8192 |        226.60 ± 0.00 |
+=== bench mmq_kvf16 ub=512 kv=[-ctk f16 -ctv f16] env=[X=1] 02:17:20
+| model                          |       size |     params | backend    | ngl |  fa |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | --: | --------------: | -------------------: |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   1 |          pp2048 |        239.11 ± 0.95 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   1 |          pp8192 |        236.37 ± 0.00 |
+=== bench cublas_bf16 ub=512 kv=[-ctk q8_0 -ctv q8_0] env=[SR_CUBLAS_MIN_NE11=128] 02:19:37
+| model                          |       size |     params | backend    | ngl | type_k | type_v |  fa |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | -----: | -----: | --: | --------------: | -------------------: |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |          pp2048 |        209.17 ± 1.10 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |          pp8192 |        205.58 ± 0.00 |
+=== bench cublas_bf16 ub=2048 kv=[-ctk q8_0 -ctv q8_0] env=[SR_CUBLAS_MIN_NE11=128] 02:22:12
+| model                          |       size |     params | backend    | ngl | n_ubatch | type_k | type_v |  fa |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | -------: | -----: | -----: | --: | --------------: | -------------------: |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |     2048 |   q8_0 |   q8_0 |   1 |          pp2048 |        247.63 ± 0.96 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |     2048 |   q8_0 |   q8_0 |   1 |          pp8192 |        243.59 ± 0.03 |
+=== bench cublas_f16 ub=512 kv=[-ctk q8_0 -ctv q8_0] env=[SR_CUBLAS_MIN_NE11=128 SR_CUBLAS_QUANT_PREC=f16] 02:24:26
+| model                          |       size |     params | backend    | ngl | type_k | type_v |  fa |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | -----: | -----: | --: | --------------: | -------------------: |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |          pp2048 |        197.30 ± 0.65 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |   q8_0 |   q8_0 |   1 |          pp8192 |        195.12 ± 0.04 |
+=== bench cublas_f16 ub=2048 kv=[-ctk q8_0 -ctv q8_0] env=[SR_CUBLAS_MIN_NE11=128 SR_CUBLAS_QUANT_PREC=f16] 02:27:10
+| model                          |       size |     params | backend    | ngl | n_ubatch | type_k | type_v |  fa |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | -------: | -----: | -----: | --: | --------------: | -------------------: |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |     2048 |   q8_0 |   q8_0 |   1 |          pp2048 |        234.17 ± 0.64 |
+| qwen35 27B Q4_K - Medium       |  15.65 GiB |    27.32 B | CUDA       |  99 |     2048 |   q8_0 |   q8_0 |   1 |          pp8192 |        230.65 ± 0.03 |
+=== KL 散度(基线 = MMQ,KV q8_0,ub 2048,3 块 × 2048 token) 02:29:30
+--- base
+0.35.507.183 I Final estimate: PPL = 49.6258 +/- 4.71789
+--- cublas_bf16
+chunk             PPL               ln(PPL(Q)/PPL(base))          KL Divergence              Δp RMS            Same top p
+Mean PPL(Q)                   :  48.951693 ±   4.613712
+Mean PPL(base)                :  40.507196 ±   3.386560
+Cor(ln(PPL(Q)), ln(PPL(base))):  96.95%
+Mean ln(PPL(Q)/PPL(base))     :   0.189354 ±   0.024371
+Mean PPL(Q)/PPL(base)         :   1.208469 ±   0.029452
+Mean PPL(Q)-PPL(base)         :   8.444497 ±   1.568096
+Mean    KLD:   0.200776 ±   0.026864
+Maximum KLD:  25.955126
+99.9%   KLD:  20.852345
+99.9%   Δp: 51.859%
+RMS Δp    :  5.363 ± 0.621 %
+Same top p: 91.691 ± 0.498 %
+--- cublas_f16
+chunk             PPL               ln(PPL(Q)/PPL(base))          KL Divergence              Δp RMS            Same top p
+Mean PPL(Q)                   :  48.914941 ±   4.604231
+Mean PPL(base)                :  40.507196 ±   3.386560
+Cor(ln(PPL(Q)), ln(PPL(base))):  97.12%
+Mean ln(PPL(Q)/PPL(base))     :   0.188603 ±   0.023741
+Mean PPL(Q)/PPL(base)         :   1.207562 ±   0.028669
+Mean PPL(Q)-PPL(base)         :   8.407745 ±   1.542759
+Mean    KLD:   0.190174 ±   0.025730
+Maximum KLD:  25.816397
+99.9%   KLD:  22.454170
+99.9%   Δp: 51.002%
+RMS Δp    :  5.749 ± 0.627 %
+Same top p: 89.899 ± 0.544 %
+=== nsys 预填充 mmq 02:31:20
+内核 16442 个, 时间跨度 15143.3 ms, 内核累计 15048.4 ms, 间隙累计 94.9 ms (0.6%)
+
+按类别:
+  mmq 量化GEMM               10822.6 ms   71.9%    4144 次  平均   2611.6 µs
+  gated_delta_net           1897.7 ms   12.6%     336 次  平均   5648.0 µs
+  元素/拷贝/取行                  1228.8 ms    8.2%    5009 次  平均    245.3 µs
+  norm                       457.1 ms    3.0%    2135 次  平均    214.1 µs
+  q8_1 量化                    349.9 ms    2.3%    3473 次  平均    100.8 µs
+  ssm_conv                   118.3 ms    0.8%     336 次  平均    352.1 µs
+  flash-attn                 106.6 ms    0.7%     112 次  平均    951.8 µs
+  其他                          38.3 ms    0.3%     672 次  平均     57.1 µs
+  rope                        21.3 ms    0.1%     224 次  平均     95.1 µs
+  mmvq 量化GEMV                  7.7 ms    0.1%       1 次  平均   7700.5 µs
+
+=== nsys 预填充 cublas_bf16 02:31:48
+内核 19914 个, 时间跨度 17505.7 ms, 内核累计 17323.7 ms, 间隙累计 182.1 ms (1.0%)
+
+按类别:
+  mmf/mmvf 浮点矩阵乘            8579.0 ms   49.5%    3472 次  平均   2470.9 µs
+  其他                        4413.9 ms   25.5%    4816 次  平均    916.5 µs
+  gated_delta_net           1898.8 ms   11.0%     336 次  平均   5651.1 µs
+  元素/拷贝/取行                  1704.9 ms    9.8%    8481 次  平均    201.0 µs
+  norm                       470.6 ms    2.7%    2135 次  平均    220.4 µs
+  ssm_conv                   118.3 ms    0.7%     336 次  平均    352.1 µs
+  flash-attn                 106.8 ms    0.6%     112 次  平均    954.0 µs
+  rope                        23.6 ms    0.1%     224 次  平均    105.3 µs
+  mmvq 量化GEMV                  7.7 ms    0.0%       1 次  平均   7725.9 µs
+  q8_1 量化                      0.0 ms    0.0%       1 次  平均      3.7 µs
+
+PREFILL_STUDY_DONE 02:32:18

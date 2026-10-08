@@ -1,0 +1,18 @@
+{"event": "train_start", "train": 60, "eval": 10, "params_m": 424.7}
+{"event": "eval", "epoch": 0, "loss": 1.5602, "top1_by_step": [0.9013, 0.8254, 0.7656], "eval_tokens": 214359, "note": "原始(官方)MTP 权重在微调后主模型上的各步一致率(第 2、3 步为链式)"}
+{"event": "step", "step": 5, "of": 45, "epoch": 1, "elapsed_min": 9.4, "top1_by_step": [0.8622, 0.7458, 0.6527], "peak_gib": 28.7}
+{"event": "step", "step": 10, "of": 45, "epoch": 1, "elapsed_min": 18.4, "top1_by_step": [0.8678, 0.7702, 0.6913], "peak_gib": 28.7}
+{"event": "step", "step": 15, "of": 45, "epoch": 1, "elapsed_min": 27.5, "top1_by_step": [0.8726, 0.7839, 0.7107], "peak_gib": 28.7}
+{"event": "epoch", "epoch": 1, "train_loss": 1.5968, "train_top1_by_step": [0.8726, 0.7839, 0.7107], "eval_loss": 1.118, "eval_top1_by_step": [0.9001, 0.8396, 0.7961], "min": 29.9}
+{"event": "checkpoint", "epoch": 1, "eval_mean_top1": 0.8453}
+{"event": "step", "step": 20, "of": 45, "epoch": 2, "elapsed_min": 9.2, "top1_by_step": [0.894, 0.8312, 0.7757], "peak_gib": 28.7}
+{"event": "step", "step": 25, "of": 45, "epoch": 2, "elapsed_min": 18.6, "top1_by_step": [0.894, 0.8327, 0.7814], "peak_gib": 28.7}
+{"event": "step", "step": 30, "of": 45, "epoch": 2, "elapsed_min": 27.5, "top1_by_step": [0.8974, 0.839, 0.7902], "peak_gib": 28.7}
+{"event": "epoch", "epoch": 2, "train_loss": 0.9882, "train_top1_by_step": [0.8974, 0.839, 0.7902], "eval_loss": 1.0453, "eval_top1_by_step": [0.9006, 0.846, 0.8068], "min": 29.9}
+{"event": "checkpoint", "epoch": 2, "eval_mean_top1": 0.8511}
+{"event": "step", "step": 35, "of": 45, "epoch": 3, "elapsed_min": 9.0, "top1_by_step": [0.9115, 0.8613, 0.8177], "peak_gib": 28.7}
+{"event": "step", "step": 40, "of": 45, "epoch": 3, "elapsed_min": 18.1, "top1_by_step": [0.9138, 0.864, 0.8204], "peak_gib": 28.7}
+{"event": "step", "step": 45, "of": 45, "epoch": 3, "elapsed_min": 27.6, "top1_by_step": [0.9125, 0.8622, 0.8197], "peak_gib": 28.7}
+{"event": "epoch", "epoch": 3, "train_loss": 0.7821, "train_top1_by_step": [0.9125, 0.8622, 0.8197], "eval_loss": 0.9492, "eval_top1_by_step": [0.9071, 0.8567, 0.8194], "min": 29.9}
+{"event": "checkpoint", "epoch": 3, "eval_mean_top1": 0.8611}
+{"event": "saved", "path": "~/work/mtp/out_v3h2/mtp.safetensors", "eval_mean_top1": 0.8611, "baseline_mean_top1": 0.8307}

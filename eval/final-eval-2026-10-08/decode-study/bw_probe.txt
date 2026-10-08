@@ -1,0 +1,24 @@
+16B读 blocks=  64 threads=128 :   21.19 ms    101.3 GB/s
+16B读 blocks=  64 threads=256 :   15.87 ms    135.3 GB/s
+16B读 blocks= 128 threads=128 :   15.87 ms    135.3 GB/s
+16B读 blocks= 128 threads=256 :   14.76 ms    145.5 GB/s
+16B读 blocks= 256 threads=128 :   14.77 ms    145.4 GB/s
+16B读 blocks= 256 threads=256 :   13.58 ms    158.1 GB/s
+16B读 blocks= 512 threads=128 :   13.47 ms    159.4 GB/s
+16B读 blocks= 512 threads=256 :   13.52 ms    158.8 GB/s
+16B读 blocks=1024 threads=128 :   13.21 ms    162.6 GB/s
+16B读 blocks=1024 threads=256 :   13.74 ms    156.3 GB/s
+16B读 blocks=2048 threads=128 :   13.51 ms    159.0 GB/s
+16B读 blocks=2048 threads=256 :   14.28 ms    150.4 GB/s
+ 4B读 blocks=  64 threads=128 :   59.75 ms     35.9 GB/s
+ 4B读 blocks=  64 threads=256 :   39.04 ms     55.0 GB/s
+ 4B读 blocks= 128 threads=128 :   39.02 ms     55.0 GB/s
+ 4B读 blocks= 128 threads=256 :   39.02 ms     55.0 GB/s
+ 4B读 blocks= 256 threads=128 :   39.05 ms     55.0 GB/s
+ 4B读 blocks= 256 threads=256 :   29.31 ms     73.3 GB/s
+ 4B读 blocks= 512 threads=128 :   29.32 ms     73.3 GB/s
+ 4B读 blocks= 512 threads=256 :   29.29 ms     73.3 GB/s
+ 4B读 blocks=1024 threads=128 :   29.30 ms     73.3 GB/s
+ 4B读 blocks=1024 threads=256 :   22.04 ms     97.4 GB/s
+ 4B读 blocks=2048 threads=128 :   22.04 ms     97.4 GB/s
+ 4B读 blocks=2048 threads=256 :   21.64 ms     99.2 GB/s

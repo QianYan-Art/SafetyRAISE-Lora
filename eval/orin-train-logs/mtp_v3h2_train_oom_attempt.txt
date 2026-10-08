@@ -1,0 +1,8 @@
+{"event": "train_start", "train": 60, "eval": 10, "params_m": 424.7}
+{"event": "eval", "epoch": 0, "loss": 1.5602, "top1_by_step": [0.9013, 0.8254, 0.7656], "eval_tokens": 214359, "note": "原始(官方)MTP 权重在微调后主模型上的各步一致率(第 2、3 步为链式)"}
+{"event": "step", "step": 5, "of": 45, "epoch": 1, "elapsed_min": 10.0, "top1_by_step": [0.8622, 0.7457, 0.6529], "peak_gib": 50.0}
+{"event": "step", "step": 10, "of": 45, "epoch": 1, "elapsed_min": 19.3, "top1_by_step": [0.8679, 0.7701, 0.6913], "peak_gib": 50.0}
+{"event": "step", "step": 15, "of": 45, "epoch": 1, "elapsed_min": 28.7, "top1_by_step": [0.8726, 0.784, 0.7107], "peak_gib": 50.0}
+{"event": "epoch", "epoch": 1, "train_loss": 1.5969, "train_top1_by_step": [0.8726, 0.784, 0.7107], "eval_loss": 1.1184, "eval_top1_by_step": [0.8997, 0.8399, 0.796], "min": 31.1}
+# 第一次尝试在第 2 个 epoch 的 kl_div 处显存不足而中止（峰值 47.4 GiB + 系统占用），修复方式见 docs/technical-report.md §8.1：
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 244.00 MiB. GPU 0 has a total capacity of 61.40 GiB of which 91.43 MiB is free. Of the allocated memory 47.38 GiB is allocated by PyTorch, and 5.41 GiB is reserved by PyTorch but unallocated. If res

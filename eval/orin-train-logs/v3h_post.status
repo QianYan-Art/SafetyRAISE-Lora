@@ -1,0 +1,8 @@
+05:36:21 START
+05:36:22 TRAIN_START
+10:27:29 TRAIN_DONE
+10:27:29 MERGE_CONVERT_QUANT
+10:46:32 GGUF_READY
+FAIL: 10 分钟内未就绪
+10:56:45 FAIL:服务未就绪,见 llama_v3h-Q4_K_M_compact.log
+11:00:42 SERVER_UP(手动重起:临时 v3f 服务占着内存,链路起服务时 OOM)

@@ -1,0 +1,331 @@
+[
+ {
+  "label": "sl32k_b16_s3",
+  "phase": "measure",
+  "slots": 3,
+  "wall_s": 48.7,
+  "total_tokens": 1200,
+  "aggregate_tok_s_wall": 24.64,
+  "per_stream_tok_s": [
+   8.34,
+   8.68,
+   9.27
+  ],
+  "mean_per_stream": 8.76,
+  "sum_per_stream": 26.29,
+  "accept_mean": 0.309,
+  "prompt_n": [
+   4,
+   4,
+   4
+  ]
+ },
+ {
+  "label": "sl32k_b16_s6",
+  "phase": "measure",
+  "slots": 6,
+  "wall_s": 79.6,
+  "total_tokens": 2400,
+  "aggregate_tok_s_wall": 30.16,
+  "per_stream_tok_s": [
+   5.48,
+   5.16,
+   5.21,
+   5.14,
+   5.24,
+   5.28
+  ],
+  "mean_per_stream": 5.25,
+  "sum_per_stream": 31.51,
+  "accept_mean": 0.609,
+  "prompt_n": [
+   4,
+   4,
+   4,
+   4,
+   4,
+   4
+  ]
+ },
+ {
+  "label": "sl32k_b24_s6",
+  "phase": "measure",
+  "slots": 6,
+  "wall_s": 77.2,
+  "total_tokens": 2249,
+  "aggregate_tok_s_wall": 29.14,
+  "per_stream_tok_s": [
+   6.2,
+   5.55,
+   6.44,
+   5.43,
+   5.29,
+   5.8
+  ],
+  "mean_per_stream": 5.79,
+  "sum_per_stream": 34.71,
+  "accept_mean": 0.421,
+  "prompt_n": [
+   4,
+   4,
+   4,
+   4,
+   4,
+   4
+  ]
+ },
+ {
+  "label": "sl32k_n1_s6",
+  "phase": "measure",
+  "slots": 6,
+  "wall_s": 81.4,
+  "total_tokens": 2400,
+  "aggregate_tok_s_wall": 29.49,
+  "per_stream_tok_s": [
+   6.09,
+   5.59,
+   5.18,
+   5.3,
+   5.11,
+   5.01
+  ],
+  "mean_per_stream": 5.38,
+  "sum_per_stream": 32.28,
+  "accept_mean": 0.662,
+  "prompt_n": [
+   4,
+   4,
+   4,
+   4,
+   4,
+   4
+  ]
+ },
+ {
+  "label": "sl32k_n2_s6",
+  "phase": "measure",
+  "slots": 6,
+  "wall_s": 80.6,
+  "total_tokens": 2400,
+  "aggregate_tok_s_wall": 29.77,
+  "per_stream_tok_s": [
+   5.06,
+   5.83,
+   5.58,
+   5.03,
+   5.42,
+   5.11
+  ],
+  "mean_per_stream": 5.34,
+  "sum_per_stream": 32.03,
+  "accept_mean": 0.479,
+  "prompt_n": [
+   4,
+   4,
+   4,
+   4,
+   4,
+   4
+  ]
+ },
+ {
+  "label": "sl32k_n3_s6",
+  "phase": "measure",
+  "slots": 6,
+  "wall_s": 77.0,
+  "total_tokens": 2400,
+  "aggregate_tok_s_wall": 31.16,
+  "per_stream_tok_s": [
+   5.51,
+   5.81,
+   6.45,
+   5.93,
+   5.3,
+   5.89
+  ],
+  "mean_per_stream": 5.82,
+  "sum_per_stream": 34.89,
+  "accept_mean": 0.413,
+  "prompt_n": [
+   4,
+   4,
+   4,
+   4,
+   4,
+   4
+  ]
+ },
+ {
+  "label": "sl32k_n5_s1",
+  "phase": "measure",
+  "slots": 1,
+  "wall_s": 27.8,
+  "total_tokens": 400,
+  "aggregate_tok_s_wall": 14.39,
+  "per_stream_tok_s": [
+   14.49
+  ],
+  "mean_per_stream": 14.49,
+  "sum_per_stream": 14.49,
+  "accept_mean": 0.299,
+  "prompt_n": [
+   4
+  ]
+ },
+ {
+  "label": "sl32k_n5_s3",
+  "phase": "measure",
+  "slots": 3,
+  "wall_s": 59.2,
+  "total_tokens": 1200,
+  "aggregate_tok_s_wall": 20.26,
+  "per_stream_tok_s": [
+   6.83,
+   7.13,
+   7.51
+  ],
+  "mean_per_stream": 7.16,
+  "sum_per_stream": 21.47,
+  "accept_mean": 0.245,
+  "prompt_n": [
+   4,
+   4,
+   4
+  ]
+ },
+ {
+  "label": "sl32k_n5_s6",
+  "phase": "measure",
+  "slots": 6,
+  "wall_s": 87.4,
+  "total_tokens": 2400,
+  "aggregate_tok_s_wall": 27.46,
+  "per_stream_tok_s": [
+   4.66,
+   4.81,
+   4.73,
+   4.75,
+   4.85,
+   5.05
+  ],
+  "mean_per_stream": 4.81,
+  "sum_per_stream": 28.85,
+  "accept_mean": 0.257,
+  "prompt_n": [
+   4,
+   4,
+   4,
+   4,
+   4,
+   4
+  ]
+ },
+ {
+  "label": "sl32k_n8_s6",
+  "phase": "measure",
+  "slots": 6,
+  "wall_s": 95.7,
+  "total_tokens": 2400,
+  "aggregate_tok_s_wall": 25.07,
+  "per_stream_tok_s": [
+   4.94,
+   4.42,
+   6.76,
+   4.27,
+   5.23,
+   5.89
+  ],
+  "mean_per_stream": 5.25,
+  "sum_per_stream": 31.51,
+  "accept_mean": 0.262,
+  "prompt_n": [
+   4,
+   4,
+   4,
+   4,
+   4,
+   4
+  ]
+ },
+ {
+  "label": "sl32k_p05_s6",
+  "phase": "measure",
+  "slots": 6,
+  "wall_s": 156.7,
+  "total_tokens": 2400,
+  "aggregate_tok_s_wall": 15.31,
+  "per_stream_tok_s": [
+   2.57,
+   3.34,
+   2.94,
+   2.61,
+   2.78,
+   2.67
+  ],
+  "mean_per_stream": 2.82,
+  "sum_per_stream": 16.91,
+  "accept_mean": 0.619,
+  "prompt_n": [
+   4,
+   4,
+   4,
+   4,
+   4,
+   4
+  ]
+ },
+ {
+  "label": "sl32k_p07_s6",
+  "phase": "measure",
+  "slots": 6,
+  "wall_s": 177.1,
+  "total_tokens": 2400,
+  "aggregate_tok_s_wall": 13.56,
+  "per_stream_tok_s": [
+   2.32,
+   2.37,
+   2.56,
+   2.28,
+   2.35,
+   2.65
+  ],
+  "mean_per_stream": 2.42,
+  "sum_per_stream": 14.53,
+  "accept_mean": 0.748,
+  "prompt_n": [
+   4,
+   4,
+   4,
+   4,
+   4,
+   4
+  ]
+ },
+ {
+  "label": "stock_n5_s6",
+  "phase": "measure",
+  "slots": 6,
+  "wall_s": 95.9,
+  "total_tokens": 2400,
+  "aggregate_tok_s_wall": 25.02,
+  "per_stream_tok_s": [
+   4.56,
+   4.52,
+   7.16,
+   4.26,
+   4.43,
+   4.27
+  ],
+  "mean_per_stream": 4.87,
+  "sum_per_stream": 29.2,
+  "accept_mean": 0.307,
+  "prompt_n": [
+   4,
+   4,
+   4,
+   4,
+   4,
+   4
+  ]
+ }
+]

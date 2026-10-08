@@ -1,0 +1,16 @@
+{"event": "start", "pairs": 28, "accum": 2, "sft_lambda": 1.0, "total_updates": 14, "beta": 2.0, "gamma": 0.4, "lr": 0.0001, "t": 1791398527.6}
+{"event": "update", "update": 1, "loss": 0.9488, "margin": -0.459, "a_w": -0.4975, "a_l": -0.468, "anchors": 0, "pref_acc": 0.0, "grad_norm": 0.56, "sec": 2654.4, "peak_gib": 45.5, "t": 1791401182.0}
+{"event": "update", "update": 2, "loss": 0.9158, "margin": -0.4046, "a_w": -0.1659, "a_l": -0.1636, "anchors": 0, "pref_acc": 0.5, "grad_norm": 0.296, "sec": 1814.1, "peak_gib": 40.9, "t": 1791402996.1}
+{"event": "update", "update": 3, "loss": 0.8504, "margin": -0.2924, "a_w": -0.3279, "a_l": -0.3818, "anchors": 0, "pref_acc": 1.0, "grad_norm": 1.726, "sec": 1558.3, "peak_gib": 40.8, "t": 1791404554.4}
+{"event": "update", "update": 4, "loss": 0.5648, "margin": 0.5095, "a_w": -0.3639, "a_l": -0.8186, "anchors": 0, "pref_acc": 1.0, "grad_norm": 4.201, "sec": 1714.4, "peak_gib": 40.9, "t": 1791406268.8}
+{"event": "update", "update": 5, "loss": 0.9536, "margin": -0.4666, "a_w": -0.3062, "a_l": -0.2729, "anchors": 0, "pref_acc": 0.0, "grad_norm": 0.786, "sec": 1552.3, "peak_gib": 40.3, "t": 1791407821.6}
+{"event": "update", "update": 6, "loss": 0.6451, "margin": 0.2046, "a_w": -1.4604, "a_l": -1.7627, "anchors": 0, "pref_acc": 0.5, "grad_norm": 45.601, "sec": 1589.9, "peak_gib": 41.0, "t": 1791409411.6}
+{"event": "update", "update": 7, "loss": 1.424, "margin": -0.7989, "a_w": -1.4512, "a_l": -1.2517, "anchors": 0, "pref_acc": 0.5, "grad_norm": 53.362, "sec": 1505.9, "peak_gib": 42.2, "t": 1791410917.5}
+{"event": "update", "update": 8, "loss": 0.527, "margin": 0.8187, "a_w": -0.3873, "a_l": -0.9967, "anchors": 0, "pref_acc": 0.5, "grad_norm": 1.596, "sec": 1813.2, "peak_gib": 42.0, "t": 1791412730.7}
+{"event": "update", "update": 9, "loss": 0.9118, "margin": -0.3979, "a_w": -0.1988, "a_l": -0.1999, "anchors": 0, "pref_acc": 0.5, "grad_norm": 1.713, "sec": 1913.5, "peak_gib": 44.2, "t": 1791414644.6}
+{"event": "update", "update": 10, "loss": 1.7643, "margin": -1.3938, "a_w": -0.9103, "a_l": -0.4133, "anchors": 0, "pref_acc": 0.5, "grad_norm": 48.722, "sec": 1190.1, "peak_gib": 41.4, "t": 1791415834.7}
+{"event": "update", "update": 11, "loss": 0.4612, "margin": 3.8571, "a_w": -0.3068, "a_l": -2.4353, "anchors": 0, "pref_acc": 0.5, "grad_norm": 0.338, "sec": 1367.5, "peak_gib": 41.7, "t": 1791417202.2}
+{"event": "update", "update": 12, "loss": 0.9553, "margin": -0.4685, "a_w": -0.274, "a_l": -0.2398, "anchors": 0, "pref_acc": 0.5, "grad_norm": 0.366, "sec": 1297.6, "peak_gib": 42.5, "t": 1791418499.7}
+{"event": "update", "update": 13, "loss": 0.9588, "margin": -0.4752, "a_w": -0.511, "a_l": -0.4734, "anchors": 0, "pref_acc": 0.0, "grad_norm": 4.285, "sec": 1186.5, "peak_gib": 41.5, "t": 1791419686.6}
+{"event": "update", "update": 14, "loss": 0.4575, "margin": 3.1174, "a_w": -0.2337, "a_l": -1.9924, "anchors": 0, "pref_acc": 0.5, "grad_norm": 0.257, "sec": 1536.2, "peak_gib": 42.4, "t": 1791421222.9}
+{"event": "done", "updates": 14, "attempts": 14, "planned": 14, "t": 1791421223.3}
