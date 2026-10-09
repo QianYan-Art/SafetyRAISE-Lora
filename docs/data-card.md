@@ -33,7 +33,26 @@
 
 行字段：`sample_id, case_id, teacher, report_start, kind(final/tool), thinking_source, judge, gains, coverage, prompt_tokens, target_tokens, input_ids, labels, target_text`。`input_ids/labels` 是 Qwen3.8 分词视图（`labels` 只覆盖目标段）；`target_text` 为报告文本；思考来源为学生原生思考（`thinking_source=student_native`），报告为教师（luna，max 档）按评审缺陷最小改动修订。**旧路径格式**（原生 tool call + 直接 Markdown），与线上 JSON 协议不同，作为“写作能力”基础使用。
 
-> v3e（失败）、v3b 之前的试验数据与 v3h 早期 38 对旧格式偏好对已作废，不收录。
+> v3e（失败）和 v3b 之前的试验数据已作废，不收录。v3a 与早期 v3h 的两份 38 对偏好对见下，**原件已不在**。
+
+### v3a 的 38 对偏好对（谱系的起点，数据不在仓库）
+
+- **用在哪**：v3a（2026-10-03），SimPO 加对 chosen 的 NLL（β=1.0、γ=0.2、chosen NLL 权重 0.2、学习率 2e-5，每次更新 2 对，共 19 次更新，约 7.3 小时），LoRA r16 只适配上半层，起点是未训练基座。训练日志见 `eval/orin-train-logs/v3_simpo.jsonl`：损失在 0.63 到 0.86 之间波动，没有明显下降（首次 0.77，末次 0.74），所以“影响很小”。它的适配器是 v3b 的初始化，之后 v3b、v3c、v3d、v3f、v3h、v3h2 一路接着训。
+- **怎么来的（自己造的，不是外部数据；按顺序）**：
+  1. **采轨迹（`smp1`）**：用旧路径评测台（`python -m sr_eval.cli run`，生产注入形态：首轮检索 6 片段，可调 `retrieve_knowledge`，xhigh 档）让**未训练的基座**（配置里的 `qwen27` = OpenRouter 上的 `qwen/qwen3.8-27b`，学生同源，只用于这类自采样；该通道已停用）在 80 个合成训练案上各跑 1 条完整轨迹。
+  2. **采最终回答（`finalk`）**：`sr_eval.cli sample-final` 沿用 `smp1` 里已有的检索上下文，对其中 60 个案让同一个模型重复写最终回答，每案 3 份，共 180 份。
+  3. **打分**：每条轨迹、每份回答都过确定性硬门（`gates`）、字段覆盖率，以及思考循环、被截断的检测；两批样本里硬门失败 18 条轨迹、47 份最终回答——到了最终步还在调检索工具而不写报告、思考陷入重复、被长度截断，正是这次要修的“尾巴”。
+  4. **选对（`pairs-build --no-judge`，`harness/sr_eval/pairs.py` 阶段 B，不用逐条评审）**：同一案件、同一固定检索上下文下的多份候选里，chosen = 硬门全过、正常结束、无思考循环、至少一条引用，再按“覆盖率 − 报告字数 − 思考字符”的加权分取最高；rejected 优先取终止类失败（被截断、思考循环、最终步没写出报告），其次硬门失败，最后才是质量明显较差者；硬门失败者不会成为 chosen。
+  5. **过滤质量对（`harness/tools/spot_pairs.py report|filter`）**：终止类和硬门类是客观失败，不需要评审；质量类依赖打分规则，用 luna（max）逐对验证，评审不认可或缺失的不进训练。
+  6. **转 token 并上传**：用官方模板渲染成 `prompt_ids` / `chosen_ids` / `rejected_ids`（被截断的样本不补结束符），传到 Orin 给 `train_simpo_v3a.py`。
+- **条数**：第 4 步得 45 对（终止类 26、硬门类 4、质量类 15），另有 61 条最佳样本；第 5 步 13 个有效质量对里 chosen 更高 8、持平 2、更低 3，均值差 +0.23（区间跨 0，说明这套打分对质量的区分力弱），只留被认可的 8 个，最终 **38 对（终止 26 + 硬门 4 + 质量 8）**。序列长度中位数约 21K、最长约 27.9K token。工程检查：提示不一致 0 对、空响应 0 对、被裁切 0 对；终止类 rejected 与 chosen 的响应长度中位数之比 1.01（没有靠压低长度取巧）。
+- **格式**：每行 `{pair_id, prompt_ids, chosen_ids, rejected_ids}`，响应部分含思考与 `<|im_end|>`，提示渲染到 `<think>\n` 为止，即 `harness/orin/train_simpo_v3a.py` 读取的格式。
+- **为什么不在仓库、还在不在**：当时判断它“影响很小、已被后面的版本取代”，数据卡早先就把它列为不收录。原件（`harness/sft/v3nj2/`）和原始采样轨迹 2026-10-07 归档、2026-10-08 随归档整体删除，Orin 上的副本更早已清，**现在任何地方都没有副本**。删除前记录的 SHA-256 指纹：`pairs.jsonl`（45 对）`9bbb698fdd9b6fa66d61af41ce95ad9c09f536e5806ac02f1b33fcffe5216b84`，`pairs.filtered.jsonl`（38 对）`fe13ee7256612f504a0fec02c5fdd6dffadc51f2ab5e9c79716adba67101bb85`，`best.jsonl` `b8b099f3b9dc5328d268bc37d03244079170bf333606c36650c88e8b13092e3b`；只有指纹，不能还原内容。
+- **对续训的影响**：没有。交付的 v3h2 与保留的 v3d、v3f 适配器都在 Orin 上，续训从它们起步即可；只有想“从未训练基座起完整重走整条谱系”才缺这一环，重造需要重新采样（结果不会逐字相同）。
+
+### 早期 v3h 的 38 对旧格式偏好对（作废，从未训练）
+
+2026-10-06 为 v3f 构造的一份旧路径（非线上协议）报告段偏好对：30 对是硬门失败的修复，8 对是评审缺陷明显的修订；同一案件、同一提示、同一段原生思考，教师修复后通过硬门的报告为 chosen，原来的失败报告为 rejected，平均每条序列约 1.8 万 token。因为改走线上环境后训练而作废，被现在的 `live-post-training-v3h` 取代；原件同样随归档删除，指纹 `pairs.jsonl` `4e155548432756fdb6748c1ea10dbb5a9c5685ec0e61f13e063f61edb940e97c`。
 
 ## 4. `datasets/live-post-training-v3h/`（线上环境后训练集）
 
