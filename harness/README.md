@@ -76,6 +76,8 @@ python -B -m sr_eval.cli summary --run bake1
 
 ## `orin/`：Orin 上的脚本（整个目录复制到 `~/work/scripts/`）
 
+子目录 [`orin/wsp/`](orin/wsp/README.md) 是报告实验第二版（权重编辑）的脚本，有自己的目录布局与索引，不和 `~/work/scripts/` 混放。
+
 解码研究脚本还会从同一目录调用 `tools/` 里的 7 个小工具，也要复制过去：`probe_multi.py`、`speed_probe2.py`、`answer_probe.py`、`answer_multi.py`、`bench_table.py`、`probe_compare.py`、`draft_log_compare.py`。C++/CUDA 诊断程序（`dump_hidden.cpp` 等）的编译命令写在各源文件的头注释里。
 
 | 类别 | 脚本 |

@@ -1,0 +1,12 @@
+{"tag": "delivery", "case": "syn_dev_003", "n": 1200, "tps": 12.97, "draft": 2358, "acc": 727, "acc_rate": 0.308}
+{"tag": "delivery", "case": "syn_dev_010", "n": 1200, "tps": 12.7, "draft": 2426, "acc": 713, "acc_rate": 0.294}
+{"tag": "delivery", "case": "syn_dev_012", "n": 1200, "tps": 12.56, "draft": 2508, "acc": 697, "acc_rate": 0.278}
+{"tag": "delivery", "case": "syn_dev_027", "n": 447, "tps": 12.11, "draft": 955, "acc": 255, "acc_rate": 0.267}
+{"tag": "wsp_oldhead", "case": "syn_dev_003", "n": 1200, "tps": 14.56, "draft": 2073, "acc": 783, "acc_rate": 0.378}
+{"tag": "wsp_oldhead", "case": "syn_dev_010", "n": 1200, "tps": 13.21, "draft": 2306, "acc": 737, "acc_rate": 0.32}
+{"tag": "wsp_oldhead", "case": "syn_dev_012", "n": 1200, "tps": 12.71, "draft": 2449, "acc": 709, "acc_rate": 0.29}
+{"tag": "wsp_oldhead", "case": "syn_dev_027", "n": 613, "tps": 11.5, "draft": 1360, "acc": 340, "acc_rate": 0.25}
+{"tag": "wsp_newhead", "case": "syn_dev_003", "n": 1200, "tps": 13.74, "draft": 2203, "acc": 756, "acc_rate": 0.343}
+{"tag": "wsp_newhead", "case": "syn_dev_010", "n": 1200, "tps": 13.19, "draft": 2318, "acc": 734, "acc_rate": 0.317}
+{"tag": "wsp_newhead", "case": "syn_dev_012", "n": 1056, "tps": 11.14, "draft": 2475, "acc": 560, "acc_rate": 0.226}
+{"tag": "wsp_newhead", "case": "syn_dev_027", "n": 613, "tps": 11.25, "draft": 1400, "acc": 332, "acc_rate": 0.237}

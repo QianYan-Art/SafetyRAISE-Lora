@@ -8,7 +8,8 @@ Copyright 2026 QianYan-Art
    仓库不含其权重。profiles/assets/qwen3.8-official-1d4bf0f2/ 里是其官方文本资产（聊天模板、配置、LICENSE）
    的原样副本；assets/templates/ 下的聊天模板由其官方聊天模板改写（增设 compact 推理档位，xhigh 行为不变）。
    本项目训练出的 LoRA 适配器、MTP 头与合并后的权重是它的衍生品，同样按 Apache License 2.0 授权，
-   再分发时须随附该许可与本声明；这些权重不在仓库内，随训练用的机器交接。
+   再分发时须随附该许可与本声明；这些权重不在仓库内，随训练用的机器交接。其中两个 Q4_K_M GGUF
+   （交付版与报告实验第二版）公开在 Hugging Face shiqianyan/SafetyRAISE-MainAgent-Exp，随附同一许可与声明。
 
 2. llama.cpp（ggml authors，MIT License）——inference/patches/ 是对 llama.cpp（提交
    bed0a856606ee4a24a164066f73d2379447033f5）的修改补丁。补丁中的修改部分随 llama.cpp 的 MIT 许可使用，

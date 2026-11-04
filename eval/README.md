@@ -12,6 +12,7 @@
 | [`teacher-compare-dev.md`](teacher-compare-dev.md)、[`teacher-compare-test.md`](teacher-compare-test.md) | 教师基线对比：默认档 vs max 档（报告字数、引用、检索轮数、思考 token、成本、硬门） | §4.3 |
 | [`prod-retrieval-gap-dev.json`](prod-retrieval-gap-dev.json) | 线上检索与近似检索的差距（开发 50 案逐案的检索结果比较），说明为什么要做线上环境模拟器 | §6.1–6.2 |
 | [`orin-train-logs/`](orin-train-logs) | Orin 上每次训练的日志摘要（见下） | §3、§6、§8.1 |
+| [`weight-edit-2026-11-04/`](weight-edit-2026-11-04/README.md) | **报告实验第二版（权重编辑）**：转向筛选和最终 GGUF 的续写探针人工判读、完整协议确认、编辑与控制向量的数值核对、MTP 新头与单路测速 | [`docs/weight-edit.md`](../docs/weight-edit.md) |
 | [`final-eval-2026-10-08/`](final-eval-2026-10-08/README.md) | **终版总评测**（交付配置，线上协议全流程，开发 12 案）：案件状态、首调用确定性指标、窗口截断、端到端速度、服务端统计；`decode-study/` 是解码与预填充优化研究的结果 | §6.10、§8.2 |
 
 ## `orin-train-logs/` 怎么读
@@ -26,6 +27,7 @@
 | `v3h_sft.jsonl` | **v3h**：线上环境后训练第一轮（16 对偏好 + 10 锚点行，13 次更新，β=2.0、γ=0.4、`sft_lambda` 0.1、学习率 4e-5） | 另有 `a_w, a_l`（选中 / 拒绝序列的平均 token 对数概率）、`anchors`（该次更新里的锚点行数；只含锚点时 `loss`、`margin`、`pref_acc` 为 null） |
 | `v3h2_sft.jsonl` | **v3h2（交付版本）**：第二轮（28 对偏好，14 次更新，β=2.0、γ=0.4、`sft_lambda` 1.0、学习率 1e-4） | 同上 |
 | `mtp_v3h2_train.jsonl` | 为 v3h2 重训的 MTP 头（60 条序列，3 个 epoch；`eval` 事件里 epoch 0 是官方头在微调后主模型上的一致率，`top1_by_step` 是第 1、2、3 步的 top-1 一致率） | `train_start, eval, step, epoch, checkpoint, saved` |
+| `mtp_v3h2_wsp_train.jsonl` | 在报告实验第二版（权重编辑后）的服务特征上重训的 MTP 头（配方同上；epoch 0 是官方头在编辑后模型上的一致率） | 同上 |
 | `mtp_v3h2_train_oom_attempt.txt` | 同一训练的第一次尝试：第 2 个 epoch 的 `kl_div` 显存不足而中止；修复（逐块反传、`expandable_segments`、每个 epoch 保存最优）见技术报告 §8.1 | – |
 | `v3a_post.status` … `v3h2_post.status` | 训练后链（训练 → 合并 → 转换 → 量化 → 起服务）每一步的时间戳 | 行首为 `时:分:秒` |
 

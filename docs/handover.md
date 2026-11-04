@@ -1,6 +1,6 @@
 # 接手与续训指南
 
-写给第一次接手这个仓库和那台 Orin 的人：读完应该知道现在有什么、东西放在哪、怎么接着训、先做什么、哪些方向已经证明走不通。状态截至 2026-10-08。细节在 [`technical-report.md`](technical-report.md)，命令在 [`reproduction.md`](reproduction.md)，推理优化在 [`../inference/README.md`](../inference/README.md)。
+写给第一次接手这个仓库和那台 Orin 的人：读完应该知道现在有什么、东西放在哪、怎么接着训、先做什么、哪些方向已经证明走不通。状态截至 2026-10-08；2026-11-04 补充报告实验第二版（权重编辑，见 [`weight-edit.md`](weight-edit.md)）。细节在 [`technical-report.md`](technical-report.md)，命令在 [`reproduction.md`](reproduction.md)，推理优化在 [`../inference/README.md`](../inference/README.md)。
 
 ## 0. 一页纸：现状
 
@@ -8,7 +8,11 @@
 - **质量（开发 12 案全流程，单次采样，自动口径，未经人工核实）**：发布 6、待审 5、失败 1（v3f 基线 7 / 4 / 1，差别不可分辨）；首调用通过全部确定性检查 4/12（v3f 1/12）；与教师的差距（v3f：评审配对差 −1.39，独立盲评约 −1.69 分，满分 25）和硬门失败率（v3f 8/50 对教师 3/50）是最近一次实测的数字，终版总评测里没有重测，**均尚未达到既定通过线**。详见 [`../eval/final-eval-2026-10-08/README.md`](../eval/final-eval-2026-10-08/README.md)。
 - **窗口**：终版总评测在每槽位 32768 下跑，34 次调用里有 11 次被截断（全是提示已超约 23K 的案件）；2026-10-08 仓库所有者决定把交付窗口放宽到 40960（`serve_delivery.sh` 缺省，已验证 6 槽位能正常启动与生成），按评测的实际 token 数回算这 11 次都放得下，但**放宽后没有重跑评测**，见第 6 节。
 - **速度**：单路解码思考区间约 16 token/s、答案区间约 31 token/s；预填充约 238 token/s（已接近这台机器的持续算力上限）；6 路并发合计约 27 到 31 token/s。端到端没有比基线快，原因未查清。
-- **权重不在仓库里**，随 Orin 机器一起交接（第 1 节有路径和校验和）。
+- **报告实验第二版（2026-11-04）**：在 v3h2 合并权重的 36–52 层 `ffn_down` 上做秩 1 方向编辑，并重训 MTP 头，得到 `v3h2m-wsp-mtp-Q4_K_M.gguf`。服务配置与交付模型相同，不需要控制向量。
+  - 续写探针（开发 12 案，人工判读“抓事故核心”）：交付模型 0/2/10；第二版原提示 4/6/2；第二版加 P2 提示 9/2/1。均无编造、无越界。单路速度与交付模型持平。
+  - **线上协议全流程总评测还没有跑**。是否改用第二版或 P2 提示，由仓库所有者决定。
+  - 方法、方向判断与下一步见 [`weight-edit.md`](weight-edit.md)。
+- **权重不在仓库里**。适配器、MTP 头、编辑包和全精度权重随 Orin 机器一起交接，第 1 节有路径和校验和。两个 Q4_K_M GGUF（交付版和第二版）另外公开在 Hugging Face [`shiqianyan/SafetyRAISE-MainAgent-Exp`](https://huggingface.co/shiqianyan/SafetyRAISE-MainAgent-Exp)。
 
 ## 1. 东西在哪里
 
@@ -19,10 +23,13 @@
 | `~/models/Qwen3.8-27B/` | 官方 BF16 基座（合并、训练 MTP 头用；对应 `Qwen/Qwen3.8-27B`） | 约 52 GB | – |
 | `~/models/Qwen3.8-27B-unsloth-bnb-4bit/` | 4-bit 基座（QLoRA 训练用；对应 `unsloth/Qwen3.8-27B-bnb-4bit`） | 约 21 GB | – |
 | `~/models/gguf/v3h2m-Q4_K_M.gguf` | **交付模型**（v3h2 合并 + 重训 MTP 头 + Q4_K_M） | 16,810,714,624 B | `7ab181f97266cc02d61fd5bc952fcd5d7261a3ab224f75f8e1f66dc050d77f58` |
+| `~/models/gguf/v3h2m-wsp-mtp-Q4_K_M.gguf` | **报告实验第二版**（交付模型 + 36–52 层 `ffn_down` 秩 1 编辑 + 在编辑后模型上重训的 MTP 头；其余张量与交付模型逐字节相同） | 16,810,714,624 B | `fce64a2757911de9e964677e37d3e1fae750d9f8a2ec225925065dc526c2cbf8` |
 | `~/work/runs/v3h2_sft/ckpt/adapter_model.safetensors` | **v3h2 适配器**（交付版本；v3f 上两轮后训练） | 约 208 MB | `838630f594f67032f9a36f07a223a4a1845eff9c4e33c94ff0dffec02b6e8771` |
 | `~/work/runs/v3f_sft/ckpt/adapter_model.safetensors` | v3f 适配器（v3d 上专家迭代；后训练的起点；硬门失败比 v3d 多） | 约 208 MB | `7fa59d73ba902312cc2840feb3868a1e95ea0d359234716b79b07cba3a226903` |
 | `~/work/runs/v3d_sft/ckpt/adapter_model.safetensors` | v3d 适配器（硬门失败最少的版本） | 约 208 MB | `b83be4a9a6e3f365534d384ca1a060c35bc24d970557f7ad1ed15df34d59b95b` |
 | `~/work/mtp/out_v3h2/mtp.safetensors` | 为 v3h2 重训的 MTP 头（15 个 `mtp.*` 张量，bf16） | 849,400,472 B | `7a5cb37fe0e441a4710838081f9636e689fac9b3be7ea983a5f28fc2d649a2a4` |
+| `~/work/mtp/out_wsp/mtp.safetensors` | 在第二版（编辑后）服务特征上重训的 MTP 头 | 849,400,472 B | `372feb273bcd1cf8bb853e4dbfb54b23ce5724f47e0407d429437ab3984d7606` |
+| `~/work/wsp/edit/dir_core.npy`、`v_k512_l0.01.npy` | 第二版的编辑包（写入方向 u、读出向量 v；c=0.278；含神经元下标、等价控制向量、脚本与 `README.md`；**不公开**） | 约 1.3 MB / 1.2 MB | `5024b10a40fa7cf9d5974b8042adc80ad0be2b21bc78518a733813fbaaeaca63` / `0cb25700251bb7e8e6e22bea8ec425d02044e6c13df40ece6e298e5f160e347e` |
 
 三个适配器的 `adapter_config.json` 完全相同（SHA-256 `57d3a3decd601657cf232ee1e574acadbd5e6a5dd3c02c1b697c21c0dd2de9cc`）。其余目录：
 
@@ -36,12 +43,12 @@
 
 ## 2. 前置条件
 
-- **Orin**：Jetson AGX Orin 64GB（JetPack 7.2.1，MAXN，`sudo jetson_clocks`）。训练 27B 需要约 45 到 50 GiB 统一内存，**训练和缓存隐藏状态前必须停掉 llama-server**；合并转换峰值磁盘约 80 GB，保持 ≥95 GB 空闲。
+- **Orin**：Jetson AGX Orin 64GB（JetPack 7.2.1，MAXN，`sudo jetson_clocks`）。训练 27B 需要约 45 到 50 GiB 统一内存，**训练和缓存隐藏状态前必须停掉 llama-server**；合并转换峰值磁盘约 80 GB，保持 ≥95 GB 空闲。2026-11-04 加入第二版 GGUF 后，空闲约 81 GB；重新合并前要先腾出约 15 GB，例如临时挪走第二版 GGUF 或 4-bit 基座。
 - **笔记本侧（采样、数据流水线、评测）**：Python 3.12 + `uv`，`requirements-eval.txt` / `requirements-live.txt`；分词器 `profiles/assets/*/tokenizer.json` 需自行下载并校验（见 `profiles/README.md`）。
 - **线上系统模块**：线上环境模拟器需要 SafetyRAISE 线上系统的 `report_harness` 等模块（冻结在 `7200e30` 提交，仓库不含，哈希清单与提取脚本见 `harness/tools/vendor_prod.py`）。提示词与 schema 已放在 `assets/`。
 - **外部模型**（教师修订、盲评）：走 `harness/config/models.json`，密钥用环境变量，**不写进仓库**；外发闸门见 `harness/config/outbound.json`（合成案件可外发，真实案件永不外发）。
 
-## 3. 接着训练：四条路
+## 3. 接着训练：四条路（另加不训练的权重编辑）
 
 先判断要改什么：
 
@@ -51,6 +58,7 @@
 | **B. 加监督数据（SFT）** | 某版适配器 | 学生自采样 + 教师修订报告段，思考段低权重 | `train_sft.py --init_adapter <ckpt> …`（`reproduction.md` 第 2 节）；经验：剂量与案件多样性是关键，同一批案件上加样本收益趋零 |
 | **C. 只重训 MTP 头** | 任一合并后的模型 | 缓存终版模型的隐藏状态，训 15 个 `mtp.*` 张量，覆盖合并 | `bash mtp_chain.sh <适配器目录> <TAG> <训练jsonl> <留出jsonl>`（失败后 `SKIP_CACHE=1` 续跑）；**主模型一变，MTP 头就要重训**，否则接受率掉 |
 | **D. 只调解码/部署** | 现有 GGUF | 草稿长度、词表子集、采样、窗口 | `inference/README.md`；`serve_delivery.sh` 的环境变量 |
+| **E. 权重编辑（不训练）** | 任一合并后的 Q4_K_M | 用同模型“加提示 / 不加提示”的输出对比取方向，经控制向量筛选剂量后固化成 `down_proj` 秩 1 编辑 | [`weight-edit.md`](weight-edit.md)、`harness/orin/wsp/`。小编辑不需要重训 MTP 头：本次新旧头贪心解码下接受率相同 |
 
 每次训练完（A 或 B）的收尾顺序：**合并 → 转 Q8_0 → 重量化 Q4_K_M → 重训 MTP 头并覆盖合并 → 按交付配置起服务 → 开发集评测**。`post_chain_final.sh` 串起前半段（合并用的 MTP 覆盖默认读 `~/work/mtp/out_v3h2/mtp.safetensors`，可用环境变量 `MTP_OVERLAY` 指定；新适配器训完后这个头是失配的，应尽快用 `mtp_chain.sh` 重训）。
 
@@ -81,6 +89,9 @@
 5. **采样对齐**：线上请求不带采样参数，服务端默认值决定；若线上客户端以后显式传采样参数，应与服务端默认的官方值保持一致，否则等于换了模型的采样行为。
 6. **思考预算**：服务端预算是硬截断，**没有被超过**（所有留存运行里思考 token 最大 = 预算 + 提示语：5155 对 5120，4030 对 4000，见 `../eval/final-eval-2026-10-08/README.md`）；但它是实际约束——4000 下 58% 到 83% 的首调用触顶，5120 下终版总评测 34 次生成者调用里 19 次触顶（写出完整报告的 19 次调用里 18 次），真实思考长度被截断、只知下界。窗口放宽到 40960 后有空间放开预算：按最长的观测提示 28.6K 和观测最大答案 5.2K 算，预算最高约 7000。但训练行里的思考前缀是在 4000 处截断的，放大预算会改变行为，应放开预算测一次真实分布并重新评测，再定预算。
 7. **更长窗口数据**：超过 28000 的提示、多回合工具往返、修订轮（见 `extension-guide.md`），配合系统层“超限拆分”。
+8. **报告实验第二版的去留**（2026-11-04）：
+   - 第二版在续写探针上抓核心明显更好，但线上协议全流程总评测还没有跑。要换成交付模型，建议先用 `WIN=40960 bash harness/tools/final_eval.sh` 跑开发 12 案，模型用 `v3h2m-wsp-mtp-Q4_K_M`；P2 提示加与不加各跑一次，与第 1 项的窗口验证一起做。
+   - 想检验“agent 特化压制了报告能力”这个假设，或者在 Qwen4-27B 新基座上走“微调 + 编辑权重两步走”，做法见 [`weight-edit.md`](weight-edit.md) 第 7、8 节。
 
 ## 7. 踩坑（完整表见 `reproduction.md` 末尾）
 
