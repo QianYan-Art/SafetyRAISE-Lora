@@ -21,7 +21,7 @@ SafetyRAISE 系统配套报告模型（Qwen3.8-27B + LoRA）的**训练资产仓
 | 了解数据 | [`docs/data-card.md`](docs/data-card.md)、`datasets/` |
 | 扩展（更长窗口、新案件、视觉部分、LoRA 融合） | [`docs/extension-guide.md`](docs/extension-guide.md) |
 
-## 当前状态（2026-10-08）
+## 当前状态
 
 模型 = Qwen3.8-27B + 后训练 LoRA（**v3h2**）合并后量化 **Q4_K_M** 的单个 GGUF，MTP 头已针对该模型重训。服务用 [`harness/orin/serve_delivery.sh`](harness/orin/serve_delivery.sh)：**compact 推理档位、思考预算 5120、KV 缓存 q8_0、6 槽位 × 每槽位 40960（2026-10-08 由 32768 放宽）、MTP 草稿（上限 5，按在跑槽位数自适应）、草稿词表子集、服务端默认采样用模型官方推荐值（temperature 1.0、top_k 20、top_p 0.95）**。
 
@@ -63,10 +63,6 @@ uv venv .venv && uv pip install -r requirements-eval.txt        # 线上环境�
 # Orin 侧：把 harness/orin/ 复制到 ~/work/scripts/，按 docs/handover.md 第 3 节选一条续训路线
 bash ~/work/scripts/serve_delivery.sh v3h2m-Q4_K_M               # 起交付配置的服务（监听 Orin 的局域网地址 :8080）
 ```
-
-## English summary
-
-SafetyRAISE-Lora holds everything needed to continue training the report-generation model of the SafetyRAISE traffic-accident analysis system: a QLoRA fine-tune of Qwen3.8-27B (rank-16 LoRA on the upper 32 layers) trained entirely on a single Jetson AGX Orin 64 GB, served as a merged Q4_K_M GGUF with a retrained MTP draft head through a patched llama.cpp. The repository contains the synthetic datasets (v1 SFT release, v3 SFT lineage, the live-environment post-training sets, MTP retraining sequences), the prompt/schema assets of the production protocol, the training/evaluation/serving scripts, the llama.cpp patches and decoding studies, a technical report, and a handover guide (`docs/handover.md`). A second report experiment applies a rank-1 MLP direction edit (`ffn_down`, layers 36–52) on top of the merged model to make the causal analysis focus on the core accident mechanism (`docs/weight-edit.md`). LoRA adapters, MTP heads, the edit package and full-precision weights are not in the repository; they travel with the Orin machine (checksums are listed in the handover guide). The two quantized Q4_K_M GGUFs are published on Hugging Face at `shiqianyan/SafetyRAISE-MainAgent-Exp`. All cases are synthetic and all quality scores are automatic (unverified by humans). The repository is released under the Apache License 2.0, the same license as Qwen3.8-27B (see `LICENSE` and `NOTICE`).
 
 ## 许可与公开范围
 
